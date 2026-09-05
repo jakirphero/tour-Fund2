@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমাদের Tour Fund</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+  padding-bottom:40px
+}
+header{
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+  border-radius:0 0 25px 25px
+}
+header h1{font-size:28px;margin-bottom:8px}
+header p{opacity:.9}
+
+.container{max-width:1100px;width:94%;margin:22px auto}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:20px
+}
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.06)
+}
+.card h3{font-size:14px;color:#667085;margin-bottom:8px}
+.amount{font-size:25px;font-weight:bold;color:#2563eb}
+
+.section{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.06)
+}
+.section h2{font-size:20px;margin-bottom:18px}
+
+.members{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+.member{
+  background:#eef2ff;
+  padding:18px;
+  text-align:center;
+  border-radius:14px
+}
+.member h3{font-size:18px;margin-bottom:8px}
+.member-total{
+  color:#2563eb;
+  font-size:23px;
+  font-weight:bold
+}
+.member small{display:block;margin-top:6px;color:#667085}
+
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr auto;
+  gap:10px
+}
+input,select,button{
+  width:100%;
+  padding:12px;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  font-size:15px
+}
+button{
+  background:#2563eb;
+  color:white;
+  border:0;
+  cursor:pointer;
+  font-weight:bold
+}
+button:hover{background:#1d4ed8}
+
+.table-wrap{overflow-x:auto}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px
+}
+th,td{
+  padding:12px;
+  border-bottom:1px solid #eaecf0;
+  text-align:center
+}
+th{background:#f8fafc}
+
+.paid{
+  color:#15803d;
+  font-weight:bold
+}
+.unpaid{
+  color:#dc2626;
+  font-weight:bold
+}
+
+.action{
+  padding:7px 10px;
+  margin:2px;
+  width:auto
+}
+.delete{background:#dc2626}
+.delete:hover{background:#b91c1c}
+.edit{background:#f59e0b}
+.edit:hover{background:#d97706}
+
+.empty{
+  text-align:center;
+  padding:25px;
+  color:#667085
+}
+
+.progress{
+  height:10px;
+  background:#e5e7eb;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px
+}
+.progress-bar{
+  height:100%;
+  background:#2563eb;
+  width:0%
+}
+
+.reset{
+  background:#dc2626;
+  width:auto;
+  padding:11px 18px
+}
+
+.note{
+  color:#667085;
+  font-size:13px;
+  margin-top:10px
+}
+
+@media(max-width:800px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .members{grid-template-columns:repeat(2,1fr)}
+  .form{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:500px){
+  .stats{grid-template-columns:1fr 1fr}
+  .members{grid-template-columns:1fr 1fr}
+  .form{grid-template-columns:1fr}
+  header h1{font-size:23px}
+  .card{padding:15px}
+  .amount{font-size:20px}
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>🌴 আমাদের Tour Fund</h1>
+  <p>জাকির • আরমান • তানিম • তাসিন</p>
+  <p>সাপ্তাহিক ফান্ড ম্যানেজমেন্ট</p>
+</header>
+
+<div class="container">
+
+<!-- Statistics -->
+
+<div class="stats">
+
+<div class="card">
+<h3>💰 মোট ফান্ড</h3>
+<div class="amount" id="totalFund">৳ ০</div>
+</div>
+
+<div class="card">
+<h3>📅 মোট সপ্তাহ</h3>
+<div class="amount" id="totalWeeks">০</div>
+</div>
+
+<div class="card">
+<h3>💵 এই সপ্তাহে</h3>
+<div class="amount" id="thisWeek">৳ ০</div>
+</div>
+
+<div class="card">
+<h3>⚠️ মোট বকেয়া</h3>
+<div class="amount" id="totalDue">৳ ০</div>
+</div>
+
+</div>
+
+<!-- Members -->
+
+<div class="section">
+<h2>👥 সদস্যদের হিসাব</h2>
+
+<div class="members" id="members"></div>
+
+</div>
+
+<!-- Add Payment -->
+
+<div class="section">
+
+<h2>➕ টাকা জমা যোগ করুন</h2>
+
+<div class="form">
+
+<select id="member">
+<option value="জাকির">জাকির</option>
+<option value="আরমান">আরমান</option>
+<option value="তানিম">তানিম</option>
+<option value="তাসিন">তাসিন</option>
+</select>
+
+<input id="week" type="number" min="1" placeholder="সপ্তাহ নম্বর">
+
+<input id="date" type="date">
+
+<input id="amount" type="number" value="300" placeholder="টাকার পরিমাণ">
+
+<button onclick="addPayment()">জমা করুন</button>
+
+</div>
+
+<p class="note">
+প্রতি সদস্যের সাপ্তাহিক নির্ধারিত টাকা: ৳ ৩০০
+</p>
+
+</div>
+
+<!-- Weekly Table -->
+
+<div class="section">
+
+<h2>📋 সাপ্তাহিক জমার হিসাব</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>সপ্তাহ</th>
+<th>তারিখ</th>
+<th>জাকির</th>
+<th>আরমান</th>
+<th>তানিম</th>
+<th>তাসিন</th>
+<th>মোট</th>
+</tr>
+</thead>
+
+<tbody id="weeklyTable"></tbody>
+
+</table>
+
+</div>
+
+<div id="empty" class="empty">
+এখনো কোনো জমার তথ্য নেই।
+</div>
+
+</div>
+
+<!-- Payment History -->
+
+<div class="section">
+
+<h2>🧾 জমার বিস্তারিত ইতিহাস</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>সপ্তাহ</th>
+<th>তারিখ</th>
+<th>সদস্য</th>
+<th>টাকা</th>
+<th>স্ট্যাটাস</th>
+<th>অ্যাকশন</th>
+</tr>
+</thead>
+
+<tbody id="history"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- Reset -->
+
+<div class="section">
+
+<h2>⚙️ ডাটা ম্যানেজমেন্ট</h2>
+
+<button class="reset" onclick="resetData()">
+সব হিসাব মুছে ফেলুন
+</button>
+
+<p class="note">
+এই ডেমো সাইটের তথ্য আপনার ব্রাউজারেই সংরক্ষিত থাকবে।
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+const members = ["জাকির","আরমান","তানিম","তাসিন"];
+const weeklyAmount = 300;
+
+let payments =
+JSON.parse(localStorage.getItem("tourFundPayments")) || [];
+
+
+// Today's date
+document.getElementById("date").value =
+new Date().toISOString().split("T")[0];
+
+
+// Automatically determine week
+function getCurrentWeek(){
+
+  if(payments.length === 0) return 1;
+
+  return Math.max(...payments.map(p => Number(p.week))) || 1;
+
+}
+
+document.getElementById("week").value =
+getCurrentWeek();
+
+
+// Add payment
+function addPayment(){
+
+  const member =
+  document.getElementById("member").value;
+
+  const week =
+  Number(document.getElementById("week").value);
+
+  const date =
+  document.getElementById("date").value;
+
+  const amount =
+  Number(document.getElementById("amount").value);
+
+  if(!week || week < 1){
+    alert("সঠিক সপ্তাহ নম্বর দিন।");
+    return;
+  }
+
+  if(!date){
+    alert("তারিখ নির্বাচন করুন।");
+    return;
+  }
+
+  if(!amount || amount <= 0){
+    alert("সঠিক টাকার পরিমাণ দিন।");
+    return;
+  }
+
+  const existing =
+  payments.find(p =>
+    p.member === member &&
+    Number(p.week) === week
+  );
+
+  if(existing){
+    alert(
+      member +
+      " এই সপ্তাহে ইতিমধ্যে টাকা জমা দিয়েছে।"
+    );
+    return;
+  }
+
+  payments.push({
+    id:Date.now(),
+    member,
+    week,
+    date,
+    amount
+  });
+
+  save();
+
+  alert("✅ টাকা জমার হিসাব যোগ হয়েছে।");
+
+}
+
+
+// Save
+function save(){
+
+  localStorage.setItem(
+    "tourFundPayments",
+    JSON.stringify(payments)
+  );
+
+  render();
+
+}
+
+
+// Delete
+function deletePayment(id){
+
+  if(!confirm("এই হিসাবটি মুছে ফেলবেন?")) return;
+
+  payments =
+  payments.filter(p => p.id !== id);
+
+  save();
+
+}
+
+
+// Edit
+function editPayment(id){
+
+  const payment =
+  payments.find(p => p.id === id);
+
+  if(!payment) return;
+
+  const amount =
+  prompt(
+    "নতুন টাকার পরিমাণ লিখুন:",
+    payment.amount
+  );
+
+  if(amount === null) return;
+
+  if(Number(amount) <= 0){
+    alert("সঠিক টাকা দিন।");
+    return;
+  }
+
+  payment.amount = Number(amount);
+
+  save();
+
+}
+
+
+// Format date
+function formatDate(date){
+
+  return new Date(date).toLocaleDateString(
+    "bn-BD",
+    {
+      year:"numeric",
+      month:"short",
+      day:"numeric"
+    }
+  );
+
+}
+
+
+// Money format
+function money(amount){
+
+  return "৳ " +
+  Number(amount).toLocaleString("bn-BD");
+
+}
+
+
+// Render
+function render(){
+
+  let totalFund = 0;
+
+  const totals = {
+    "জাকির":0,
+    "আরমান":0,
+    "তানিম":0,
+    "তাসিন":0
+  };
+
+  payments.forEach(p => {
+
+    totalFund += Number(p.amount);
+
+    totals[p.member] += Number(p.amount);
+
+  });
+
+
+  // Total fund
+  document.getElementById("totalFund")
+  .innerText = money(totalFund);
+
+
+  // Weeks
+  const weeks =
+  [...new Set(payments.map(p => p.week))];
+
+  const maxWeek =
+  weeks.length
+  ? Math.max(...weeks)
+  : 0;
+
+  document.getElementById("totalWeeks")
+  .innerText =
+  maxWeek.toLocaleString("bn-BD");
+
+
+  // Current week
+  const currentWeek =
+  maxWeek || 1;
+
+  const currentPayments =
+  payments.filter(
+    p => Number(p.week) === currentWeek
+  );
+
+  const currentTotal =
+  currentPayments.reduce(
+    (sum,p) => sum + Number(p.amount),
+    0
+  );
+
+  document.getElementById("thisWeek")
+  .innerText =
+  money(currentTotal);
+
+
+  // Total due
+  const expected =
+  maxWeek * members.length * weeklyAmount;
+
+  const due =
+  Math.max(0, expected - totalFund);
+
+  document.getElementById("totalDue")
+  .innerText =
+  money(due);
+
+
+  // Member cards
+  const memberBox =
+  document.getElementById("members");
+
+  memberBox.innerHTML = "";
+
+  members.forEach(member => {
+
+    const memberPayments =
+    payments.filter(
+      p => p.member === member
+    );
+
+    const total =
+    totals[member];
+
+    const paidWeeks =
+    memberPayments.length;
+
+    const expectedMember =
+    maxWeek * weeklyAmount;
+
+    const memberDue =
+    Math.max(
+      0,
+      expectedMember - total
+    );
+
+    const currentPaid =
+    payments.some(
+      p =>
+      p.member === member &&
+      Number(p.week) === currentWeek
+    );
+
+    const percentage =
+    expectedMember > 0
+    ? Math.min(
+        100,
+        (total / expectedMember) * 100
+      )
+    : 0;
+
+    memberBox.innerHTML += `
+
+      <div class="member">
+
+        <h3>👤 ${member}</h3>
+
+        <div class="member-total">
+          ${money(total)}
+        </div>
+
+        <small>
+          জমা: ${paidWeeks.toLocaleString("bn-BD")} সপ্তাহ
+        </small>
+
+        <small>
+          বকেয়া: ${money(memberDue)}
+        </small>
+
+        <small class="${
+          currentPaid ? "paid" : "unpaid"
+        }">
+
+          ${
+            currentPaid
+            ? "✓ এই সপ্তাহে Paid"
+            : "✕ এই সপ্তাহে Unpaid"
+          }
+
+        </small>
+
+        <div class="progress">
+          <div
+            class="progress-bar"
+            style="width:${percentage}%">
+          </div>
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  renderWeeklyTable();
+  renderHistory();
+
+}
+
+
+// Weekly table
+function renderWeeklyTable(){
+
+  const table =
+  document.getElementById("weeklyTable");
+
+  const empty =
+  document.getElementById("empty");
+
+  table.innerHTML = "";
+
+  const weeks =
+  [...new Set(
+    payments.map(p => Number(p.week))
+  )].sort((a,b) => a-b);
+
+  if(weeks.length === 0){
+
+    empty.style.display = "block";
+    return;
+
+  }
+
+  empty.style.display = "none";
+
+
+  weeks.forEach(week => {
+
+    const weekPayments =
+    payments.filter(
+      p => Number(p.week) === week
+    );
+
+    const firstDate =
+    weekPayments.length
+    ? weekPayments[0].date
+    : "";
+
+    let total = 0;
+
+    let cells = "";
+
+    members.forEach(member => {
+
+      const payment =
+      weekPayments.find(
+        p => p.member === member
+      );
+
+      if(payment){
+
+        total += Number(payment.amount);
+
+        cells += `
+          <td class="paid">
+            ✓ ${money(payment.amount)}
+          </td>
+        `;
+
+      }else{
+
+        cells += `
+          <td class="unpaid">
+            ✕ Unpaid
+          </td>
+        `;
+
+      }
+
+    });
+
+
+    table.innerHTML += `
+
+      <tr>
+
+        <td>
+          ${week.toLocaleString("bn-BD")}
+        </td>
+
+        <td>
+          ${formatDate(firstDate)}
+        </td>
+
+        ${cells}
+
+        <td>
+          <strong>${money(total)}</strong>
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+}
+
+
+// History
+function renderHistory(){
+
+  const history =
+  document.getElementById("history");
+
+  history.innerHTML = "";
+
+  const sorted =
+  [...payments].sort(
+    (a,b) => b.id - a.id
+  );
+
+  sorted.forEach(payment => {
+
+    history.innerHTML += `
+
+      <tr>
+
+        <td>
+          ${Number(payment.week).toLocaleString("bn-BD")}
+        </td>
+
+        <td>
+          ${formatDate(payment.date)}
+        </td>
+
+        <td>
+          ${payment.member}
+        </td>
+
+        <td>
+          <strong>
+            ${money(payment.amount)}
+          </strong>
+        </td>
+
+        <td class="paid">
+          ✓ Paid
+        </td>
+
+        <td>
+
+          <button
+            class="action edit"
+            onclick="editPayment(${payment.id})">
+            Edit
+          </button>
+
+          <button
+            class="action delete"
+            onclick="deletePayment(${payment.id})">
+            Delete
+          </button>
+
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+}
+
+
+// Reset
+function resetData(){
+
+  if(!confirm(
+    "⚠️ সব হিসাব মুছে যাবে। নিশ্চিত?"
+  )) return;
+
+  payments = [];
+
+  localStorage.removeItem(
+    "tourFundPayments"
+  );
+
+  document.getElementById("week").value = 1;
+
+  render();
+
+}
+
+
+// Start
+render();
+
+</script>
+
+</body>
+</html>
