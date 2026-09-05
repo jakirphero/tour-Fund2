@@ -23,8 +23,8 @@ body{
 
 header{
   background:linear-gradient(135deg,#087f5b,#12b886);
-  color:white;
-  padding:25px 15px;
+  color:#fff;
+  padding:28px 15px;
   text-align:center;
 }
 
@@ -34,7 +34,7 @@ header h1{
 }
 
 header p{
-  opacity:.9;
+  opacity:.92;
 }
 
 .container{
@@ -43,7 +43,7 @@ header p{
 }
 
 .card{
-  background:white;
+  background:#fff;
   border-radius:15px;
   padding:18px;
   margin-bottom:18px;
@@ -57,7 +57,7 @@ header p{
 }
 
 .stat{
-  background:white;
+  background:#fff;
   border-radius:15px;
   padding:20px;
   text-align:center;
@@ -77,6 +77,22 @@ header p{
 .stat strong{
   font-size:22px;
   color:#087f5b;
+}
+
+.balance-card{
+  border:2px solid #087f5b;
+}
+
+.balance-card strong{
+  font-size:25px;
+}
+
+.balance-card.negative{
+  border-color:#e03131;
+}
+
+.balance-card.negative strong{
+  color:#e03131;
 }
 
 .section-title{
@@ -111,7 +127,7 @@ header p{
 .member-row{
   display:flex;
   justify-content:space-between;
-  padding:7px 0;
+  padding:8px 0;
   border-bottom:1px solid #eee;
   font-size:14px;
 }
@@ -188,7 +204,9 @@ label{
   font-weight:bold;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
   width:100%;
   padding:11px;
   border:1px solid #ced4da;
@@ -202,7 +220,9 @@ textarea{
   resize:vertical;
 }
 
-input:focus,select:focus,textarea:focus{
+input:focus,
+select:focus,
+textarea:focus{
   border-color:#12b886;
 }
 
@@ -222,7 +242,8 @@ table{
   min-width:700px;
 }
 
-th,td{
+th,
+td{
   padding:11px 9px;
   border-bottom:1px solid #eee;
   text-align:left;
@@ -258,12 +279,20 @@ th{
   font-size:22px;
 }
 
-.remaining{
-  color:#087f5b!important;
+.summary-box.balance-box{
+  background:#e6fcf5;
 }
 
-.remaining.negative{
-  color:#c92a2a!important;
+.summary-box.balance-box strong{
+  color:#087f5b;
+}
+
+.summary-box.balance-box.negative{
+  background:#fff5f5;
+}
+
+.summary-box.balance-box.negative strong{
+  color:#e03131;
 }
 
 .location-list{
@@ -275,13 +304,27 @@ th{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px;
+  padding:13px;
   background:#f8f9fa;
   border-radius:10px;
 }
 
 .location-item strong{
   color:#087f5b;
+}
+
+.member-admin-list{
+  display:grid;
+  gap:10px;
+}
+
+.member-admin-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  background:#f8f9fa;
+  border-radius:10px;
 }
 
 .hidden{
@@ -319,6 +362,19 @@ th{
   margin-bottom:15px;
 }
 
+.balance-calculation{
+  text-align:center;
+  padding:16px;
+  background:#f8f9fa;
+  border-radius:12px;
+  margin-top:15px;
+  font-size:16px;
+}
+
+.balance-calculation strong{
+  color:#087f5b;
+}
+
 footer{
   text-align:center;
   padding:25px;
@@ -326,6 +382,7 @@ footer{
 }
 
 @media(max-width:800px){
+
   .stats{
     grid-template-columns:repeat(2,1fr);
   }
@@ -344,6 +401,7 @@ footer{
 }
 
 @media(max-width:450px){
+
   header h1{
     font-size:23px;
   }
@@ -354,11 +412,15 @@ footer{
   }
 
   .stat{
-    padding:13px 8px;
+    padding:14px 7px;
   }
 
   .stat strong{
-    font-size:18px;
+    font-size:17px;
+  }
+
+  .balance-card strong{
+    font-size:19px;
   }
 }
 </style>
@@ -368,355 +430,664 @@ footer{
 
 <header>
   <h1>🌴 আমাদের Tour Fund</h1>
-  <p>আমাদের ট্যুরের টাকা জমা ও খরচের হিসাব</p>
+  <p>ট্যুরের টাকা জমা, খরচ ও বর্তমান ব্যালেন্স</p>
 </header>
 
 <div class="container">
 
-  <!-- LOGIN -->
-  <div id="loginSection" class="card login-box">
-    <h2 class="center">🔐 Admin Login</h2>
-    <br>
+<!-- ================= LOGIN ================= -->
 
-    <div id="loginMessage"></div>
+<div id="loginSection" class="card login-box">
 
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="loginEmail" placeholder="Admin Email">
+  <h2 class="center">🔐 Admin Login</h2>
+
+  <br>
+
+  <div id="loginMessage"></div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input
+      type="email"
+      id="loginEmail"
+      placeholder="Admin Email"
+    >
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input
+      type="password"
+      id="loginPassword"
+      placeholder="Password"
+    >
+  </div>
+
+  <br>
+
+  <button
+    class="btn-primary"
+    style="width:100%"
+    onclick="login()"
+  >
+    🔐 Login
+  </button>
+
+</div>
+
+
+<!-- ================= ADMIN BAR ================= -->
+
+<div id="adminBar" class="card hidden">
+
+  <div class="section-title">
+
+    <div>
+      <strong>👑 Admin Mode</strong>
+
+      <div
+        id="adminEmail"
+        style="font-size:13px;color:#777"
+      ></div>
     </div>
 
-    <br>
-
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="loginPassword" placeholder="Password">
-    </div>
-
-    <br>
-
-    <button class="btn-primary" style="width:100%" onclick="login()">
-      Login
+    <button
+      class="btn-danger"
+      onclick="logout()"
+    >
+      Logout
     </button>
+
   </div>
 
-  <!-- ADMIN BAR -->
-  <div id="adminBar" class="card hidden">
-    <div class="section-title">
-      <div>
-        <strong>👑 Admin Mode</strong>
-        <div id="adminEmail" style="font-size:13px;color:#777"></div>
-      </div>
+</div>
 
-      <button class="btn-danger" onclick="logout()">
-        Logout
-      </button>
+
+<!-- ================= MAIN STATS ================= -->
+
+<div class="stats">
+
+  <div class="stat">
+    <div class="icon">💰</div>
+    <h3>মোট জমা</h3>
+    <strong id="totalFund">৳0</strong>
+  </div>
+
+  <div class="stat">
+    <div class="icon">💸</div>
+    <h3>মোট খরচ</h3>
+    <strong id="totalExpense">৳0</strong>
+  </div>
+
+  <div
+    id="balanceCard"
+    class="stat balance-card"
+  >
+    <div class="icon">💵</div>
+    <h3>বর্তমান ব্যালেন্স</h3>
+    <strong id="remainingFund">৳0</strong>
+  </div>
+
+  <div class="stat">
+    <div class="icon">📅</div>
+    <h3>মোট সপ্তাহ</h3>
+    <strong id="totalWeeks">0</strong>
+  </div>
+
+</div>
+
+
+<!-- ================= BALANCE CALCULATION ================= -->
+
+<div class="card">
+
+  <h2 class="center">
+    💵 বর্তমান টাকার হিসাব
+  </h2>
+
+  <div
+    id="balanceCalculation"
+    class="balance-calculation"
+  >
+    মোট জমা - মোট খরচ = বর্তমান ব্যালেন্স
+  </div>
+
+</div>
+
+
+<!-- ================= CURRENT WEEK ================= -->
+
+<div class="card">
+
+  <div class="section-title">
+
+    <h2>📅 বর্তমান সপ্তাহ</h2>
+
+    <strong id="currentWeekFund">
+      ৳0
+    </strong>
+
+  </div>
+
+  <p
+    id="currentWeekText"
+    style="color:#666"
+  >
+    হিসাব লোড হচ্ছে...
+  </p>
+
+</div>
+
+
+<!-- ================= MEMBERS ================= -->
+
+<div class="card">
+
+  <div class="section-title">
+    <h2>👥 সদস্যদের হিসাব</h2>
+  </div>
+
+  <div
+    id="membersContainer"
+    class="members"
+  >
+    <div class="loading">
+      সদস্য লোড হচ্ছে...
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats">
+</div>
 
-    <div class="stat">
-      <div class="icon">💰</div>
-      <h3>মোট জমা</h3>
-      <strong id="totalFund">৳0</strong>
-    </div>
 
-    <div class="stat">
-      <div class="icon">💸</div>
-      <h3>মোট ট্যুর খরচ</h3>
-      <strong id="totalExpense">৳0</strong>
-    </div>
+<!-- ================= ADMIN MEMBER SECTION ================= -->
 
-    <div class="stat">
-      <div class="icon">💵</div>
-      <h3>বর্তমান ব্যালেন্স</h3>
-      <strong id="remainingFund">৳0</strong>
-    </div>
+<div
+  id="memberAdminSection"
+  class="card hidden"
+>
 
-    <div class="stat">
-      <div class="icon">📅</div>
-      <h3>মোট সপ্তাহ</h3>
-      <strong id="totalWeeks">0</strong>
+  <div class="section-title">
+
+    <h2>👤 নতুন লোক / সদস্য যোগ করুন</h2>
+
+  </div>
+
+  <div id="memberMessage"></div>
+
+  <div class="form-grid">
+
+    <div class="form-group">
+
+      <label>
+        নতুন সদস্যের নাম
+      </label>
+
+      <input
+        type="text"
+        id="newMemberName"
+        placeholder="যেমন: সাকিব"
+      >
+
     </div>
 
   </div>
 
   <br>
 
-  <!-- CURRENT WEEK -->
-  <div class="card">
-    <div class="section-title">
-      <h2>📅 বর্তমান সপ্তাহ</h2>
-      <strong id="currentWeekFund">৳0</strong>
-    </div>
+  <button
+    class="btn-primary"
+    onclick="addMember()"
+  >
+    ➕ নতুন সদস্য যোগ করুন
+  </button>
 
-    <p id="currentWeekText" style="color:#666">
-      হিসাব লোড হচ্ছে...
-    </p>
+  <br><br>
+
+  <h3 style="margin-bottom:12px">
+    বর্তমান সদস্য
+  </h3>
+
+  <div
+    id="adminMemberList"
+    class="member-admin-list"
+  ></div>
+
+</div>
+
+
+<!-- ================= PAYMENT ADMIN ================= -->
+
+<div
+  id="paymentAdminSection"
+  class="card hidden"
+>
+
+  <div class="section-title">
+    <h2>➕ পেমেন্ট যোগ করুন</h2>
   </div>
 
-  <!-- MEMBERS -->
-  <div class="card">
+  <div id="paymentMessage"></div>
 
-    <div class="section-title">
-      <h2>👥 সদস্যদের হিসাব</h2>
-    </div>
+  <div class="form-grid">
 
-    <div id="membersContainer" class="members">
-      <div class="loading">লোড হচ্ছে...</div>
-    </div>
+    <div class="form-group">
 
-  </div>
+      <label>সদস্য</label>
 
-  <!-- ADMIN PAYMENT FORM -->
-  <div id="paymentAdminSection" class="card hidden">
+      <select id="paymentMember">
 
-    <div class="section-title">
-      <h2>➕ পেমেন্ট যোগ করুন</h2>
-    </div>
+        <option value="">
+          সদস্য নির্বাচন করুন
+        </option>
 
-    <div id="paymentMessage"></div>
-
-    <div class="form-grid">
-
-      <div class="form-group">
-        <label>সদস্য</label>
-
-        <select id="paymentMember">
-          <option value="">সদস্য নির্বাচন করুন</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>সপ্তাহ</label>
-        <input type="number" id="paymentWeek" min="1" placeholder="যেমন: 1">
-      </div>
-
-      <div class="form-group">
-        <label>টাকার পরিমাণ</label>
-        <input type="number" id="paymentAmount" value="300" min="0">
-      </div>
-
-      <div class="form-group">
-        <label>তারিখ</label>
-        <input type="date" id="paymentDate">
-      </div>
+      </select>
 
     </div>
 
-    <br>
+    <div class="form-group">
 
-    <button class="btn-primary" onclick="addPayment()">
-      💰 পেমেন্ট যোগ করুন
-    </button>
+      <label>সপ্তাহ</label>
 
-  </div>
+      <input
+        type="number"
+        id="paymentWeek"
+        min="1"
+        placeholder="যেমন: 1"
+      >
 
-  <!-- PAYMENT HISTORY -->
-  <div class="card">
-
-    <div class="section-title">
-      <h2>🧾 পেমেন্ট হিসাব</h2>
-
-      <div class="actions">
-        <button class="btn-secondary" onclick="downloadCSV()">
-          📥 CSV
-        </button>
-
-        <button class="btn-light" onclick="window.print()">
-          🖨️ Print
-        </button>
-      </div>
     </div>
 
-    <div class="table-wrap">
+    <div class="form-group">
 
-      <table>
-        <thead>
-          <tr>
-            <th>সদস্য</th>
-            <th>সপ্তাহ</th>
-            <th>তারিখ</th>
-            <th>পরিমাণ</th>
-            <th class="admin-column">Action</th>
-          </tr>
-        </thead>
+      <label>টাকার পরিমাণ</label>
 
-        <tbody id="paymentsTable">
-          <tr>
-            <td colspan="5" class="center">লোড হচ্ছে...</td>
-          </tr>
-        </tbody>
-      </table>
+      <input
+        type="number"
+        id="paymentAmount"
+        value="300"
+        min="0"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>তারিখ</label>
+
+      <input
+        type="date"
+        id="paymentDate"
+      >
 
     </div>
 
   </div>
 
-  <!-- EXPENSE SECTION -->
-  <div class="card">
+  <br>
 
-    <div class="section-title">
-      <h2>🗺️ ট্যুরের খরচ</h2>
-    </div>
+  <button
+    class="btn-primary"
+    onclick="addPayment()"
+  >
+    💰 পেমেন্ট যোগ করুন
+  </button>
 
-    <div class="expense-summary">
+</div>
 
-      <div class="summary-box">
-        <h3>মোট জমা</h3>
-        <strong id="expenseFund">৳0</strong>
-      </div>
 
-      <div class="summary-box">
-        <h3>মোট খরচ</h3>
-        <strong id="expenseTotal">৳0</strong>
-      </div>
+<!-- ================= PAYMENT HISTORY ================= -->
 
-      <div class="summary-box">
-        <h3>বাকি</h3>
-        <strong id="expenseRemaining" class="remaining">৳0</strong>
-      </div>
+<div class="card">
 
-    </div>
+  <div class="section-title">
 
-    <!-- LOCATION SUMMARY -->
-
-    <h3 style="margin-bottom:12px">📍 কোথায় কত খরচ হয়েছে</h3>
-
-    <div id="locationSummary" class="location-list">
-      <div class="loading">লোড হচ্ছে...</div>
-    </div>
-
-  </div>
-
-  <!-- ADMIN EXPENSE FORM -->
-
-  <div id="expenseAdminSection" class="card hidden">
-
-    <div class="section-title">
-      <h2>➕ ট্যুরের খরচ যোগ করুন</h2>
-    </div>
-
-    <div id="expenseMessage"></div>
-
-    <input type="hidden" id="expenseId">
-
-    <div class="form-grid">
-
-      <div class="form-group">
-        <label>📍 কোথায় ঘুরতে গিয়েছেন?</label>
-
-        <input
-          type="text"
-          id="expenseLocation"
-          placeholder="যেমন: কক্সবাজার"
-        >
-      </div>
-
-      <div class="form-group">
-        <label>💳 খরচের ধরন</label>
-
-        <select id="expenseType">
-
-          <option value="হোটেল">🏨 হোটেল</option>
-          <option value="খাবার">🍛 খাবার</option>
-          <option value="গাড়ি">🚗 গাড়ি</option>
-          <option value="বাস/ট্রেন">🚌 বাস/ট্রেন</option>
-          <option value="বিনোদন">🎡 বিনোদন</option>
-          <option value="অন্যান্য">📦 অন্যান্য</option>
-
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>📅 তারিখ</label>
-
-        <input type="date" id="expenseDate">
-      </div>
-
-      <div class="form-group">
-        <label>💰 খরচের পরিমাণ</label>
-
-        <input
-          type="number"
-          id="expenseAmount"
-          min="0"
-          placeholder="যেমন: 5000"
-        >
-      </div>
-
-      <div class="form-group full">
-        <label>📝 বিস্তারিত</label>
-
-        <textarea
-          id="expenseDescription"
-          placeholder="খরচের বিস্তারিত লিখুন..."
-        ></textarea>
-      </div>
-
-    </div>
-
-    <br>
+    <h2>🧾 পেমেন্ট হিসাব</h2>
 
     <div class="actions">
 
-      <button class="btn-primary" onclick="saveExpense()">
-        💾 খরচ সংরক্ষণ
+      <button
+        class="btn-secondary"
+        onclick="downloadCSV()"
+      >
+        📥 CSV
       </button>
 
       <button
-        id="cancelExpenseBtn"
-        class="btn-light hidden"
-        onclick="cancelExpenseEdit()"
+        class="btn-light"
+        onclick="window.print()"
       >
-        বাতিল
+        🖨️ Print
       </button>
 
     </div>
 
   </div>
 
-  <!-- EXPENSE HISTORY -->
+  <div class="table-wrap">
 
-  <div class="card">
+    <table>
 
-    <div class="section-title">
-      <h2>🧾 খরচের বিস্তারিত হিসাব</h2>
+      <thead>
+
+        <tr>
+
+          <th>সদস্য</th>
+          <th>সপ্তাহ</th>
+          <th>তারিখ</th>
+          <th>পরিমাণ</th>
+          <th class="admin-column">
+            Action
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="paymentsTable">
+
+        <tr>
+
+          <td
+            colspan="5"
+            class="center"
+          >
+            লোড হচ্ছে...
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+
+<!-- ================= EXPENSE ================= -->
+
+<div class="card">
+
+  <div class="section-title">
+    <h2>🗺️ ট্যুরের খরচ</h2>
+  </div>
+
+  <div class="expense-summary">
+
+    <div class="summary-box">
+
+      <h3>মোট জমা</h3>
+
+      <strong id="expenseFund">
+        ৳0
+      </strong>
+
     </div>
 
-    <div class="table-wrap">
+    <div class="summary-box">
 
-      <table>
+      <h3>মোট খরচ</h3>
 
-        <thead>
-          <tr>
-            <th>তারিখ</th>
-            <th>স্থান</th>
-            <th>ধরন</th>
-            <th>বিস্তারিত</th>
-            <th>পরিমাণ</th>
-            <th class="admin-column">Action</th>
-          </tr>
-        </thead>
+      <strong id="expenseTotal">
+        ৳0
+      </strong>
 
-        <tbody id="expenseTable">
+    </div>
 
-          <tr>
-            <td colspan="6" class="center">
-              লোড হচ্ছে...
-            </td>
-          </tr>
+    <div
+      id="expenseBalanceBox"
+      class="summary-box balance-box"
+    >
 
-        </tbody>
+      <h3>খরচ বাদে বাকি</h3>
 
-      </table>
+      <strong id="expenseRemaining">
+        ৳0
+      </strong>
 
+    </div>
+
+  </div>
+
+
+  <div
+    class="balance-calculation"
+  >
+
+    মোট জমা
+    <strong id="calcFund">
+      ৳0
+    </strong>
+
+    −
+
+    মোট খরচ
+    <strong id="calcExpense">
+      ৳0
+    </strong>
+
+    =
+
+    <strong id="calcBalance">
+      ৳0
+    </strong>
+
+  </div>
+
+  <br>
+
+  <h3 style="margin-bottom:12px">
+    📍 কোথায় কত খরচ হয়েছে
+  </h3>
+
+  <div
+    id="locationSummary"
+    class="location-list"
+  >
+
+    <div class="loading">
+      লোড হচ্ছে...
     </div>
 
   </div>
 
 </div>
+
+
+<!-- ================= EXPENSE ADMIN ================= -->
+
+<div
+  id="expenseAdminSection"
+  class="card hidden"
+>
+
+  <div class="section-title">
+
+    <h2>➕ ট্যুরের খরচ যোগ করুন</h2>
+
+  </div>
+
+  <div id="expenseMessage"></div>
+
+  <input
+    type="hidden"
+    id="expenseId"
+  >
+
+  <div class="form-grid">
+
+    <div class="form-group">
+
+      <label>
+        📍 কোথায় ঘুরতে গিয়েছেন?
+      </label>
+
+      <input
+        type="text"
+        id="expenseLocation"
+        placeholder="যেমন: কক্সবাজার"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        💳 খরচের ধরন
+      </label>
+
+      <select id="expenseType">
+
+        <option value="হোটেল">
+          🏨 হোটেল
+        </option>
+
+        <option value="খাবার">
+          🍛 খাবার
+        </option>
+
+        <option value="গাড়ি">
+          🚗 গাড়ি
+        </option>
+
+        <option value="বাস/ট্রেন">
+          🚌 বাস/ট্রেন
+        </option>
+
+        <option value="বিনোদন">
+          🎡 বিনোদন
+        </option>
+
+        <option value="অন্যান্য">
+          📦 অন্যান্য
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>📅 তারিখ</label>
+
+      <input
+        type="date"
+        id="expenseDate"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        💰 খরচের পরিমাণ
+      </label>
+
+      <input
+        type="number"
+        id="expenseAmount"
+        min="0"
+        placeholder="যেমন: 5000"
+      >
+
+    </div>
+
+    <div class="form-group full">
+
+      <label>
+        📝 বিস্তারিত
+      </label>
+
+      <textarea
+        id="expenseDescription"
+        placeholder="যেমন: ৪ জনের রাতের খাবার"
+      ></textarea>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="actions">
+
+    <button
+      class="btn-primary"
+      onclick="saveExpense()"
+    >
+      💾 খরচ সংরক্ষণ
+    </button>
+
+    <button
+      id="cancelExpenseBtn"
+      class="btn-light hidden"
+      onclick="cancelExpenseEdit()"
+    >
+      বাতিল
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= EXPENSE HISTORY ================= -->
+
+<div class="card">
+
+  <div class="section-title">
+
+    <h2>🧾 খরচের বিস্তারিত হিসাব</h2>
+
+  </div>
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>তারিখ</th>
+          <th>স্থান</th>
+          <th>ধরন</th>
+          <th>বিস্তারিত</th>
+          <th>পরিমাণ</th>
+          <th class="admin-column">
+            Action
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="expenseTable">
+
+        <tr>
+
+          <td
+            colspan="6"
+            class="center"
+          >
+            লোড হচ্ছে...
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+</div>
+
 
 <footer>
   আমাদের Tour Fund © 2026
@@ -726,7 +1097,7 @@ footer{
 <script>
 
 /* =========================================
-   SUPABASE CONFIG
+   SUPABASE
 ========================================= */
 
 const SUPABASE_URL =
@@ -751,23 +1122,17 @@ const ADMIN_UID =
 
 
 /* =========================================
-   MEMBERS
+   SETTINGS
 ========================================= */
-
-const MEMBERS = [
-  "জাকির",
-  "আরমান",
-  "তানিম",
-  "তাসিন"
-];
 
 const WEEKLY_AMOUNT = 300;
 
 
 /* =========================================
-   GLOBAL DATA
+   DATA
 ========================================= */
 
+let members = [];
 let payments = [];
 let expenses = [];
 let currentUser = null;
@@ -779,7 +1144,9 @@ let currentUser = null;
 
 function money(amount){
 
-  return "৳" + Number(amount || 0).toLocaleString("bn-BD");
+  return "৳" +
+    Number(amount || 0)
+      .toLocaleString("bn-BD");
 
 }
 
@@ -825,12 +1192,24 @@ function today(){
   const d = new Date();
 
   const month =
-    String(d.getMonth()+1).padStart(2,"0");
+    String(d.getMonth()+1)
+      .padStart(2,"0");
 
   const day =
-    String(d.getDate()).padStart(2,"0");
+    String(d.getDate())
+      .padStart(2,"0");
 
   return `${d.getFullYear()}-${month}-${day}`;
+
+}
+
+
+function isAdmin(){
+
+  return Boolean(
+    currentUser &&
+    currentUser.id === ADMIN_UID
+  );
 
 }
 
@@ -843,24 +1222,11 @@ document.addEventListener(
   "DOMContentLoaded",
   async function(){
 
-    document.getElementById("paymentDate").value =
-      today();
+    document.getElementById("paymentDate")
+      .value = today();
 
-    document.getElementById("expenseDate").value =
-      today();
-
-    MEMBERS.forEach(member => {
-
-      const option =
-        document.createElement("option");
-
-      option.value = member;
-      option.textContent = member;
-
-      document.getElementById("paymentMember")
-        .appendChild(option);
-
-    });
+    document.getElementById("expenseDate")
+      .value = today();
 
     await checkUser();
 
@@ -880,13 +1246,14 @@ async function checkUser(){
     data:{
       session
     }
-  } = await supabaseClient.auth.getSession();
+  } =
+    await supabaseClient.auth.getSession();
 
   if(session){
 
     currentUser = session.user;
 
-    if(currentUser.id === ADMIN_UID){
+    if(isAdmin()){
 
       showAdmin();
 
@@ -900,10 +1267,12 @@ async function checkUser(){
 async function login(){
 
   const email =
-    document.getElementById("loginEmail").value.trim();
+    document.getElementById("loginEmail")
+      .value.trim();
 
   const password =
-    document.getElementById("loginPassword").value;
+    document.getElementById("loginPassword")
+      .value;
 
   const message =
     document.getElementById("loginMessage");
@@ -913,38 +1282,47 @@ async function login(){
   if(!email || !password){
 
     message.innerHTML =
-      `<div class="error">Email এবং Password দিন।</div>`;
-
-    return;
-
-  }
-
-  const {
-    data,
-    error
-  } = await supabaseClient.auth.signInWithPassword({
-
-    email,
-    password
-
-  });
-
-  if(error){
-
-    message.innerHTML =
       `<div class="error">
-        Login failed: ${escapeHTML(error.message)}
+        Email এবং Password দিন।
       </div>`;
 
     return;
 
   }
 
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth
+      .signInWithPassword({
+        email,
+        password
+      });
+
+
+  if(error){
+
+    message.innerHTML =
+      `<div class="error">
+        Login failed:
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
   currentUser = data.user;
 
-  if(currentUser.id !== ADMIN_UID){
+
+  if(!isAdmin()){
 
     await supabaseClient.auth.signOut();
+
+    currentUser = null;
 
     message.innerHTML =
       `<div class="error">
@@ -955,10 +1333,13 @@ async function login(){
 
   }
 
+
   showAdmin();
 
   message.innerHTML =
-    `<div class="success">Login সফল হয়েছে।</div>`;
+    `<div class="success">
+      Login সফল হয়েছে।
+    </div>`;
 
 }
 
@@ -971,18 +1352,28 @@ function showAdmin(){
   document.getElementById("adminBar")
     .classList.remove("hidden");
 
+  document.getElementById("memberAdminSection")
+    .classList.remove("hidden");
+
   document.getElementById("paymentAdminSection")
     .classList.remove("hidden");
 
   document.getElementById("expenseAdminSection")
     .classList.remove("hidden");
 
+
   if(currentUser){
 
     document.getElementById("adminEmail")
-      .textContent = currentUser.email || "";
+      .textContent =
+      currentUser.email || "";
 
   }
+
+
+  renderPayments();
+  renderExpenses();
+  renderAdminMembers();
 
 }
 
@@ -993,6 +1384,9 @@ function hideAdmin(){
     .classList.remove("hidden");
 
   document.getElementById("adminBar")
+    .classList.add("hidden");
+
+  document.getElementById("memberAdminSection")
     .classList.add("hidden");
 
   document.getElementById("paymentAdminSection")
@@ -1024,9 +1418,423 @@ async function logout(){
 async function loadAll(){
 
   await Promise.all([
+    loadMembers(),
     loadPayments(),
     loadExpenses()
   ]);
+
+  updateStats();
+
+}
+
+
+/* =========================================
+   MEMBERS
+========================================= */
+
+async function loadMembers(){
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("members")
+      .select("*")
+      .order("created_at",{
+        ascending:true
+      });
+
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById(
+      "membersContainer"
+    ).innerHTML =
+      `<div class="error">
+        সদস্যদের তথ্য লোড করা যায়নি।
+        <br><br>
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
+  members = data || [];
+
+  renderMemberSelect();
+
+  renderMembers();
+
+  renderAdminMembers();
+
+}
+
+
+function renderMemberSelect(){
+
+  const select =
+    document.getElementById(
+      "paymentMember"
+    );
+
+  select.innerHTML =
+    `<option value="">
+      সদস্য নির্বাচন করুন
+    </option>`;
+
+
+  members.forEach(member => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = member.name;
+
+    option.textContent =
+      member.name;
+
+    select.appendChild(option);
+
+  });
+
+}
+
+
+function renderMembers(){
+
+  const container =
+    document.getElementById(
+      "membersContainer"
+    );
+
+
+  if(!members.length){
+
+    container.innerHTML =
+      `<div class="center">
+        এখনো কোনো সদস্য নেই।
+      </div>`;
+
+    return;
+
+  }
+
+
+  const maxWeek =
+    payments.length
+      ? Math.max(
+          ...payments.map(
+            p => Number(p.week || 0)
+          )
+        )
+      : 0;
+
+
+  container.innerHTML =
+    members.map(member => {
+
+      const memberPayments =
+        payments.filter(
+          p => p.member === member.name
+        );
+
+
+      const totalPaid =
+        memberPayments.reduce(
+          (sum,p) =>
+            sum + Number(p.amount || 0),
+          0
+        );
+
+
+      const weeksPaid =
+        new Set(
+          memberPayments.map(
+            p => Number(p.week)
+          )
+        ).size;
+
+
+      const due =
+        Math.max(
+          0,
+          maxWeek * WEEKLY_AMOUNT -
+          totalPaid
+        );
+
+
+      const currentPayment =
+        memberPayments.find(
+          p =>
+            Number(p.week) === maxWeek
+        );
+
+
+      return `
+
+        <div class="member">
+
+          <h3>
+            👤 ${escapeHTML(member.name)}
+          </h3>
+
+          <div class="member-row">
+
+            <span>মোট জমা</span>
+
+            <strong>
+              ${money(totalPaid)}
+            </strong>
+
+          </div>
+
+          <div class="member-row">
+
+            <span>জমা দেওয়া সপ্তাহ</span>
+
+            <strong>
+              ${weeksPaid.toLocaleString("bn-BD")}
+            </strong>
+
+          </div>
+
+          <div class="member-row">
+
+            <span>বাকি</span>
+
+            <strong>
+              ${money(due)}
+            </strong>
+
+          </div>
+
+          <div class="member-row">
+
+            <span>বর্তমান সপ্তাহ</span>
+
+            ${
+              currentPayment
+
+              ?
+
+              `<span class="badge paid">
+                ✓ Paid
+              </span>`
+
+              :
+
+              `<span class="badge unpaid">
+                ✕ Unpaid
+              </span>`
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================================
+   ADMIN MEMBERS
+========================================= */
+
+function renderAdminMembers(){
+
+  if(!isAdmin()) return;
+
+  const container =
+    document.getElementById(
+      "adminMemberList"
+    );
+
+
+  if(!members.length){
+
+    container.innerHTML =
+      `<div class="center">
+        কোনো সদস্য নেই।
+      </div>`;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    members.map(member => {
+
+      return `
+
+        <div class="member-admin-item">
+
+          <strong>
+            👤 ${escapeHTML(member.name)}
+          </strong>
+
+          <button
+            class="btn-danger"
+            onclick="deleteMember(${member.id}, '${escapeHTML(member.name).replace(/'/g,"\\'")}')"
+          >
+            🗑️ মুছুন
+          </button>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+async function addMember(){
+
+  if(!isAdmin()){
+
+    alert(
+      "শুধু Admin নতুন সদস্য যোগ করতে পারবেন।"
+    );
+
+    return;
+
+  }
+
+
+  const input =
+    document.getElementById(
+      "newMemberName"
+    );
+
+  const name =
+    input.value.trim();
+
+
+  const message =
+    document.getElementById(
+      "memberMessage"
+    );
+
+
+  if(!name){
+
+    message.innerHTML =
+      `<div class="error">
+        সদস্যের নাম লিখুন।
+      </div>`;
+
+    return;
+
+  }
+
+
+  const exists =
+    members.some(
+      member =>
+        member.name.trim() === name
+    );
+
+
+  if(exists){
+
+    message.innerHTML =
+      `<div class="error">
+        এই নামে সদস্য ইতিমধ্যে আছে।
+      </div>`;
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("members")
+      .insert([
+        {
+          name:name
+        }
+      ]);
+
+
+  if(error){
+
+    console.error(error);
+
+    message.innerHTML =
+      `<div class="error">
+        সদস্য যোগ করা যায়নি:
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
+  input.value = "";
+
+  message.innerHTML =
+    `<div class="success">
+      ${escapeHTML(name)}
+      সফলভাবে যোগ হয়েছে।
+    </div>`;
+
+
+  await loadMembers();
+
+  renderMembers();
+
+}
+
+
+async function deleteMember(id,name){
+
+  if(!isAdmin()) return;
+
+
+  const confirmDelete =
+    confirm(
+      `"${name}" সদস্যকে মুছে ফেলতে চান?`
+    );
+
+
+  if(!confirmDelete) return;
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("members")
+      .delete()
+      .eq("id",id);
+
+
+  if(error){
+
+    alert(
+      "সদস্য মুছতে সমস্যা হয়েছে: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  await loadMembers();
 
   updateStats();
 
@@ -1042,27 +1850,40 @@ async function loadPayments(){
   const {
     data,
     error
-  } = await supabaseClient
-    .from("payments")
-    .select("*")
-    .order("week",{ascending:true})
-    .order("payment_date",{ascending:true});
+  } =
+    await supabaseClient
+      .from("payments")
+      .select("*")
+      .order("week",{
+        ascending:true
+      })
+      .order("payment_date",{
+        ascending:true
+      });
+
 
   if(error){
 
     console.error(error);
 
-    document.getElementById("paymentsTable")
-      .innerHTML =
+    document.getElementById(
+      "paymentsTable"
+    ).innerHTML =
       `<tr>
-        <td colspan="5" class="center">
+        <td
+          colspan="5"
+          class="center"
+        >
           Payment data load করতে সমস্যা হয়েছে।
+          <br><br>
+          ${escapeHTML(error.message)}
         </td>
       </tr>`;
 
     return;
 
   }
+
 
   payments = data || [];
 
@@ -1074,13 +1895,19 @@ async function loadPayments(){
 function renderPayments(){
 
   const tbody =
-    document.getElementById("paymentsTable");
+    document.getElementById(
+      "paymentsTable"
+    );
+
 
   if(!payments.length){
 
     tbody.innerHTML =
       `<tr>
-        <td colspan="5" class="center">
+        <td
+          colspan="5"
+          class="center"
+        >
           এখনো কোনো payment নেই।
         </td>
       </tr>`;
@@ -1089,10 +1916,12 @@ function renderPayments(){
 
   }
 
+
   tbody.innerHTML =
     payments.map(payment => {
 
       return `
+
         <tr>
 
           <td>
@@ -1118,8 +1947,7 @@ function renderPayments(){
           <td class="admin-column">
 
             ${
-              currentUser &&
-              currentUser.id === ADMIN_UID
+              isAdmin()
 
               ?
 
@@ -1128,19 +1956,19 @@ function renderPayments(){
                 class="btn-danger"
                 onclick="deletePayment(${payment.id})"
               >
-                Delete
+                🗑️ Delete
               </button>
               `
 
               :
 
               ""
-
             }
 
           </td>
 
         </tr>
+
       `;
 
     }).join("");
@@ -1152,28 +1980,55 @@ async function addPayment(){
 
   if(!isAdmin()){
 
-    alert("শুধু Admin payment যোগ করতে পারবেন।");
+    alert(
+      "শুধু Admin payment যোগ করতে পারবেন।"
+    );
 
     return;
 
   }
 
+
   const member =
-    document.getElementById("paymentMember").value;
+    document.getElementById(
+      "paymentMember"
+    ).value;
+
 
   const week =
-    Number(document.getElementById("paymentWeek").value);
+    Number(
+      document.getElementById(
+        "paymentWeek"
+      ).value
+    );
+
 
   const amount =
-    Number(document.getElementById("paymentAmount").value);
+    Number(
+      document.getElementById(
+        "paymentAmount"
+      ).value
+    );
+
 
   const payment_date =
-    document.getElementById("paymentDate").value;
+    document.getElementById(
+      "paymentDate"
+    ).value;
+
 
   const message =
-    document.getElementById("paymentMessage");
+    document.getElementById(
+      "paymentMessage"
+    );
 
-  if(!member || !week || amount < 0 || !payment_date){
+
+  if(
+    !member ||
+    !week ||
+    amount <= 0 ||
+    !payment_date
+  ){
 
     message.innerHTML =
       `<div class="error">
@@ -1184,18 +2039,21 @@ async function addPayment(){
 
   }
 
+
   const {
     error
-  } = await supabaseClient
-    .from("payments")
-    .insert([{
+  } =
+    await supabaseClient
+      .from("payments")
+      .insert([
+        {
+          member,
+          week,
+          amount,
+          payment_date
+        }
+      ]);
 
-      member,
-      week,
-      amount,
-      payment_date
-
-    }]);
 
   if(error){
 
@@ -1203,19 +2061,25 @@ async function addPayment(){
 
     message.innerHTML =
       `<div class="error">
-        Payment যোগ করা যায়নি: ${escapeHTML(error.message)}
+        Payment যোগ করা যায়নি:
+        ${escapeHTML(error.message)}
       </div>`;
 
     return;
 
   }
 
+
   message.innerHTML =
     `<div class="success">
       Payment সফলভাবে যোগ হয়েছে।
     </div>`;
 
-  document.getElementById("paymentWeek").value = "";
+
+  document.getElementById(
+    "paymentWeek"
+  ).value = "";
+
 
   await loadAll();
 
@@ -1226,22 +2090,34 @@ async function deletePayment(id){
 
   if(!isAdmin()) return;
 
-  if(!confirm("এই payment delete করতে চান?")) return;
+
+  if(
+    !confirm(
+      "এই payment delete করতে চান?"
+    )
+  ) return;
+
 
   const {
     error
-  } = await supabaseClient
-    .from("payments")
-    .delete()
-    .eq("id",id);
+  } =
+    await supabaseClient
+      .from("payments")
+      .delete()
+      .eq("id",id);
+
 
   if(error){
 
-    alert("Delete failed: " + error.message);
+    alert(
+      "Delete failed: " +
+      error.message
+    );
 
     return;
 
   }
+
 
   await loadAll();
 
@@ -1257,27 +2133,40 @@ async function loadExpenses(){
   const {
     data,
     error
-  } = await supabaseClient
-    .from("tour_expenses")
-    .select("*")
-    .order("expense_date",{ascending:false})
-    .order("id",{ascending:false});
+  } =
+    await supabaseClient
+      .from("tour_expenses")
+      .select("*")
+      .order("expense_date",{
+        ascending:false
+      })
+      .order("id",{
+        ascending:false
+      });
+
 
   if(error){
 
     console.error(error);
 
-    document.getElementById("expenseTable")
-      .innerHTML =
+    document.getElementById(
+      "expenseTable"
+    ).innerHTML =
       `<tr>
-        <td colspan="6" class="center">
+        <td
+          colspan="6"
+          class="center"
+        >
           Expense data load করতে সমস্যা হয়েছে।
+          <br><br>
+          ${escapeHTML(error.message)}
         </td>
       </tr>`;
 
     return;
 
   }
+
 
   expenses = data || [];
 
@@ -1291,14 +2180,20 @@ async function loadExpenses(){
 function renderExpenses(){
 
   const tbody =
-    document.getElementById("expenseTable");
+    document.getElementById(
+      "expenseTable"
+    );
+
 
   if(!expenses.length){
 
     tbody.innerHTML =
       `<tr>
-        <td colspan="6" class="center">
-          এখনো কোনো ট্যুর খরচ যোগ করা হয়নি।
+        <td
+          colspan="6"
+          class="center"
+        >
+          এখনো কোনো ট্যুর খরচ নেই।
         </td>
       </tr>`;
 
@@ -1306,28 +2201,39 @@ function renderExpenses(){
 
   }
 
+
   tbody.innerHTML =
     expenses.map(expense => {
 
       return `
+
         <tr>
 
           <td>
-            ${formatDate(expense.expense_date)}
+            ${formatDate(
+              expense.expense_date
+            )}
           </td>
 
           <td>
             <strong>
-              📍 ${escapeHTML(expense.location)}
+              📍
+              ${escapeHTML(
+                expense.location
+              )}
             </strong>
           </td>
 
           <td>
-            ${escapeHTML(expense.expense_type)}
+            ${escapeHTML(
+              expense.expense_type
+            )}
           </td>
 
           <td>
-            ${escapeHTML(expense.description || "-")}
+            ${escapeHTML(
+              expense.description || "-"
+            )}
           </td>
 
           <td>
@@ -1366,12 +2272,12 @@ function renderExpenses(){
               :
 
               ""
-
             }
 
           </td>
 
         </tr>
+
       `;
 
     }).join("");
@@ -1382,12 +2288,18 @@ function renderExpenses(){
 function renderLocationSummary(){
 
   const container =
-    document.getElementById("locationSummary");
+    document.getElementById(
+      "locationSummary"
+    );
+
 
   if(!expenses.length){
 
     container.innerHTML =
-      `<div class="center" style="color:#777">
+      `<div
+        class="center"
+        style="color:#777"
+      >
         এখনো কোনো খরচ নেই।
       </div>`;
 
@@ -1395,12 +2307,16 @@ function renderLocationSummary(){
 
   }
 
+
   const locations = {};
+
 
   expenses.forEach(expense => {
 
     const location =
-      expense.location || "অন্যান্য";
+      expense.location ||
+      "অন্যান্য";
+
 
     if(!locations[location]){
 
@@ -1408,33 +2324,43 @@ function renderLocationSummary(){
 
     }
 
+
     locations[location] +=
       Number(expense.amount || 0);
 
   });
 
+
   const sorted =
     Object.entries(locations)
-      .sort((a,b) => b[1] - a[1]);
+      .sort(
+        (a,b) => b[1] - a[1]
+      );
+
 
   container.innerHTML =
-    sorted.map(([location,total]) => {
+    sorted.map(
+      ([location,total]) => {
 
-      return `
-        <div class="location-item">
+        return `
 
-          <span>
-            📍 ${escapeHTML(location)}
-          </span>
+          <div class="location-item">
 
-          <strong>
-            ${money(total)}
-          </strong>
+            <span>
+              📍
+              ${escapeHTML(location)}
+            </span>
 
-        </div>
-      `;
+            <strong>
+              ${money(total)}
+            </strong>
 
-    }).join("");
+          </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
@@ -1447,34 +2373,64 @@ async function saveExpense(){
 
   if(!isAdmin()){
 
-    alert("শুধু Admin expense যোগ করতে পারবেন।");
+    alert(
+      "শুধু Admin expense যোগ করতে পারবেন।"
+    );
 
     return;
 
   }
 
+
   const id =
-    document.getElementById("expenseId").value;
+    document.getElementById(
+      "expenseId"
+    ).value;
+
 
   const location =
-    document.getElementById("expenseLocation").value.trim();
+    document.getElementById(
+      "expenseLocation"
+    ).value.trim();
+
 
   const expense_type =
-    document.getElementById("expenseType").value;
+    document.getElementById(
+      "expenseType"
+    ).value;
+
 
   const expense_date =
-    document.getElementById("expenseDate").value;
+    document.getElementById(
+      "expenseDate"
+    ).value;
+
 
   const amount =
-    Number(document.getElementById("expenseAmount").value);
+    Number(
+      document.getElementById(
+        "expenseAmount"
+      ).value
+    );
+
 
   const description =
-    document.getElementById("expenseDescription").value.trim();
+    document.getElementById(
+      "expenseDescription"
+    ).value.trim();
+
 
   const message =
-    document.getElementById("expenseMessage");
+    document.getElementById(
+      "expenseMessage"
+    );
 
-  if(!location || !expense_date || amount <= 0){
+
+  if(
+    !location ||
+    !expense_date ||
+    amount <= 0
+  ){
 
     message.innerHTML =
       `<div class="error">
@@ -1484,6 +2440,7 @@ async function saveExpense(){
     return;
 
   }
+
 
   const payload = {
 
@@ -1514,7 +2471,9 @@ async function saveExpense(){
     const result =
       await supabaseClient
         .from("tour_expenses")
-        .insert([payload]);
+        .insert([
+          payload
+        ]);
 
     error = result.error;
 
@@ -1527,7 +2486,8 @@ async function saveExpense(){
 
     message.innerHTML =
       `<div class="error">
-        Save failed: ${escapeHTML(error.message)}
+        Save failed:
+        ${escapeHTML(error.message)}
       </div>`;
 
     return;
@@ -1556,39 +2516,63 @@ function editExpense(id){
 
   if(!isAdmin()) return;
 
+
   const expense =
-    expenses.find(item => item.id === id);
+    expenses.find(
+      item => item.id === id
+    );
+
 
   if(!expense) return;
 
 
-  document.getElementById("expenseId").value =
+  document.getElementById(
+    "expenseId"
+  ).value =
     expense.id;
 
-  document.getElementById("expenseLocation").value =
+
+  document.getElementById(
+    "expenseLocation"
+  ).value =
     expense.location || "";
 
-  document.getElementById("expenseType").value =
-    expense.expense_type || "অন্যান্য";
 
-  document.getElementById("expenseDate").value =
+  document.getElementById(
+    "expenseType"
+  ).value =
+    expense.expense_type ||
+    "অন্যান্য";
+
+
+  document.getElementById(
+    "expenseDate"
+  ).value =
     expense.expense_date || "";
 
-  document.getElementById("expenseAmount").value =
+
+  document.getElementById(
+    "expenseAmount"
+  ).value =
     expense.amount || "";
 
-  document.getElementById("expenseDescription").value =
+
+  document.getElementById(
+    "expenseDescription"
+  ).value =
     expense.description || "";
 
 
-  document.getElementById("cancelExpenseBtn")
-    .classList.remove("hidden");
+  document.getElementById(
+    "cancelExpenseBtn"
+  ).classList.remove("hidden");
 
 
-  document.getElementById("expenseAdminSection")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+  document.getElementById(
+    "expenseAdminSection"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
 
 }
 
@@ -1602,22 +2586,39 @@ function cancelExpenseEdit(){
 
 function clearExpenseForm(){
 
-  document.getElementById("expenseId").value = "";
+  document.getElementById(
+    "expenseId"
+  ).value = "";
 
-  document.getElementById("expenseLocation").value = "";
 
-  document.getElementById("expenseType").value =
-    "হোটেল";
+  document.getElementById(
+    "expenseLocation"
+  ).value = "";
 
-  document.getElementById("expenseDate").value =
-    today();
 
-  document.getElementById("expenseAmount").value = "";
+  document.getElementById(
+    "expenseType"
+  ).value = "হোটেল";
 
-  document.getElementById("expenseDescription").value = "";
 
-  document.getElementById("cancelExpenseBtn")
-    .classList.add("hidden");
+  document.getElementById(
+    "expenseDate"
+  ).value = today();
+
+
+  document.getElementById(
+    "expenseAmount"
+  ).value = "";
+
+
+  document.getElementById(
+    "expenseDescription"
+  ).value = "";
+
+
+  document.getElementById(
+    "cancelExpenseBtn"
+  ).classList.add("hidden");
 
 }
 
@@ -1626,14 +2627,22 @@ async function deleteExpense(id){
 
   if(!isAdmin()) return;
 
-  if(!confirm("এই খরচটি delete করতে চান?")) return;
+
+  if(
+    !confirm(
+      "এই খরচটি delete করতে চান?"
+    )
+  ) return;
+
 
   const {
     error
-  } = await supabaseClient
-    .from("tour_expenses")
-    .delete()
-    .eq("id",id);
+  } =
+    await supabaseClient
+      .from("tour_expenses")
+      .delete()
+      .eq("id",id);
+
 
   if(error){
 
@@ -1646,6 +2655,7 @@ async function deleteExpense(id){
 
   }
 
+
   await loadAll();
 
 }
@@ -1657,54 +2667,109 @@ async function deleteExpense(id){
 
 function updateStats(){
 
+  /* মোট জমা */
+
   const totalFund =
     payments.reduce(
       (sum,p) =>
-        sum + Number(p.amount || 0),
+        sum +
+        Number(p.amount || 0),
       0
     );
+
+
+  /* মোট খরচ */
 
   const totalExpense =
     expenses.reduce(
       (sum,e) =>
-        sum + Number(e.amount || 0),
+        sum +
+        Number(e.amount || 0),
       0
     );
+
+
+  /*
+    ⭐ মূল হিসাব
+
+    বর্তমান ব্যালেন্স =
+    মোট জমা - মোট খরচ
+  */
 
   const remaining =
     totalFund - totalExpense;
 
 
-  document.getElementById("totalFund")
-    .textContent =
+  /* TOP STATS */
+
+  document.getElementById(
+    "totalFund"
+  ).textContent =
     money(totalFund);
 
-  document.getElementById("totalExpense")
-    .textContent =
+
+  document.getElementById(
+    "totalExpense"
+  ).textContent =
     money(totalExpense);
 
-  document.getElementById("remainingFund")
-    .textContent =
+
+  document.getElementById(
+    "remainingFund"
+  ).textContent =
     money(remaining);
 
 
-  const weeks =
+  /* BALANCE COLOR */
+
+  const balanceCard =
+    document.getElementById(
+      "balanceCard"
+    );
+
+
+  if(remaining < 0){
+
+    balanceCard.classList.add(
+      "negative"
+    );
+
+  }else{
+
+    balanceCard.classList.remove(
+      "negative"
+    );
+
+  }
+
+
+  /* WEEK */
+
+  const totalWeeks =
     payments.length
       ? Math.max(
           ...payments.map(
-            p => Number(p.week || 0)
+            p =>
+              Number(
+                p.week || 0
+              )
           )
         )
       : 0;
 
 
-  document.getElementById("totalWeeks")
-    .textContent =
-    weeks.toLocaleString("bn-BD");
+  document.getElementById(
+    "totalWeeks"
+  ).textContent =
+    totalWeeks.toLocaleString(
+      "bn-BD"
+    );
 
+
+  /* CURRENT WEEK */
 
   const currentWeek =
-    weeks || 1;
+    totalWeeks || 1;
 
 
   const currentWeekPayments =
@@ -1718,163 +2783,86 @@ function updateStats(){
   const currentWeekTotal =
     currentWeekPayments.reduce(
       (sum,p) =>
-        sum + Number(p.amount || 0),
+        sum +
+        Number(p.amount || 0),
       0
     );
 
 
-  document.getElementById("currentWeekFund")
-    .textContent =
+  document.getElementById(
+    "currentWeekFund"
+  ).textContent =
     money(currentWeekTotal);
 
 
-  document.getElementById("currentWeekText")
-    .textContent =
+  document.getElementById(
+    "currentWeekText"
+  ).textContent =
     `সপ্তাহ ${currentWeek} এ জমা হয়েছে ${money(currentWeekTotal)}।`;
 
 
-  document.getElementById("expenseFund")
-    .textContent =
+  /* EXPENSE SUMMARY */
+
+  document.getElementById(
+    "expenseFund"
+  ).textContent =
     money(totalFund);
 
-  document.getElementById("expenseTotal")
-    .textContent =
+
+  document.getElementById(
+    "expenseTotal"
+  ).textContent =
     money(totalExpense);
 
-  const remainingElement =
-    document.getElementById("expenseRemaining");
 
-  remainingElement.textContent =
+  document.getElementById(
+    "expenseRemaining"
+  ).textContent =
     money(remaining);
+
+
+  /* CALCULATION */
+
+  document.getElementById(
+    "calcFund"
+  ).textContent =
+    money(totalFund);
+
+
+  document.getElementById(
+    "calcExpense"
+  ).textContent =
+    money(totalExpense);
+
+
+  document.getElementById(
+    "calcBalance"
+  ).textContent =
+    money(remaining);
+
+
+  const balanceBox =
+    document.getElementById(
+      "expenseBalanceBox"
+    );
+
 
   if(remaining < 0){
 
-    remainingElement.classList.add("negative");
+    balanceBox.classList.add(
+      "negative"
+    );
 
   }else{
 
-    remainingElement.classList.remove("negative");
+    balanceBox.classList.remove(
+      "negative"
+    );
 
   }
 
 
-  updateMembers();
-
-}
-
-
-/* =========================================
-   MEMBER CARDS
-========================================= */
-
-function updateMembers(){
-
-  const container =
-    document.getElementById("membersContainer");
-
-  const maxWeek =
-    payments.length
-      ? Math.max(
-          ...payments.map(
-            p => Number(p.week || 0)
-          )
-        )
-      : 0;
-
-
-  container.innerHTML =
-    MEMBERS.map(member => {
-
-      const memberPayments =
-        payments.filter(
-          p => p.member === member
-        );
-
-
-      const totalPaid =
-        memberPayments.reduce(
-          (sum,p) =>
-            sum + Number(p.amount || 0),
-          0
-        );
-
-
-      const weeksPaid =
-        new Set(
-          memberPayments.map(
-            p => Number(p.week)
-          )
-        ).size;
-
-
-      const due =
-        Math.max(
-          0,
-          maxWeek * WEEKLY_AMOUNT -
-          totalPaid
-        );
-
-
-      const currentPayment =
-        memberPayments.find(
-          p =>
-            Number(p.week) ===
-            maxWeek
-        );
-
-
-      return `
-
-        <div class="member">
-
-          <h3>👤 ${escapeHTML(member)}</h3>
-
-          <div class="member-row">
-            <span>মোট জমা</span>
-            <strong>${money(totalPaid)}</strong>
-          </div>
-
-          <div class="member-row">
-            <span>জমা দেওয়া সপ্তাহ</span>
-            <strong>
-              ${weeksPaid.toLocaleString("bn-BD")}
-            </strong>
-          </div>
-
-          <div class="member-row">
-            <span>বাকি</span>
-            <strong>
-              ${money(due)}
-            </strong>
-          </div>
-
-          <div class="member-row">
-            <span>বর্তমান সপ্তাহ</span>
-
-            ${
-              currentPayment
-
-              ?
-
-              `<span class="badge paid">
-                ✓ Paid
-              </span>`
-
-              :
-
-              `<span class="badge unpaid">
-                ✕ Unpaid
-              </span>`
-
-            }
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+  renderMembers();
 
 }
 
@@ -1929,7 +2917,8 @@ function downloadCSV(){
   const totalFund =
     payments.reduce(
       (sum,p) =>
-        sum + Number(p.amount || 0),
+        sum +
+        Number(p.amount || 0),
       0
     );
 
@@ -1937,7 +2926,8 @@ function downloadCSV(){
   const totalExpense =
     expenses.reduce(
       (sum,e) =>
-        sum + Number(e.amount || 0),
+        sum +
+        Number(e.amount || 0),
       0
     );
 
@@ -1946,17 +2936,20 @@ function downloadCSV(){
     "\nSUMMARY\n";
 
   csv +=
-    "মোট জমা,মোট খরচ,বাকি\n";
+    "মোট জমা,মোট খরচ,বর্তমান ব্যালেন্স\n";
 
   csv +=
-    `${totalFund},${totalExpense},${totalFund-totalExpense}\n`;
+    `${totalFund},` +
+    `${totalExpense},` +
+    `${totalFund-totalExpense}\n`;
 
 
   const blob =
     new Blob(
       [csv],
       {
-        type:"text/csv;charset=utf-8;"
+        type:
+          "text/csv;charset=utf-8;"
       }
     );
 
@@ -1968,10 +2961,12 @@ function downloadCSV(){
   const a =
     document.createElement("a");
 
+
   a.href = url;
 
   a.download =
     "tour-fund-report.csv";
+
 
   document.body.appendChild(a);
 
@@ -1993,33 +2988,19 @@ function csvSafe(value){
 
 
 /* =========================================
-   ADMIN CHECK
-========================================= */
-
-function isAdmin(){
-
-  return Boolean(
-    currentUser &&
-    currentUser.id === ADMIN_UID
-  );
-
-}
-
-
-/* =========================================
-   AUTH STATE CHANGE
+   AUTH STATE
 ========================================= */
 
 supabaseClient.auth.onAuthStateChange(
   async (event,session) => {
 
     currentUser =
-      session ? session.user : null;
+      session
+        ? session.user
+        : null;
 
-    if(
-      currentUser &&
-      currentUser.id === ADMIN_UID
-    ){
+
+    if(isAdmin()){
 
       showAdmin();
 
@@ -2029,8 +3010,10 @@ supabaseClient.auth.onAuthStateChange(
 
     }
 
+
     renderPayments();
     renderExpenses();
+    renderMembers();
 
   }
 );
