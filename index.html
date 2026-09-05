@@ -9,7 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,312 +18,202 @@
 body{
   font-family:Arial,"Noto Sans Bengali",sans-serif;
   background:#f4f7fb;
-  color:#1f2937;
-}
-
-.container{
-  width:94%;
-  max-width:1200px;
-  margin:auto;
+  color:#172033;
 }
 
 header{
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  background:linear-gradient(135deg,#087f5b,#12b886);
   color:white;
-  padding:28px 0;
-  margin-bottom:25px;
+  padding:25px 15px;
+  text-align:center;
 }
 
 header h1{
-  text-align:center;
-  font-size:32px;
+  font-size:28px;
+  margin-bottom:7px;
 }
 
 header p{
-  text-align:center;
-  margin-top:7px;
+  opacity:.9;
 }
 
-.hidden{
-  display:none!important;
+.container{
+  width:min(1100px,94%);
+  margin:20px auto;
 }
 
-/* ================= LOGIN ================= */
-
-.login-box{
-  width:94%;
-  max-width:420px;
+.card{
   background:white;
-  margin:40px auto;
-  padding:25px;
-  border-radius:16px;
-  box-shadow:0 5px 25px rgba(0,0,0,.1);
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
-
-.login-box h2{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.login-box input{
-  width:100%;
-  padding:13px;
-  margin-bottom:12px;
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  font-size:15px;
-}
-
-/* ================= BUTTON ================= */
-
-.btn{
-  border:none;
-  padding:11px 17px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
-  font-size:14px;
-}
-
-.btn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-.btn-primary{
-  background:#2563eb;
-  color:white;
-}
-
-.btn-danger{
-  background:#dc2626;
-  color:white;
-}
-
-.btn-warning{
-  background:#f59e0b;
-  color:white;
-}
-
-.btn-secondary{
-  background:#6b7280;
-  color:white;
-}
-
-.btn-success{
-  background:#16a34a;
-  color:white;
-}
-
-.btn-full{
-  width:100%;
-}
-
-/* ================= STATUS ================= */
-
-.status{
-  display:none;
-  padding:12px;
-  margin-bottom:20px;
-  border-radius:8px;
-  font-weight:bold;
-}
-
-.success{
-  display:block;
-  background:#dcfce7;
-  color:#166534;
-}
-
-.error{
-  display:block;
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-.loading{
-  display:block;
-  background:#dbeafe;
-  color:#1e40af;
-}
-
-/* ================= USER BAR ================= */
-
-.user-bar{
-  background:white;
-  padding:15px;
-  border-radius:12px;
-  margin-bottom:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
-}
-
-.viewer-info{
-  font-weight:bold;
-  color:#2563eb;
-}
-
-.admin-info{
-  font-weight:bold;
-  color:#16a34a;
-}
-
-/* ================= STATS ================= */
 
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
-  margin-bottom:25px;
 }
 
-.stat-card{
+.stat{
   background:white;
+  border-radius:15px;
   padding:20px;
-  border-radius:14px;
   text-align:center;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
-.stat-card h3{
-  color:#6b7280;
-  font-size:15px;
-  margin-bottom:8px;
+.stat .icon{
+  font-size:28px;
 }
 
-.number{
-  color:#2563eb;
-  font-size:27px;
-  font-weight:bold;
+.stat h3{
+  font-size:14px;
+  color:#666;
+  margin:8px 0;
 }
 
-/* ================= SECTION ================= */
+.stat strong{
+  font-size:22px;
+  color:#087f5b;
+}
 
 .section-title{
-  margin:25px 0 15px;
-  font-size:22px;
-}
-
-/* ================= MEMBERS ================= */
-
-.members{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.member-card{
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
-}
-
-.member-name{
-  font-size:21px;
-  font-weight:bold;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
   margin-bottom:15px;
 }
 
-.member-info{
+.section-title h2{
+  font-size:21px;
+}
+
+.members{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.member{
+  border:1px solid #e7eaf0;
+  border-radius:12px;
+  padding:15px;
+}
+
+.member h3{
+  margin-bottom:12px;
+  color:#087f5b;
+}
+
+.member-row{
   display:flex;
   justify-content:space-between;
-  gap:10px;
-  margin:8px 0;
+  padding:7px 0;
+  border-bottom:1px solid #eee;
   font-size:14px;
 }
 
-.paid{
-  color:#16a34a;
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
   font-weight:bold;
+}
+
+.paid{
+  background:#d3f9d8;
+  color:#087f5b;
 }
 
 .unpaid{
-  color:#dc2626;
+  background:#ffe3e3;
+  color:#c92a2a;
+}
+
+button{
+  border:0;
+  border-radius:8px;
+  padding:10px 14px;
+  cursor:pointer;
   font-weight:bold;
 }
 
-.progress{
-  height:9px;
-  background:#e5e7eb;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:12px;
+.btn-primary{
+  background:#087f5b;
+  color:white;
 }
 
-.progress-bar{
-  height:100%;
-  background:linear-gradient(90deg,#2563eb,#7c3aed);
+.btn-danger{
+  background:#e03131;
+  color:white;
 }
 
-/* ================= FORM ================= */
+.btn-warning{
+  background:#f08c00;
+  color:white;
+}
 
-.form-box{
-  background:white;
-  padding:23px;
-  border-radius:14px;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
+.btn-secondary{
+  background:#495057;
+  color:white;
+}
+
+.btn-light{
+  background:#e9ecef;
+  color:#212529;
 }
 
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
-.input-group label{
-  display:block;
-  font-weight:bold;
-  font-size:14px;
-  margin-bottom:6px;
-}
-
-.input-group input,
-.input-group select{
-  width:100%;
-  padding:12px;
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  font-size:15px;
-  background:white;
-}
-
-.form-button{
-  margin-top:18px;
-}
-
-/* ================= SEARCH ================= */
-
-.search-box{
-  background:white;
-  padding:18px;
-  border-radius:14px;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
+.form-group{
   display:flex;
-  gap:10px;
-  margin-bottom:15px;
+  flex-direction:column;
+  gap:6px;
 }
 
-.search-box input,
-.search-box select{
-  flex:1;
-  padding:12px;
-  border:1px solid #d1d5db;
+.form-group.full{
+  grid-column:1/-1;
+}
+
+label{
+  font-size:14px;
+  font-weight:bold;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #ced4da;
   border-radius:8px;
-  font-size:15px;
+  outline:none;
+  font-size:14px;
 }
 
-/* ================= TABLE ================= */
+textarea{
+  min-height:80px;
+  resize:vertical;
+}
 
-.table-box{
-  background:white;
-  border-radius:14px;
+input:focus,select:focus,textarea:focus{
+  border-color:#12b886;
+}
+
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.table-wrap{
   overflow-x:auto;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
-  margin-bottom:30px;
 }
 
 table{
@@ -333,746 +222,537 @@ table{
   min-width:700px;
 }
 
-th,
-td{
-  padding:13px;
-  border-bottom:1px solid #e5e7eb;
-  text-align:center;
+th,td{
+  padding:11px 9px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+  font-size:14px;
 }
 
 th{
-  background:#f8fafc;
+  background:#f1f3f5;
+  color:#343a40;
 }
 
-.badge{
-  padding:4px 9px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+.expense-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:18px;
 }
 
-.badge-paid{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.badge-unpaid{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-.actions{
-  display:flex;
-  justify-content:center;
-  gap:5px;
-}
-
-.actions .btn{
-  padding:6px 9px;
-  font-size:12px;
-}
-
-.empty{
-  padding:30px;
+.summary-box{
+  border-radius:12px;
+  padding:18px;
+  background:#f8f9fa;
   text-align:center;
-  color:#6b7280;
 }
 
-/* ================= USER NOTICE ================= */
-
-.user-notice{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1e40af;
-  padding:14px;
-  border-radius:10px;
-  margin-bottom:20px;
-  text-align:center;
-  font-weight:bold;
+.summary-box h3{
+  font-size:14px;
+  color:#666;
+  margin-bottom:8px;
 }
 
-/* ================= REPORT ================= */
+.summary-box strong{
+  font-size:22px;
+}
 
-.report-buttons{
-  display:flex;
+.remaining{
+  color:#087f5b!important;
+}
+
+.remaining.negative{
+  color:#c92a2a!important;
+}
+
+.location-list{
+  display:grid;
   gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:40px;
 }
 
-/* ================= FOOTER ================= */
+.location-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  background:#f8f9fa;
+  border-radius:10px;
+}
+
+.location-item strong{
+  color:#087f5b;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.login-box{
+  max-width:450px;
+  margin:30px auto;
+}
+
+.center{
+  text-align:center;
+}
+
+.loading{
+  padding:25px;
+  text-align:center;
+  color:#666;
+}
+
+.error{
+  background:#ffe3e3;
+  color:#c92a2a;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+.success{
+  background:#d3f9d8;
+  color:#087f5b;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
 
 footer{
   text-align:center;
-  color:#6b7280;
-  padding:20px;
+  padding:25px;
+  color:#777;
 }
 
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
+@media(max-width:800px){
   .stats{
     grid-template-columns:repeat(2,1fr);
   }
 
   .members{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr;
   }
 
   .form-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr;
   }
 
+  .expense-summary{
+    grid-template-columns:1fr;
+  }
 }
 
-@media(max-width:600px){
-
+@media(max-width:450px){
   header h1{
-    font-size:26px;
+    font-size:23px;
   }
 
   .stats{
     grid-template-columns:1fr 1fr;
-    gap:10px;
+    gap:8px;
   }
 
-  .stat-card{
-    padding:15px 8px;
+  .stat{
+    padding:13px 8px;
   }
 
-  .number{
-    font-size:22px;
+  .stat strong{
+    font-size:18px;
   }
-
-  .members{
-    grid-template-columns:1fr;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .user-bar{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .user-bar button{
-    width:100%;
-  }
-
-  .search-box{
-    flex-direction:column;
-  }
-
-  .report-buttons{
-    flex-direction:column;
-  }
-
-  .report-buttons .btn{
-    width:100%;
-  }
-
 }
-
-/* ================= PRINT ================= */
-
-@media print{
-
-  header{
-    background:none!important;
-    color:black;
-  }
-
-  .user-bar,
-  .form-box,
-  .search-box,
-  .report-buttons,
-  .actions,
-  #status,
-  #loginSection,
-  .user-notice{
-    display:none!important;
-  }
-
-  body{
-    background:white;
-  }
-
-  .table-box,
-  .stat-card,
-  .member-card{
-    box-shadow:none;
-    border:1px solid #ddd;
-  }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
+  <h1>🌴 আমাদের Tour Fund</h1>
+  <p>আমাদের ট্যুরের টাকা জমা ও খরচের হিসাব</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <h1>
-      🌴 আমাদের Tour Fund 🌴
-    </h1>
+  <!-- LOGIN -->
+  <div id="loginSection" class="card login-box">
+    <h2 class="center">🔐 Admin Login</h2>
+    <br>
 
-    <p>
-      একসাথে জমাই, একসাথে ঘুরি ❤️
-    </p>
+    <div id="loginMessage"></div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="Admin Email">
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="Password">
+    </div>
+
+    <br>
+
+    <button class="btn-primary" style="width:100%" onclick="login()">
+      Login
+    </button>
+  </div>
+
+  <!-- ADMIN BAR -->
+  <div id="adminBar" class="card hidden">
+    <div class="section-title">
+      <div>
+        <strong>👑 Admin Mode</strong>
+        <div id="adminEmail" style="font-size:13px;color:#777"></div>
+      </div>
+
+      <button class="btn-danger" onclick="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+
+    <div class="stat">
+      <div class="icon">💰</div>
+      <h3>মোট জমা</h3>
+      <strong id="totalFund">৳0</strong>
+    </div>
+
+    <div class="stat">
+      <div class="icon">💸</div>
+      <h3>মোট ট্যুর খরচ</h3>
+      <strong id="totalExpense">৳0</strong>
+    </div>
+
+    <div class="stat">
+      <div class="icon">💵</div>
+      <h3>বর্তমান ব্যালেন্স</h3>
+      <strong id="remainingFund">৳0</strong>
+    </div>
+
+    <div class="stat">
+      <div class="icon">📅</div>
+      <h3>মোট সপ্তাহ</h3>
+      <strong id="totalWeeks">0</strong>
+    </div>
 
   </div>
 
-</header>
+  <br>
 
+  <!-- CURRENT WEEK -->
+  <div class="card">
+    <div class="section-title">
+      <h2>📅 বর্তমান সপ্তাহ</h2>
+      <strong id="currentWeekFund">৳0</strong>
+    </div>
 
-<!-- =====================================================
-     PUBLIC USER VIEW
-===================================================== -->
+    <p id="currentWeekText" style="color:#666">
+      হিসাব লোড হচ্ছে...
+    </p>
+  </div>
 
-<div id="publicSection">
+  <!-- MEMBERS -->
+  <div class="card">
 
-  <div class="container">
+    <div class="section-title">
+      <h2>👥 সদস্যদের হিসাব</h2>
+    </div>
 
-    <div class="user-bar">
+    <div id="membersContainer" class="members">
+      <div class="loading">লোড হচ্ছে...</div>
+    </div>
 
-      <div class="viewer-info">
-        👤 সাধারণ User — View Only
+  </div>
+
+  <!-- ADMIN PAYMENT FORM -->
+  <div id="paymentAdminSection" class="card hidden">
+
+    <div class="section-title">
+      <h2>➕ পেমেন্ট যোগ করুন</h2>
+    </div>
+
+    <div id="paymentMessage"></div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>সদস্য</label>
+
+        <select id="paymentMember">
+          <option value="">সদস্য নির্বাচন করুন</option>
+        </select>
       </div>
 
+      <div class="form-group">
+        <label>সপ্তাহ</label>
+        <input type="number" id="paymentWeek" min="1" placeholder="যেমন: 1">
+      </div>
+
+      <div class="form-group">
+        <label>টাকার পরিমাণ</label>
+        <input type="number" id="paymentAmount" value="300" min="0">
+      </div>
+
+      <div class="form-group">
+        <label>তারিখ</label>
+        <input type="date" id="paymentDate">
+      </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn-primary" onclick="addPayment()">
+      💰 পেমেন্ট যোগ করুন
+    </button>
+
+  </div>
+
+  <!-- PAYMENT HISTORY -->
+  <div class="card">
+
+    <div class="section-title">
+      <h2>🧾 পেমেন্ট হিসাব</h2>
+
+      <div class="actions">
+        <button class="btn-secondary" onclick="downloadCSV()">
+          📥 CSV
+        </button>
+
+        <button class="btn-light" onclick="window.print()">
+          🖨️ Print
+        </button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+        <thead>
+          <tr>
+            <th>সদস্য</th>
+            <th>সপ্তাহ</th>
+            <th>তারিখ</th>
+            <th>পরিমাণ</th>
+            <th class="admin-column">Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="paymentsTable">
+          <tr>
+            <td colspan="5" class="center">লোড হচ্ছে...</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+  <!-- EXPENSE SECTION -->
+  <div class="card">
+
+    <div class="section-title">
+      <h2>🗺️ ট্যুরের খরচ</h2>
+    </div>
+
+    <div class="expense-summary">
+
+      <div class="summary-box">
+        <h3>মোট জমা</h3>
+        <strong id="expenseFund">৳0</strong>
+      </div>
+
+      <div class="summary-box">
+        <h3>মোট খরচ</h3>
+        <strong id="expenseTotal">৳0</strong>
+      </div>
+
+      <div class="summary-box">
+        <h3>বাকি</h3>
+        <strong id="expenseRemaining" class="remaining">৳0</strong>
+      </div>
+
+    </div>
+
+    <!-- LOCATION SUMMARY -->
+
+    <h3 style="margin-bottom:12px">📍 কোথায় কত খরচ হয়েছে</h3>
+
+    <div id="locationSummary" class="location-list">
+      <div class="loading">লোড হচ্ছে...</div>
+    </div>
+
+  </div>
+
+  <!-- ADMIN EXPENSE FORM -->
+
+  <div id="expenseAdminSection" class="card hidden">
+
+    <div class="section-title">
+      <h2>➕ ট্যুরের খরচ যোগ করুন</h2>
+    </div>
+
+    <div id="expenseMessage"></div>
+
+    <input type="hidden" id="expenseId">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>📍 কোথায় ঘুরতে গিয়েছেন?</label>
+
+        <input
+          type="text"
+          id="expenseLocation"
+          placeholder="যেমন: কক্সবাজার"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>💳 খরচের ধরন</label>
+
+        <select id="expenseType">
+
+          <option value="হোটেল">🏨 হোটেল</option>
+          <option value="খাবার">🍛 খাবার</option>
+          <option value="গাড়ি">🚗 গাড়ি</option>
+          <option value="বাস/ট্রেন">🚌 বাস/ট্রেন</option>
+          <option value="বিনোদন">🎡 বিনোদন</option>
+          <option value="অন্যান্য">📦 অন্যান্য</option>
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>📅 তারিখ</label>
+
+        <input type="date" id="expenseDate">
+      </div>
+
+      <div class="form-group">
+        <label>💰 খরচের পরিমাণ</label>
+
+        <input
+          type="number"
+          id="expenseAmount"
+          min="0"
+          placeholder="যেমন: 5000"
+        >
+      </div>
+
+      <div class="form-group full">
+        <label>📝 বিস্তারিত</label>
+
+        <textarea
+          id="expenseDescription"
+          placeholder="খরচের বিস্তারিত লিখুন..."
+        ></textarea>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="actions">
+
+      <button class="btn-primary" onclick="saveExpense()">
+        💾 খরচ সংরক্ষণ
+      </button>
+
       <button
-        class="btn btn-primary"
-        onclick="showLogin()"
+        id="cancelExpenseBtn"
+        class="btn-light hidden"
+        onclick="cancelExpenseEdit()"
       >
-        🔐 Admin Login
+        বাতিল
       </button>
 
     </div>
 
-    <div class="user-notice">
+  </div>
 
-      👀 আপনি সাধারণ User হিসেবে দেখছেন।
-      এখানে Fund, সদস্যদের অবস্থা এবং রিপোর্ট দেখা যাবে।
-      পরিবর্তন করতে Admin Login করুন।
+  <!-- EXPENSE HISTORY -->
 
+  <div class="card">
+
+    <div class="section-title">
+      <h2>🧾 খরচের বিস্তারিত হিসাব</h2>
     </div>
 
-  </div>
+    <div class="table-wrap">
 
-</div>
+      <table>
 
+        <thead>
+          <tr>
+            <th>তারিখ</th>
+            <th>স্থান</th>
+            <th>ধরন</th>
+            <th>বিস্তারিত</th>
+            <th>পরিমাণ</th>
+            <th class="admin-column">Action</th>
+          </tr>
+        </thead>
 
-<!-- =====================================================
-     ADMIN LOGIN
-===================================================== -->
+        <tbody id="expenseTable">
 
-<div id="loginSection" class="hidden">
+          <tr>
+            <td colspan="6" class="center">
+              লোড হচ্ছে...
+            </td>
+          </tr>
 
-  <div class="login-box">
+        </tbody>
 
-    <h2>
-      🔐 Admin Login
-    </h2>
-
-    <input
-      type="email"
-      id="loginEmail"
-      placeholder="Admin Email"
-      autocomplete="username"
-    >
-
-    <input
-      type="password"
-      id="loginPassword"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
-
-    <button
-      class="btn btn-primary btn-full"
-      onclick="login()"
-      id="loginBtn"
-    >
-      Login
-    </button>
-
-    <button
-      class="btn btn-secondary btn-full"
-      onclick="closeLogin()"
-      style="margin-top:10px;"
-    >
-      ← ফিরে যান
-    </button>
-
-    <div
-      id="loginStatus"
-      class="status"
-      style="margin-top:15px;"
-    ></div>
-
-  </div>
-
-</div>
-
-
-<!-- =====================================================
-     MAIN APP
-===================================================== -->
-
-<div id="appSection">
-
-<div class="container">
-
-  <!-- USER / ADMIN BAR -->
-
-  <div class="user-bar">
-
-    <div id="viewerText">
-      👤 সাধারণ User
-    </div>
-
-    <button
-      id="adminLogoutBtn"
-      class="btn btn-danger hidden"
-      onclick="logout()"
-    >
-      🚪 Admin Logout
-    </button>
-
-  </div>
-
-
-  <!-- STATUS -->
-
-  <div
-    id="status"
-    class="status"
-  ></div>
-
-
-  <!-- ================= STATS ================= -->
-
-  <h2 class="section-title">
-    📊 Fund Overview
-  </h2>
-
-  <div class="stats">
-
-    <div class="stat-card">
-
-      <h3>
-        💰 মোট ফান্ড
-      </h3>
-
-      <div
-        class="number"
-        id="totalFund"
-      >
-        ৳0
-      </div>
+      </table>
 
     </div>
-
-
-    <div class="stat-card">
-
-      <h3>
-        📅 মোট সপ্তাহ
-      </h3>
-
-      <div
-        class="number"
-        id="totalWeeks"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <h3>
-        💵 এই সপ্তাহে
-      </h3>
-
-      <div
-        class="number"
-        id="currentWeekFund"
-      >
-        ৳0
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <h3>
-        ⚠️ মোট বকেয়া
-      </h3>
-
-      <div
-        class="number"
-        id="totalDue"
-      >
-        ৳0
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ================= MEMBERS ================= -->
-
-  <h2 class="section-title">
-    👥 সদস্যদের অবস্থা
-  </h2>
-
-  <div
-    id="members"
-    class="members"
-  ></div>
-
-
-  <!-- ================= ADMIN PAYMENT ================= -->
-
-  <div
-    id="adminPaymentSection"
-    class="hidden"
-  >
-
-    <h2 class="section-title">
-      ➕ নতুন পেমেন্ট
-    </h2>
-
-    <div class="form-box">
-
-      <form id="paymentForm">
-
-        <div class="form-grid">
-
-          <div class="input-group">
-
-            <label>
-              সদস্য
-            </label>
-
-            <select
-              id="member"
-              required
-            >
-
-              <option value="">
-                সদস্য নির্বাচন করুন
-              </option>
-
-              <option value="জাকির">
-                জাকির
-              </option>
-
-              <option value="আরমান">
-                আরমান
-              </option>
-
-              <option value="তানিম">
-                তানিম
-              </option>
-
-              <option value="তাসিন">
-                তাসিন
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              সপ্তাহ
-            </label>
-
-            <input
-              type="number"
-              id="week"
-              min="1"
-              value="1"
-              required
-            >
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              তারিখ
-            </label>
-
-            <input
-              type="date"
-              id="paymentDate"
-              required
-            >
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              টাকা
-            </label>
-
-            <input
-              type="number"
-              id="amount"
-              min="1"
-              value="300"
-              required
-            >
-
-          </div>
-
-        </div>
-
-
-        <div class="form-button">
-
-          <button
-            type="submit"
-            class="btn btn-primary"
-            id="submitBtn"
-          >
-            💰 জমা করুন
-          </button>
-
-        </div>
-
-      </form>
-
-    </div>
-
-  </div>
-
-
-  <!-- ================= SEARCH ================= -->
-
-  <h2 class="section-title">
-    🔎 Payment Search
-  </h2>
-
-  <div class="search-box">
-
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="সদস্যের নাম দিয়ে খুঁজুন..."
-      oninput="renderHistory()"
-    >
-
-    <select
-      id="searchWeek"
-      onchange="renderHistory()"
-    >
-
-      <option value="">
-        সব সপ্তাহ
-      </option>
-
-    </select>
-
-  </div>
-
-
-  <!-- ================= WEEKLY REPORT ================= -->
-
-  <h2 class="section-title">
-    📅 সপ্তাহভিত্তিক রিপোর্ট
-  </h2>
-
-  <div class="table-box">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>
-            সপ্তাহ
-          </th>
-
-          <th>
-            তারিখ
-          </th>
-
-          <th>
-            জাকির
-          </th>
-
-          <th>
-            আরমান
-          </th>
-
-          <th>
-            তানিম
-          </th>
-
-          <th>
-            তাসিন
-          </th>
-
-          <th>
-            মোট
-          </th>
-
-        </tr>
-
-      </thead>
-
-      <tbody id="weeklyTable"></tbody>
-
-    </table>
-
-  </div>
-
-
-  <!-- ================= HISTORY ================= -->
-
-  <h2 class="section-title">
-    📜 পেমেন্ট ইতিহাস
-  </h2>
-
-  <div class="table-box">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>
-            সপ্তাহ
-          </th>
-
-          <th>
-            সদস্য
-          </th>
-
-          <th>
-            তারিখ
-          </th>
-
-          <th>
-            পরিমাণ
-          </th>
-
-          <th
-            id="actionHeader"
-            class="hidden"
-          >
-            Action
-          </th>
-
-        </tr>
-
-      </thead>
-
-      <tbody id="historyTable"></tbody>
-
-    </table>
-
-  </div>
-
-
-  <!-- ================= REPORT BUTTONS ================= -->
-
-  <div class="report-buttons">
-
-    <button
-      class="btn btn-secondary"
-      onclick="loadPayments()"
-    >
-      🔄 Refresh
-    </button>
-
-    <button
-      class="btn btn-success"
-      onclick="downloadCSV()"
-    >
-      📥 CSV রিপোর্ট
-    </button>
-
-    <button
-      class="btn btn-primary"
-      onclick="printReport()"
-    >
-      🖨️ Print Report
-    </button>
-
-    <button
-      id="resetBtn"
-      class="btn btn-danger hidden"
-      onclick="resetData()"
-    >
-      🗑️ সব ডাটা মুছুন
-    </button>
 
   </div>
 
 </div>
 
 <footer>
-
-  🌴 আমাদের Tour Fund
-  — একসাথে জমাই, একসাথে ঘুরি ❤️
-
+  আমাদের Tour Fund © 2026
 </footer>
-
-</div>
 
 
 <script>
 
-/* =====================================================
+/* =========================================
    SUPABASE CONFIG
-===================================================== */
+========================================= */
 
 const SUPABASE_URL =
-  "https://mvnzluiescjwhkrgyvoi.supabase.co";
+"https://mvnzluiescjwhkrgyvoi.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_FOiUsZtP2IfIXYiLEnA10Q_cRERlckX";
+"sb_publishable_FOiUsZtP2IfIXYiLEnA10Q_cRERlckX";
 
 const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 
-/* =====================================================
+/* =========================================
    ADMIN UID
-===================================================== */
+========================================= */
 
 const ADMIN_UID =
-  "a4d550bf-8a0e-48ad-8f2e-e00c77693049";
+"a4d550bf-8a0e-48ad-8f2e-e00c77693049";
 
 
-/* =====================================================
-   CONFIG
-===================================================== */
+/* =========================================
+   MEMBERS
+========================================= */
 
 const MEMBERS = [
   "জাকির",
@@ -1083,1852 +763,1200 @@ const MEMBERS = [
 
 const WEEKLY_AMOUNT = 300;
 
+
+/* =========================================
+   GLOBAL DATA
+========================================= */
+
 let payments = [];
-
-let isAdminUser = false;
-
-
-/* =====================================================
-   DATE
-===================================================== */
-
-function getToday(){
-
-  const date = new Date();
-
-  const y =
-    date.getFullYear();
-
-  const m =
-    String(date.getMonth()+1)
-      .padStart(2,"0");
-
-  const d =
-    String(date.getDate())
-      .padStart(2,"0");
-
-  return `${y}-${m}-${d}`;
-}
+let expenses = [];
+let currentUser = null;
 
 
-document.getElementById(
-  "paymentDate"
-).value = getToday();
+/* =========================================
+   HELPERS
+========================================= */
 
+function money(amount){
 
-/* =====================================================
-   STATUS
-===================================================== */
-
-function showStatus(
-  message,
-  type="success"
-){
-
-  const box =
-    document.getElementById("status");
-
-  box.textContent =
-    message;
-
-  box.className =
-    "status " + type;
-
-  if(type !== "loading"){
-
-    setTimeout(()=>{
-
-      box.className =
-        "status";
-
-    },4000);
-
-  }
+  return "৳" + Number(amount || 0).toLocaleString("bn-BD");
 
 }
 
 
-function showLoginStatus(
-  message,
-  type="error"
-){
+function escapeHTML(value){
 
-  const box =
-    document.getElementById(
-      "loginStatus"
-    );
-
-  box.textContent =
-    message;
-
-  box.className =
-    "status " + type;
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
-/* =====================================================
-   ADMIN CHECK
-===================================================== */
+function formatDate(date){
 
-function isAdmin(user){
-
-  return Boolean(
-    user &&
-    user.id === ADMIN_UID
-  );
-
-}
-
-
-/* =====================================================
-   SHOW LOGIN
-===================================================== */
-
-function showLogin(){
-
-  document
-    .getElementById(
-      "publicSection"
-    )
-    .classList.add("hidden");
-
-  document
-    .getElementById(
-      "appSection"
-    )
-    .classList.add("hidden");
-
-  document
-    .getElementById(
-      "loginSection"
-    )
-    .classList.remove("hidden");
-
-}
-
-
-/* =====================================================
-   CLOSE LOGIN
-===================================================== */
-
-function closeLogin(){
-
-  document
-    .getElementById(
-      "loginSection"
-    )
-    .classList.add("hidden");
-
-  document
-    .getElementById(
-      "publicSection"
-    )
-    .classList.remove("hidden");
-
-  document
-    .getElementById(
-      "appSection"
-    )
-    .classList.remove("hidden");
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-async function login(){
-
-  const email =
-    document.getElementById(
-      "loginEmail"
-    ).value.trim();
-
-  const password =
-    document.getElementById(
-      "loginPassword"
-    ).value;
-
-
-  if(!email || !password){
-
-    showLoginStatus(
-      "Email এবং Password দিন।",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "loginBtn"
-    );
-
-  button.disabled = true;
-
-  button.textContent =
-    "Login হচ্ছে...";
-
-
-  showLoginStatus(
-    "Login করা হচ্ছে...",
-    "loading"
-  );
-
+  if(!date) return "-";
 
   try{
 
-    const {
-      data,
-      error
-    } =
-      await supabaseClient.auth
-      .signInWithPassword({
-
-        email:email,
-        password:password
-
-      });
-
-
-    if(error){
-      throw error;
-    }
-
-
-    if(!data.user){
-
-      throw new Error(
-        "User পাওয়া যায়নি।"
-      );
-
-    }
-
-
-    if(!isAdmin(data.user)){
-
-      await supabaseClient.auth
-        .signOut();
-
-      throw new Error(
-        "এই অ্যাকাউন্টটি Admin নয়।"
-      );
-
-    }
-
-
-    isAdminUser = true;
-
-
-    showLoginStatus(
-      "Login সফল হয়েছে।",
-      "success"
-    );
-
-
-    setTimeout(()=>{
-
-      showAdminMode(
-        data.user
-      );
-
-    },500);
-
-
-  }
-  catch(error){
-
-    console.error(error);
-
-    showLoginStatus(
-      "Login ব্যর্থ: " +
-      error.message,
-      "error"
-    );
-
-  }
-  finally{
-
-    button.disabled = false;
-
-    button.textContent =
-      "Login";
-
-  }
-
-}
-
-
-/* =====================================================
-   SHOW ADMIN MODE
-===================================================== */
-
-function showAdminMode(user){
-
-  if(!isAdmin(user)){
-    return;
-  }
-
-
-  isAdminUser = true;
-
-
-  document
-    .getElementById(
-      "loginSection"
-    )
-    .classList.add("hidden");
-
-
-  document
-    .getElementById(
-      "publicSection"
-    )
-    .classList.add("hidden");
-
-
-  document
-    .getElementById(
-      "appSection"
-    )
-    .classList.remove("hidden");
-
-
-  document.getElementById(
-    "viewerText"
-  ).innerHTML =
-    `🟢 Admin: ${user.email || ""}`;
-
-
-  document.getElementById(
-    "adminLogoutBtn"
-  ).classList.remove("hidden");
-
-
-  document.getElementById(
-    "adminPaymentSection"
-  ).classList.remove("hidden");
-
-
-  document.getElementById(
-    "actionHeader"
-  ).classList.remove("hidden");
-
-
-  document.getElementById(
-    "resetBtn"
-  ).classList.remove("hidden");
-
-
-  renderHistory();
-
-  loadPayments();
-
-}
-
-
-/* =====================================================
-   PUBLIC MODE
-===================================================== */
-
-function showPublicMode(){
-
-  isAdminUser = false;
-
-
-  document
-    .getElementById(
-      "loginSection"
-    )
-    .classList.add("hidden");
-
-
-  document
-    .getElementById(
-      "publicSection"
-    )
-    .classList.remove("hidden");
-
-
-  document
-    .getElementById(
-      "appSection"
-    )
-    .classList.remove("hidden");
-
-
-  document.getElementById(
-    "viewerText"
-  ).innerHTML =
-    "👤 সাধারণ User — View Only";
-
-
-  document.getElementById(
-    "adminLogoutBtn"
-  ).classList.add("hidden");
-
-
-  document.getElementById(
-    "adminPaymentSection"
-  ).classList.add("hidden");
-
-
-  document.getElementById(
-    "actionHeader"
-  ).classList.add("hidden");
-
-
-  document.getElementById(
-    "resetBtn"
-  ).classList.add("hidden");
-
-
-  renderHistory();
-
-  loadPayments();
-
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-async function logout(){
-
-  const {
-    error
-  } =
-    await supabaseClient.auth
-    .signOut();
-
-
-  if(error){
-
-    alert(
-      "Logout করা যায়নি: " +
-      error.message
-    );
-
-    return;
-  }
-
-
-  payments = [];
-
-  showPublicMode();
-
-}
-
-
-/* =====================================================
-   CHECK SESSION
-===================================================== */
-
-async function checkSession(){
-
-  try{
-
-    const {
-      data
-    } =
-      await supabaseClient.auth
-      .getSession();
-
-
-    const session =
-      data.session;
-
-
-    if(
-      session &&
-      session.user &&
-      isAdmin(session.user)
-    ){
-
-      showAdminMode(
-        session.user
-      );
-
-    }
-    else{
-
-      if(session){
-
-        await supabaseClient.auth
-          .signOut();
-
+    return new Date(date).toLocaleDateString(
+      "bn-BD",
+      {
+        year:"numeric",
+        month:"long",
+        day:"numeric"
       }
-
-      showPublicMode();
-
-    }
-
-  }
-  catch(error){
-
-    console.error(error);
-
-    showPublicMode();
-
-  }
-
-}
-
-
-/* =====================================================
-   LOAD PAYMENTS
-===================================================== */
-
-async function loadPayments(){
-
-  showStatus(
-    "ডাটাবেজ থেকে তথ্য লোড হচ্ছে...",
-    "loading"
-  );
-
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-      .from("payments")
-      .select("*")
-      .order("week",{
-        ascending:true
-      })
-      .order("payment_date",{
-        ascending:true
-      });
-
-
-    if(error){
-      throw error;
-    }
-
-
-    payments =
-      data || [];
-
-
-    renderAll();
-
-
-    showStatus(
-      "ডাটা সফলভাবে লোড হয়েছে।",
-      "success"
     );
 
-  }
-  catch(error){
+  }catch(e){
 
-    console.error(error);
-
-    showStatus(
-      "ডাটা লোড করতে সমস্যা: " +
-      error.message,
-      "error"
-    );
+    return date;
 
   }
 
 }
 
 
-/* =====================================================
-   RENDER ALL
-===================================================== */
+function today(){
 
-function renderAll(){
+  const d = new Date();
 
-  renderStats();
+  const month =
+    String(d.getMonth()+1).padStart(2,"0");
 
-  renderMembers();
+  const day =
+    String(d.getDate()).padStart(2,"0");
 
-  renderWeeklyTable();
-
-  updateWeekFilter();
-
-  renderHistory();
+  return `${d.getFullYear()}-${month}-${day}`;
 
 }
 
 
-/* =====================================================
-   TOTAL WEEKS
-===================================================== */
+/* =========================================
+   INIT
+========================================= */
 
-function getTotalWeeks(){
+document.addEventListener(
+  "DOMContentLoaded",
+  async function(){
 
-  if(!payments.length){
-    return 0;
-  }
+    document.getElementById("paymentDate").value =
+      today();
 
+    document.getElementById("expenseDate").value =
+      today();
 
-  return Math.max(
-    ...payments.map(
-      p => Number(p.week)
-    )
-  );
+    MEMBERS.forEach(member => {
 
-}
+      const option =
+        document.createElement("option");
 
+      option.value = member;
+      option.textContent = member;
 
-/* =====================================================
-   CURRENT WEEK
-===================================================== */
+      document.getElementById("paymentMember")
+        .appendChild(option);
 
-function getCurrentWeek(){
+    });
 
-  return getTotalWeeks() || 1;
+    await checkUser();
 
-}
-
-
-/* =====================================================
-   MONEY
-===================================================== */
-
-function money(value){
-
-  return "৳" +
-    Number(value || 0)
-    .toLocaleString("bn-BD");
-
-}
-
-
-/* =====================================================
-   DATE
-===================================================== */
-
-function formatDate(value){
-
-  if(!value){
-    return "-";
-  }
-
-
-  const parts =
-    String(value).split("-");
-
-
-  if(parts.length === 3){
-
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
-
-  }
-
-
-  return value;
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-function renderStats(){
-
-  const totalFund =
-    payments.reduce(
-      (sum,p)=>
-        sum + Number(p.amount),
-      0
-    );
-
-
-  const totalWeeks =
-    getTotalWeeks();
-
-
-  const currentWeek =
-    getCurrentWeek();
-
-
-  const currentWeekFund =
-    payments
-      .filter(
-        p =>
-          Number(p.week) ===
-          currentWeek
-      )
-      .reduce(
-        (sum,p)=>
-          sum + Number(p.amount),
-        0
-      );
-
-
-  const expected =
-    totalWeeks *
-    MEMBERS.length *
-    WEEKLY_AMOUNT;
-
-
-  const due =
-    Math.max(
-      expected - totalFund,
-      0
-    );
-
-
-  document.getElementById(
-    "totalFund"
-  ).textContent =
-    money(totalFund);
-
-
-  document.getElementById(
-    "totalWeeks"
-  ).textContent =
-    totalWeeks;
-
-
-  document.getElementById(
-    "currentWeekFund"
-  ).textContent =
-    money(currentWeekFund);
-
-
-  document.getElementById(
-    "totalDue"
-  ).textContent =
-    money(due);
-
-}
-
-
-/* =====================================================
-   MEMBER REPORT
-===================================================== */
-
-function renderMembers(){
-
-  const container =
-    document.getElementById(
-      "members"
-    );
-
-
-  const currentWeek =
-    getCurrentWeek();
-
-
-  container.innerHTML = "";
-
-
-  MEMBERS.forEach(member=>{
-
-    const memberPayments =
-      payments.filter(
-        p =>
-          p.member === member
-      );
-
-
-    const total =
-      memberPayments.reduce(
-        (sum,p)=>
-          sum + Number(p.amount),
-        0
-      );
-
-
-    const weeksPaid =
-      memberPayments.length;
-
-
-    const expected =
-      currentWeek *
-      WEEKLY_AMOUNT;
-
-
-    const due =
-      Math.max(
-        expected - total,
-        0
-      );
-
-
-    const currentPayment =
-      memberPayments.find(
-        p =>
-          Number(p.week) ===
-          currentWeek
-      );
-
-
-    const percentage =
-      currentWeek
-        ? Math.min(
-            (weeksPaid /
-              currentWeek) *
-            100,
-            100
-          )
-        : 0;
-
-
-    const card =
-      document.createElement(
-        "div"
-      );
-
-
-    card.className =
-      "member-card";
-
-
-    card.innerHTML = `
-
-      <div class="member-name">
-        👤 ${member}
-      </div>
-
-      <div class="member-info">
-
-        <span>
-          মোট জমা
-        </span>
-
-        <strong>
-          ${money(total)}
-        </strong>
-
-      </div>
-
-      <div class="member-info">
-
-        <span>
-          জমা দিয়েছে
-        </span>
-
-        <strong>
-          ${weeksPaid} সপ্তাহ
-        </strong>
-
-      </div>
-
-      <div class="member-info">
-
-        <span>
-          বকেয়া
-        </span>
-
-        <strong class="unpaid">
-          ${money(due)}
-        </strong>
-
-      </div>
-
-      <div class="member-info">
-
-        <span>
-          এই সপ্তাহ
-        </span>
-
-        ${
-          currentPayment
-          ?
-          '<span class="paid">Paid ✓</span>'
-          :
-          '<span class="unpaid">Unpaid ✕</span>'
-        }
-
-      </div>
-
-      <div class="progress">
-
-        <div
-          class="progress-bar"
-          style="width:${percentage}%"
-        ></div>
-
-      </div>
-
-    `;
-
-
-    container.appendChild(card);
-
-  });
-
-}
-
-
-/* =====================================================
-   WEEKLY TABLE
-===================================================== */
-
-function renderWeeklyTable(){
-
-  const tbody =
-    document.getElementById(
-      "weeklyTable"
-    );
-
-
-  tbody.innerHTML = "";
-
-
-  const weeks =
-    [
-      ...new Set(
-        payments.map(
-          p => Number(p.week)
-        )
-      )
-    ].sort(
-      (a,b)=>a-b
-    );
-
-
-  if(!weeks.length){
-
-    tbody.innerHTML = `
-
-      <tr>
-
-        <td
-          colspan="7"
-          class="empty"
-        >
-          এখনো কোনো পেমেন্ট নেই।
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  weeks.forEach(week=>{
-
-    const list =
-      payments.filter(
-        p =>
-          Number(p.week) ===
-          week
-      );
-
-
-    const date =
-      list[0]?.payment_date ||
-      "-";
-
-
-    const total =
-      list.reduce(
-        (sum,p)=>
-          sum + Number(p.amount),
-        0
-      );
-
-
-    function status(member){
-
-      const payment =
-        list.find(
-          p =>
-            p.member ===
-            member
-        );
-
-
-      if(payment){
-
-        return `
-
-          <span class="badge badge-paid">
-
-            ${money(payment.amount)}
-
-          </span>
-
-        `;
-
-      }
-
-
-      return `
-
-        <span class="badge badge-unpaid">
-
-          বাকি
-
-        </span>
-
-      `;
-
-    }
-
-
-    const tr =
-      document.createElement(
-        "tr"
-      );
-
-
-    tr.innerHTML = `
-
-      <td>
-
-        <strong>
-          সপ্তাহ ${week}
-        </strong>
-
-      </td>
-
-      <td>
-        ${formatDate(date)}
-      </td>
-
-      <td>
-        ${status("জাকির")}
-      </td>
-
-      <td>
-        ${status("আরমান")}
-      </td>
-
-      <td>
-        ${status("তানিম")}
-      </td>
-
-      <td>
-        ${status("তাসিন")}
-      </td>
-
-      <td>
-
-        <strong>
-          ${money(total)}
-        </strong>
-
-      </td>
-
-    `;
-
-
-    tbody.appendChild(tr);
-
-  });
-
-}
-
-
-/* =====================================================
-   WEEK FILTER
-===================================================== */
-
-function updateWeekFilter(){
-
-  const select =
-    document.getElementById(
-      "searchWeek"
-    );
-
-
-  const current =
-    select.value;
-
-
-  const weeks =
-    [
-      ...new Set(
-        payments.map(
-          p => Number(p.week)
-        )
-      )
-    ].sort(
-      (a,b)=>a-b
-    );
-
-
-  select.innerHTML =
-    `<option value="">
-      সব সপ্তাহ
-    </option>`;
-
-
-  weeks.forEach(week=>{
-
-    const option =
-      document.createElement(
-        "option"
-      );
-
-
-    option.value =
-      week;
-
-
-    option.textContent =
-      `সপ্তাহ ${week}`;
-
-
-    select.appendChild(
-      option
-    );
-
-  });
-
-
-  if(
-    weeks.includes(
-      Number(current)
-    )
-  ){
-
-    select.value =
-      current;
-
-  }
-
-}
-
-
-/* =====================================================
-   HISTORY
-===================================================== */
-
-function renderHistory(){
-
-  const tbody =
-    document.getElementById(
-      "historyTable"
-    );
-
-
-  tbody.innerHTML = "";
-
-
-  const search =
-    document.getElementById(
-      "searchInput"
-    ).value
-    .trim()
-    .toLowerCase();
-
-
-  const selectedWeek =
-    document.getElementById(
-      "searchWeek"
-    ).value;
-
-
-  let list =
-    [...payments];
-
-
-  if(search){
-
-    list =
-      list.filter(
-        p =>
-          String(p.member)
-          .toLowerCase()
-          .includes(search)
-      );
-
-  }
-
-
-  if(selectedWeek){
-
-    list =
-      list.filter(
-        p =>
-          Number(p.week) ===
-          Number(selectedWeek)
-      );
-
-  }
-
-
-  list.sort(
-    (a,b)=>{
-
-      if(
-        Number(a.week) !==
-        Number(b.week)
-      ){
-
-        return (
-          Number(b.week) -
-          Number(a.week)
-        );
-
-      }
-
-
-      return String(
-        b.payment_date
-      ).localeCompare(
-        String(a.payment_date)
-      );
-
-    }
-  );
-
-
-  if(!list.length){
-
-    const colspan =
-      isAdminUser ? 5 : 4;
-
-
-    tbody.innerHTML = `
-
-      <tr>
-
-        <td
-          colspan="${colspan}"
-          class="empty"
-        >
-          কোনো পেমেন্ট পাওয়া যায়নি।
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  list.forEach(payment=>{
-
-    const tr =
-      document.createElement(
-        "tr"
-      );
-
-
-    const action =
-      isAdminUser
-      ?
-
-      `
-
-      <td>
-
-        <div class="actions">
-
-          <button
-            class="btn btn-warning"
-            onclick="editPayment(${payment.id})"
-          >
-            ✏️ Edit
-          </button>
-
-          <button
-            class="btn btn-danger"
-            onclick="deletePayment(${payment.id})"
-          >
-            🗑️ Delete
-          </button>
-
-        </div>
-
-      </td>
-
-      `
-
-      :
-
-      "";
-
-
-    tr.innerHTML = `
-
-      <td>
-        সপ্তাহ ${payment.week}
-      </td>
-
-      <td>
-
-        <strong>
-          ${payment.member}
-        </strong>
-
-      </td>
-
-      <td>
-        ${formatDate(payment.payment_date)}
-      </td>
-
-      <td>
-
-        <strong>
-          ${money(payment.amount)}
-        </strong>
-
-      </td>
-
-      ${action}
-
-    `;
-
-
-    tbody.appendChild(tr);
-
-  });
-
-}
-
-
-/* =====================================================
-   ADD PAYMENT
-===================================================== */
-
-document
-.getElementById("paymentForm")
-.addEventListener(
-  "submit",
-  async function(event){
-
-    event.preventDefault();
-
-
-    const {
-      data:sessionData
-    } =
-      await supabaseClient.auth
-      .getSession();
-
-
-    const user =
-      sessionData.session?.user;
-
-
-    if(!isAdmin(user)){
-
-      showStatus(
-        "Admin Login প্রয়োজন।",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    const member =
-      document.getElementById(
-        "member"
-      ).value;
-
-
-    const week =
-      Number(
-        document.getElementById(
-          "week"
-        ).value
-      );
-
-
-    const paymentDate =
-      document.getElementById(
-        "paymentDate"
-      ).value;
-
-
-    const amount =
-      Number(
-        document.getElementById(
-          "amount"
-        ).value
-      );
-
-
-    if(!member){
-
-      showStatus(
-        "সদস্য নির্বাচন করুন।",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(
-      !Number.isInteger(week) ||
-      week < 1
-    ){
-
-      showStatus(
-        "সঠিক সপ্তাহ দিন।",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(
-      !amount ||
-      amount <= 0
-    ){
-
-      showStatus(
-        "সঠিক টাকার পরিমাণ দিন।",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    const duplicate =
-      payments.find(
-        p =>
-          p.member === member &&
-          Number(p.week) === week
-      );
-
-
-    if(duplicate){
-
-      showStatus(
-        `${member} সপ্তাহ ${week} ইতিমধ্যে টাকা দিয়েছে।`,
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    const button =
-      document.getElementById(
-        "submitBtn"
-      );
-
-
-    button.disabled = true;
-
-    button.textContent =
-      "জমা হচ্ছে...";
-
-
-    try{
-
-      const {
-        error
-      } =
-      await supabaseClient
-      .from("payments")
-      .insert([{
-
-        member:member,
-        week:week,
-        payment_date:paymentDate,
-        amount:amount
-
-      }]);
-
-
-      if(error){
-        throw error;
-      }
-
-
-      showStatus(
-        "পেমেন্ট সফলভাবে জমা হয়েছে।",
-        "success"
-      );
-
-
-      document
-      .getElementById(
-        "paymentForm"
-      )
-      .reset();
-
-
-      document.getElementById(
-        "paymentDate"
-      ).value =
-        getToday();
-
-
-      document.getElementById(
-        "amount"
-      ).value =
-        WEEKLY_AMOUNT;
-
-
-      document.getElementById(
-        "week"
-      ).value =
-        week;
-
-
-      await loadPayments();
-
-    }
-    catch(error){
-
-      console.error(error);
-
-      showStatus(
-        "পেমেন্ট যোগ করা যায়নি: " +
-        error.message,
-        "error"
-      );
-
-    }
-    finally{
-
-      button.disabled = false;
-
-      button.textContent =
-        "💰 জমা করুন";
-
-    }
+    await loadAll();
 
   }
 );
 
 
-/* =====================================================
-   EDIT PAYMENT
-===================================================== */
+/* =========================================
+   AUTH
+========================================= */
 
-async function editPayment(id){
+async function checkUser(){
 
-  if(!isAdminUser){
-
-    alert(
-      "Admin permission প্রয়োজন।"
-    );
-
-    return;
-
-  }
-
-
-  const payment =
-    payments.find(
-      p =>
-        Number(p.id) ===
-        Number(id)
-    );
-
-
-  if(!payment){
-    return;
-  }
-
-
-  const value =
-    prompt(
-      `${payment.member} - সপ্তাহ ${payment.week}\nনতুন টাকার পরিমাণ:`,
-      payment.amount
-    );
-
-
-  if(value === null){
-    return;
-  }
-
-
-  const amount =
-    Number(value);
-
-
-  if(
-    !amount ||
-    amount <= 0
-  ){
-
-    alert(
-      "সঠিক টাকার পরিমাণ দিন।"
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    const {
-      error
-    } =
-      await supabaseClient
-      .from("payments")
-      .update({
-        amount:amount
-      })
-      .eq("id",id);
-
-
-    if(error){
-      throw error;
+  const {
+    data:{
+      session
     }
+  } = await supabaseClient.auth.getSession();
 
+  if(session){
 
-    showStatus(
-      "পেমেন্ট আপডেট হয়েছে।",
-      "success"
-    );
+    currentUser = session.user;
 
+    if(currentUser.id === ADMIN_UID){
 
-    await loadPayments();
+      showAdmin();
 
-  }
-  catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "আপডেট করা যায়নি: " +
-      error.message,
-      "error"
-    );
+    }
 
   }
 
 }
 
 
-/* =====================================================
-   DELETE PAYMENT
-===================================================== */
+async function login(){
 
-async function deletePayment(id){
+  const email =
+    document.getElementById("loginEmail").value.trim();
 
-  if(!isAdminUser){
+  const password =
+    document.getElementById("loginPassword").value;
 
-    alert(
-      "Admin permission প্রয়োজন।"
-    );
+  const message =
+    document.getElementById("loginMessage");
+
+  message.innerHTML = "";
+
+  if(!email || !password){
+
+    message.innerHTML =
+      `<div class="error">Email এবং Password দিন।</div>`;
 
     return;
 
   }
 
+  const {
+    data,
+    error
+  } = await supabaseClient.auth.signInWithPassword({
 
-  const payment =
-    payments.find(
-      p =>
-        Number(p.id) ===
-        Number(id)
-    );
+    email,
+    password
 
+  });
 
-  if(!payment){
+  if(error){
+
+    message.innerHTML =
+      `<div class="error">
+        Login failed: ${escapeHTML(error.message)}
+      </div>`;
+
     return;
+
   }
 
+  currentUser = data.user;
 
-  const confirmDelete =
-    confirm(
-      `${payment.member} - সপ্তাহ ${payment.week}\n\nএই পেমেন্টটি মুছে ফেলবেন?`
-    );
+  if(currentUser.id !== ADMIN_UID){
 
+    await supabaseClient.auth.signOut();
 
-  if(!confirmDelete){
+    message.innerHTML =
+      `<div class="error">
+        এই account-এর Admin permission নেই।
+      </div>`;
+
     return;
-  }
-
-
-  try{
-
-    const {
-      error
-    } =
-      await supabaseClient
-      .from("payments")
-      .delete()
-      .eq("id",id);
-
-
-    if(error){
-      throw error;
-    }
-
-
-    showStatus(
-      "পেমেন্ট মুছে ফেলা হয়েছে।",
-      "success"
-    );
-
-
-    await loadPayments();
 
   }
-  catch(error){
 
-    console.error(error);
+  showAdmin();
 
-    showStatus(
-      "ডিলিট করা যায়নি: " +
-      error.message,
-      "error"
-    );
+  message.innerHTML =
+    `<div class="success">Login সফল হয়েছে।</div>`;
+
+}
+
+
+function showAdmin(){
+
+  document.getElementById("loginSection")
+    .classList.add("hidden");
+
+  document.getElementById("adminBar")
+    .classList.remove("hidden");
+
+  document.getElementById("paymentAdminSection")
+    .classList.remove("hidden");
+
+  document.getElementById("expenseAdminSection")
+    .classList.remove("hidden");
+
+  if(currentUser){
+
+    document.getElementById("adminEmail")
+      .textContent = currentUser.email || "";
 
   }
 
 }
 
 
-/* =====================================================
-   RESET ALL
-===================================================== */
+function hideAdmin(){
 
-async function resetData(){
+  document.getElementById("loginSection")
+    .classList.remove("hidden");
 
-  if(!isAdminUser){
+  document.getElementById("adminBar")
+    .classList.add("hidden");
 
-    alert(
-      "Admin permission প্রয়োজন।"
-    );
+  document.getElementById("paymentAdminSection")
+    .classList.add("hidden");
 
-    return;
-
-  }
-
-
-  const first =
-    confirm(
-      "⚠️ সতর্কতা!\n\nসব Payment data মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
-    );
-
-
-  if(!first){
-    return;
-  }
-
-
-  const second =
-    prompt(
-      "নিশ্চিত করতে নিচে DELETE লিখুন:"
-    );
-
-
-  if(second !== "DELETE"){
-
-    alert(
-      "ডাটা মুছে ফেলা বাতিল হয়েছে।"
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    showStatus(
-      "সব ডাটা মুছে ফেলা হচ্ছে...",
-      "loading"
-    );
-
-
-    const {
-      error
-    } =
-      await supabaseClient
-      .from("payments")
-      .delete()
-      .neq("id",0);
-
-
-    if(error){
-      throw error;
-    }
-
-
-    showStatus(
-      "সব ডাটা মুছে ফেলা হয়েছে।",
-      "success"
-    );
-
-
-    await loadPayments();
-
-  }
-  catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "ডাটা মুছে ফেলা যায়নি: " +
-      error.message,
-      "error"
-    );
-
-  }
+  document.getElementById("expenseAdminSection")
+    .classList.add("hidden");
 
 }
 
 
-/* =====================================================
-   CSV
-===================================================== */
+async function logout(){
 
-function downloadCSV(){
+  await supabaseClient.auth.signOut();
+
+  currentUser = null;
+
+  hideAdmin();
+
+  await loadAll();
+
+}
+
+
+/* =========================================
+   LOAD ALL
+========================================= */
+
+async function loadAll(){
+
+  await Promise.all([
+    loadPayments(),
+    loadExpenses()
+  ]);
+
+  updateStats();
+
+}
+
+
+/* =========================================
+   PAYMENTS
+========================================= */
+
+async function loadPayments(){
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("payments")
+    .select("*")
+    .order("week",{ascending:true})
+    .order("payment_date",{ascending:true});
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById("paymentsTable")
+      .innerHTML =
+      `<tr>
+        <td colspan="5" class="center">
+          Payment data load করতে সমস্যা হয়েছে।
+        </td>
+      </tr>`;
+
+    return;
+
+  }
+
+  payments = data || [];
+
+  renderPayments();
+
+}
+
+
+function renderPayments(){
+
+  const tbody =
+    document.getElementById("paymentsTable");
 
   if(!payments.length){
 
-    alert(
-      "রিপোর্ট করার মতো কোনো ডাটা নেই।"
-    );
+    tbody.innerHTML =
+      `<tr>
+        <td colspan="5" class="center">
+          এখনো কোনো payment নেই।
+        </td>
+      </tr>`;
 
     return;
+
+  }
+
+  tbody.innerHTML =
+    payments.map(payment => {
+
+      return `
+        <tr>
+
+          <td>
+            <strong>
+              ${escapeHTML(payment.member)}
+            </strong>
+          </td>
+
+          <td>
+            ${escapeHTML(payment.week)}
+          </td>
+
+          <td>
+            ${formatDate(payment.payment_date)}
+          </td>
+
+          <td>
+            <strong>
+              ${money(payment.amount)}
+            </strong>
+          </td>
+
+          <td class="admin-column">
+
+            ${
+              currentUser &&
+              currentUser.id === ADMIN_UID
+
+              ?
+
+              `
+              <button
+                class="btn-danger"
+                onclick="deletePayment(${payment.id})"
+              >
+                Delete
+              </button>
+              `
+
+              :
+
+              ""
+
+            }
+
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+
+}
+
+
+async function addPayment(){
+
+  if(!isAdmin()){
+
+    alert("শুধু Admin payment যোগ করতে পারবেন।");
+
+    return;
+
+  }
+
+  const member =
+    document.getElementById("paymentMember").value;
+
+  const week =
+    Number(document.getElementById("paymentWeek").value);
+
+  const amount =
+    Number(document.getElementById("paymentAmount").value);
+
+  const payment_date =
+    document.getElementById("paymentDate").value;
+
+  const message =
+    document.getElementById("paymentMessage");
+
+  if(!member || !week || amount < 0 || !payment_date){
+
+    message.innerHTML =
+      `<div class="error">
+        সব তথ্য সঠিকভাবে পূরণ করুন।
+      </div>`;
+
+    return;
+
+  }
+
+  const {
+    error
+  } = await supabaseClient
+    .from("payments")
+    .insert([{
+
+      member,
+      week,
+      amount,
+      payment_date
+
+    }]);
+
+  if(error){
+
+    console.error(error);
+
+    message.innerHTML =
+      `<div class="error">
+        Payment যোগ করা যায়নি: ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+  message.innerHTML =
+    `<div class="success">
+      Payment সফলভাবে যোগ হয়েছে।
+    </div>`;
+
+  document.getElementById("paymentWeek").value = "";
+
+  await loadAll();
+
+}
+
+
+async function deletePayment(id){
+
+  if(!isAdmin()) return;
+
+  if(!confirm("এই payment delete করতে চান?")) return;
+
+  const {
+    error
+  } = await supabaseClient
+    .from("payments")
+    .delete()
+    .eq("id",id);
+
+  if(error){
+
+    alert("Delete failed: " + error.message);
+
+    return;
+
+  }
+
+  await loadAll();
+
+}
+
+
+/* =========================================
+   EXPENSES
+========================================= */
+
+async function loadExpenses(){
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("tour_expenses")
+    .select("*")
+    .order("expense_date",{ascending:false})
+    .order("id",{ascending:false});
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById("expenseTable")
+      .innerHTML =
+      `<tr>
+        <td colspan="6" class="center">
+          Expense data load করতে সমস্যা হয়েছে।
+        </td>
+      </tr>`;
+
+    return;
+
+  }
+
+  expenses = data || [];
+
+  renderExpenses();
+
+  renderLocationSummary();
+
+}
+
+
+function renderExpenses(){
+
+  const tbody =
+    document.getElementById("expenseTable");
+
+  if(!expenses.length){
+
+    tbody.innerHTML =
+      `<tr>
+        <td colspan="6" class="center">
+          এখনো কোনো ট্যুর খরচ যোগ করা হয়নি।
+        </td>
+      </tr>`;
+
+    return;
+
+  }
+
+  tbody.innerHTML =
+    expenses.map(expense => {
+
+      return `
+        <tr>
+
+          <td>
+            ${formatDate(expense.expense_date)}
+          </td>
+
+          <td>
+            <strong>
+              📍 ${escapeHTML(expense.location)}
+            </strong>
+          </td>
+
+          <td>
+            ${escapeHTML(expense.expense_type)}
+          </td>
+
+          <td>
+            ${escapeHTML(expense.description || "-")}
+          </td>
+
+          <td>
+            <strong>
+              ${money(expense.amount)}
+            </strong>
+          </td>
+
+          <td class="admin-column">
+
+            ${
+              isAdmin()
+
+              ?
+
+              `
+              <div class="actions">
+
+                <button
+                  class="btn-warning"
+                  onclick="editExpense(${expense.id})"
+                >
+                  Edit
+                </button>
+
+                <button
+                  class="btn-danger"
+                  onclick="deleteExpense(${expense.id})"
+                >
+                  Delete
+                </button>
+
+              </div>
+              `
+
+              :
+
+              ""
+
+            }
+
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+
+}
+
+
+function renderLocationSummary(){
+
+  const container =
+    document.getElementById("locationSummary");
+
+  if(!expenses.length){
+
+    container.innerHTML =
+      `<div class="center" style="color:#777">
+        এখনো কোনো খরচ নেই।
+      </div>`;
+
+    return;
+
+  }
+
+  const locations = {};
+
+  expenses.forEach(expense => {
+
+    const location =
+      expense.location || "অন্যান্য";
+
+    if(!locations[location]){
+
+      locations[location] = 0;
+
+    }
+
+    locations[location] +=
+      Number(expense.amount || 0);
+
+  });
+
+  const sorted =
+    Object.entries(locations)
+      .sort((a,b) => b[1] - a[1]);
+
+  container.innerHTML =
+    sorted.map(([location,total]) => {
+
+      return `
+        <div class="location-item">
+
+          <span>
+            📍 ${escapeHTML(location)}
+          </span>
+
+          <strong>
+            ${money(total)}
+          </strong>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================================
+   SAVE EXPENSE
+========================================= */
+
+async function saveExpense(){
+
+  if(!isAdmin()){
+
+    alert("শুধু Admin expense যোগ করতে পারবেন।");
+
+    return;
+
+  }
+
+  const id =
+    document.getElementById("expenseId").value;
+
+  const location =
+    document.getElementById("expenseLocation").value.trim();
+
+  const expense_type =
+    document.getElementById("expenseType").value;
+
+  const expense_date =
+    document.getElementById("expenseDate").value;
+
+  const amount =
+    Number(document.getElementById("expenseAmount").value);
+
+  const description =
+    document.getElementById("expenseDescription").value.trim();
+
+  const message =
+    document.getElementById("expenseMessage");
+
+  if(!location || !expense_date || amount <= 0){
+
+    message.innerHTML =
+      `<div class="error">
+        স্থান, তারিখ এবং টাকার পরিমাণ দিন।
+      </div>`;
+
+    return;
+
+  }
+
+  const payload = {
+
+    location,
+    expense_type,
+    expense_date,
+    amount,
+    description
+
+  };
+
+
+  let error;
+
+
+  if(id){
+
+    const result =
+      await supabaseClient
+        .from("tour_expenses")
+        .update(payload)
+        .eq("id",id);
+
+    error = result.error;
+
+  }else{
+
+    const result =
+      await supabaseClient
+        .from("tour_expenses")
+        .insert([payload]);
+
+    error = result.error;
+
   }
 
 
-  let csv =
-    "\uFEFFসপ্তাহ,সদস্য,তারিখ,পরিমাণ\n";
+  if(error){
+
+    console.error(error);
+
+    message.innerHTML =
+      `<div class="error">
+        Save failed: ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
 
 
-  const list =
-    [...payments].sort(
-      (a,b)=>
-        Number(a.week) -
-        Number(b.week)
+  message.innerHTML =
+    `<div class="success">
+      ${
+        id
+        ? "খরচ সফলভাবে আপডেট হয়েছে।"
+        : "খরচ সফলভাবে যোগ হয়েছে।"
+      }
+    </div>`;
+
+
+  clearExpenseForm();
+
+  await loadAll();
+
+}
+
+
+function editExpense(id){
+
+  if(!isAdmin()) return;
+
+  const expense =
+    expenses.find(item => item.id === id);
+
+  if(!expense) return;
+
+
+  document.getElementById("expenseId").value =
+    expense.id;
+
+  document.getElementById("expenseLocation").value =
+    expense.location || "";
+
+  document.getElementById("expenseType").value =
+    expense.expense_type || "অন্যান্য";
+
+  document.getElementById("expenseDate").value =
+    expense.expense_date || "";
+
+  document.getElementById("expenseAmount").value =
+    expense.amount || "";
+
+  document.getElementById("expenseDescription").value =
+    expense.description || "";
+
+
+  document.getElementById("cancelExpenseBtn")
+    .classList.remove("hidden");
+
+
+  document.getElementById("expenseAdminSection")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function cancelExpenseEdit(){
+
+  clearExpenseForm();
+
+}
+
+
+function clearExpenseForm(){
+
+  document.getElementById("expenseId").value = "";
+
+  document.getElementById("expenseLocation").value = "";
+
+  document.getElementById("expenseType").value =
+    "হোটেল";
+
+  document.getElementById("expenseDate").value =
+    today();
+
+  document.getElementById("expenseAmount").value = "";
+
+  document.getElementById("expenseDescription").value = "";
+
+  document.getElementById("cancelExpenseBtn")
+    .classList.add("hidden");
+
+}
+
+
+async function deleteExpense(id){
+
+  if(!isAdmin()) return;
+
+  if(!confirm("এই খরচটি delete করতে চান?")) return;
+
+  const {
+    error
+  } = await supabaseClient
+    .from("tour_expenses")
+    .delete()
+    .eq("id",id);
+
+  if(error){
+
+    alert(
+      "Delete failed: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+  await loadAll();
+
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+function updateStats(){
+
+  const totalFund =
+    payments.reduce(
+      (sum,p) =>
+        sum + Number(p.amount || 0),
+      0
+    );
+
+  const totalExpense =
+    expenses.reduce(
+      (sum,e) =>
+        sum + Number(e.amount || 0),
+      0
+    );
+
+  const remaining =
+    totalFund - totalExpense;
+
+
+  document.getElementById("totalFund")
+    .textContent =
+    money(totalFund);
+
+  document.getElementById("totalExpense")
+    .textContent =
+    money(totalExpense);
+
+  document.getElementById("remainingFund")
+    .textContent =
+    money(remaining);
+
+
+  const weeks =
+    payments.length
+      ? Math.max(
+          ...payments.map(
+            p => Number(p.week || 0)
+          )
+        )
+      : 0;
+
+
+  document.getElementById("totalWeeks")
+    .textContent =
+    weeks.toLocaleString("bn-BD");
+
+
+  const currentWeek =
+    weeks || 1;
+
+
+  const currentWeekPayments =
+    payments.filter(
+      p =>
+        Number(p.week) ===
+        currentWeek
     );
 
 
-  list.forEach(payment=>{
+  const currentWeekTotal =
+    currentWeekPayments.reduce(
+      (sum,p) =>
+        sum + Number(p.amount || 0),
+      0
+    );
+
+
+  document.getElementById("currentWeekFund")
+    .textContent =
+    money(currentWeekTotal);
+
+
+  document.getElementById("currentWeekText")
+    .textContent =
+    `সপ্তাহ ${currentWeek} এ জমা হয়েছে ${money(currentWeekTotal)}।`;
+
+
+  document.getElementById("expenseFund")
+    .textContent =
+    money(totalFund);
+
+  document.getElementById("expenseTotal")
+    .textContent =
+    money(totalExpense);
+
+  const remainingElement =
+    document.getElementById("expenseRemaining");
+
+  remainingElement.textContent =
+    money(remaining);
+
+  if(remaining < 0){
+
+    remainingElement.classList.add("negative");
+
+  }else{
+
+    remainingElement.classList.remove("negative");
+
+  }
+
+
+  updateMembers();
+
+}
+
+
+/* =========================================
+   MEMBER CARDS
+========================================= */
+
+function updateMembers(){
+
+  const container =
+    document.getElementById("membersContainer");
+
+  const maxWeek =
+    payments.length
+      ? Math.max(
+          ...payments.map(
+            p => Number(p.week || 0)
+          )
+        )
+      : 0;
+
+
+  container.innerHTML =
+    MEMBERS.map(member => {
+
+      const memberPayments =
+        payments.filter(
+          p => p.member === member
+        );
+
+
+      const totalPaid =
+        memberPayments.reduce(
+          (sum,p) =>
+            sum + Number(p.amount || 0),
+          0
+        );
+
+
+      const weeksPaid =
+        new Set(
+          memberPayments.map(
+            p => Number(p.week)
+          )
+        ).size;
+
+
+      const due =
+        Math.max(
+          0,
+          maxWeek * WEEKLY_AMOUNT -
+          totalPaid
+        );
+
+
+      const currentPayment =
+        memberPayments.find(
+          p =>
+            Number(p.week) ===
+            maxWeek
+        );
+
+
+      return `
+
+        <div class="member">
+
+          <h3>👤 ${escapeHTML(member)}</h3>
+
+          <div class="member-row">
+            <span>মোট জমা</span>
+            <strong>${money(totalPaid)}</strong>
+          </div>
+
+          <div class="member-row">
+            <span>জমা দেওয়া সপ্তাহ</span>
+            <strong>
+              ${weeksPaid.toLocaleString("bn-BD")}
+            </strong>
+          </div>
+
+          <div class="member-row">
+            <span>বাকি</span>
+            <strong>
+              ${money(due)}
+            </strong>
+          </div>
+
+          <div class="member-row">
+            <span>বর্তমান সপ্তাহ</span>
+
+            ${
+              currentPayment
+
+              ?
+
+              `<span class="badge paid">
+                ✓ Paid
+              </span>`
+
+              :
+
+              `<span class="badge unpaid">
+                ✕ Unpaid
+              </span>`
+
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================================
+   CSV
+========================================= */
+
+function downloadCSV(){
+
+  let csv =
+    "\uFEFF";
+
+
+  csv +=
+    "PAYMENTS\n";
+
+  csv +=
+    "সদস্য,সপ্তাহ,তারিখ,পরিমাণ\n";
+
+
+  payments.forEach(p => {
 
     csv +=
-      `${payment.week},` +
-      `"${payment.member}",` +
-      `${payment.payment_date},` +
-      `${payment.amount}\n`;
+      `"${csvSafe(p.member)}",` +
+      `"${csvSafe(p.week)}",` +
+      `"${csvSafe(p.payment_date)}",` +
+      `"${csvSafe(p.amount)}"\n`;
 
   });
+
+
+  csv +=
+    "\nTOUR EXPENSES\n";
+
+  csv +=
+    "তারিখ,স্থান,ধরন,বিস্তারিত,পরিমাণ\n";
+
+
+  expenses.forEach(e => {
+
+    csv +=
+      `"${csvSafe(e.expense_date)}",` +
+      `"${csvSafe(e.location)}",` +
+      `"${csvSafe(e.expense_type)}",` +
+      `"${csvSafe(e.description || "")}",` +
+      `"${csvSafe(e.amount)}"\n`;
+
+  });
+
+
+  const totalFund =
+    payments.reduce(
+      (sum,p) =>
+        sum + Number(p.amount || 0),
+      0
+    );
+
+
+  const totalExpense =
+    expenses.reduce(
+      (sum,e) =>
+        sum + Number(e.amount || 0),
+      0
+    );
+
+
+  csv +=
+    "\nSUMMARY\n";
+
+  csv +=
+    "মোট জমা,মোট খরচ,বাকি\n";
+
+  csv +=
+    `${totalFund},${totalExpense},${totalFund-totalExpense}\n`;
 
 
   const blob =
     new Blob(
       [csv],
       {
-        type:
-          "text/csv;charset=utf-8;"
+        type:"text/csv;charset=utf-8;"
       }
     );
 
@@ -2937,70 +1965,75 @@ function downloadCSV(){
     URL.createObjectURL(blob);
 
 
-  const link =
+  const a =
     document.createElement("a");
 
+  a.href = url;
 
-  link.href =
-    url;
-
-
-  link.download =
+  a.download =
     "tour-fund-report.csv";
 
+  document.body.appendChild(a);
 
-  document.body.appendChild(link);
+  a.click();
 
-
-  link.click();
-
-
-  document.body.removeChild(link);
-
+  document.body.removeChild(a);
 
   URL.revokeObjectURL(url);
 
 }
 
 
-/* =====================================================
-   PRINT
-===================================================== */
+function csvSafe(value){
 
-function printReport(){
-
-  window.print();
+  return String(value ?? "")
+    .replace(/"/g,'""');
 
 }
 
 
-/* =====================================================
-   AUTH STATE
-===================================================== */
+/* =========================================
+   ADMIN CHECK
+========================================= */
 
-supabaseClient.auth
-.onAuthStateChange(
-  (event,session)=>{
+function isAdmin(){
+
+  return Boolean(
+    currentUser &&
+    currentUser.id === ADMIN_UID
+  );
+
+}
+
+
+/* =========================================
+   AUTH STATE CHANGE
+========================================= */
+
+supabaseClient.auth.onAuthStateChange(
+  async (event,session) => {
+
+    currentUser =
+      session ? session.user : null;
 
     if(
-      event === "SIGNED_OUT"
+      currentUser &&
+      currentUser.id === ADMIN_UID
     ){
 
-      payments = [];
+      showAdmin();
 
-      showPublicMode();
+    }else{
+
+      hideAdmin();
 
     }
 
+    renderPayments();
+    renderExpenses();
+
   }
 );
-
-
-/* =====================================================
-   START
-===================================================== */
-
-showPublicMode();
 
 </script>
 
