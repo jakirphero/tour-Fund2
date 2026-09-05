@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,14 +23,10 @@ body{
   color:#172033;
 }
 
-/* =========================================
-   HEADER
-========================================= */
-
 header{
   background:linear-gradient(135deg,#087f5b,#12b886);
-  color:#fff;
-  padding:28px 15px;
+  color:white;
+  padding:25px 15px;
   text-align:center;
 }
 
@@ -42,9 +39,32 @@ header p{
   opacity:.92;
 }
 
-/* =========================================
-   TOUR BANNER SLIDER
-========================================= */
+/* MENU */
+
+.navbar{
+  width:min(1100px,94%);
+  margin:15px auto;
+  background:white;
+  border-radius:12px;
+  padding:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.navbar button{
+  background:#f1f3f5;
+  color:#343a40;
+}
+
+.navbar button:hover{
+  background:#087f5b;
+  color:white;
+}
+
+/* BANNER */
 
 .banner-slider{
   width:min(1100px,94%);
@@ -61,7 +81,7 @@ header p{
   position:absolute;
   inset:0;
   opacity:0;
-  transition:opacity 1s ease-in-out;
+  transition:opacity 1s ease;
 }
 
 .banner-slide.active{
@@ -72,7 +92,6 @@ header p{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
 
 .banner-overlay{
@@ -80,7 +99,7 @@ header p{
   inset:0;
   background:linear-gradient(
     to top,
-    rgba(0,0,0,.70),
+    rgba(0,0,0,.7),
     rgba(0,0,0,.05)
   );
 }
@@ -96,10 +115,6 @@ header p{
 .banner-text h2{
   font-size:30px;
   margin-bottom:6px;
-}
-
-.banner-text p{
-  font-size:16px;
 }
 
 .banner-dots{
@@ -120,12 +135,9 @@ header p{
 
 .banner-dot.active{
   background:white;
-  transform:scale(1.25);
 }
 
-/* =========================================
-   CONTAINER
-========================================= */
+/* CONTAINER */
 
 .container{
   width:min(1100px,94%);
@@ -133,16 +145,14 @@ header p{
 }
 
 .card{
-  background:#fff;
+  background:white;
   border-radius:15px;
   padding:18px;
   margin-bottom:18px;
   box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
-/* =========================================
-   STATS
-========================================= */
+/* STATS */
 
 .stats{
   display:grid;
@@ -151,7 +161,7 @@ header p{
 }
 
 .stat{
-  background:#fff;
+  background:white;
   border-radius:15px;
   padding:20px;
   text-align:center;
@@ -177,10 +187,6 @@ header p{
   border:2px solid #087f5b;
 }
 
-.balance-card strong{
-  font-size:25px;
-}
-
 .balance-card.negative{
   border-color:#e03131;
 }
@@ -189,9 +195,7 @@ header p{
   color:#e03131;
 }
 
-/* =========================================
-   TITLES
-========================================= */
+/* TITLES */
 
 .section-title{
   display:flex;
@@ -205,97 +209,7 @@ header p{
   font-size:21px;
 }
 
-/* =========================================
-   MEMBERS
-========================================= */
-
-.members{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-
-.member{
-  border:1px solid #e7eaf0;
-  border-radius:12px;
-  padding:15px;
-}
-
-.member h3{
-  margin-bottom:12px;
-  color:#087f5b;
-}
-
-.member-row{
-  display:flex;
-  justify-content:space-between;
-  padding:8px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
-}
-
-/* =========================================
-   BADGE
-========================================= */
-
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.paid{
-  background:#d3f9d8;
-  color:#087f5b;
-}
-
-.unpaid{
-  background:#ffe3e3;
-  color:#c92a2a;
-}
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-button{
-  border:0;
-  border-radius:8px;
-  padding:10px 14px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.btn-primary{
-  background:#087f5b;
-  color:white;
-}
-
-.btn-danger{
-  background:#e03131;
-  color:white;
-}
-
-.btn-warning{
-  background:#f08c00;
-  color:white;
-}
-
-.btn-secondary{
-  background:#495057;
-  color:white;
-}
-
-.btn-light{
-  background:#e9ecef;
-  color:#212529;
-}
-
-/* =========================================
-   FORMS
-========================================= */
+/* FORMS */
 
 .form-grid{
   display:grid;
@@ -330,7 +244,7 @@ textarea{
 }
 
 textarea{
-  min-height:80px;
+  min-height:90px;
   resize:vertical;
 }
 
@@ -340,15 +254,100 @@ textarea:focus{
   border-color:#12b886;
 }
 
+/* BUTTON */
+
+button{
+  border:0;
+  border-radius:8px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.btn-primary{
+  background:#087f5b;
+  color:white;
+}
+
+.btn-danger{
+  background:#e03131;
+  color:white;
+}
+
+.btn-warning{
+  background:#f08c00;
+  color:white;
+}
+
+.btn-secondary{
+  background:#495057;
+  color:white;
+}
+
+.btn-light{
+  background:#e9ecef;
+  color:#212529;
+}
+
 .actions{
   display:flex;
   gap:7px;
   flex-wrap:wrap;
 }
 
-/* =========================================
-   TABLE
-========================================= */
+/* MEMBERS */
+
+.members{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.member{
+  border:1px solid #e7eaf0;
+  border-radius:12px;
+  padding:15px;
+}
+
+.member h3{
+  margin-bottom:12px;
+  color:#087f5b;
+}
+
+.member-row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+/* BADGE */
+
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.paid{
+  background:#d3f9d8;
+  color:#087f5b;
+}
+
+.unpaid{
+  background:#ffe3e3;
+  color:#c92a2a;
+}
+
+.pending{
+  background:#fff3bf;
+  color:#e67700;
+}
+
+/* TABLE */
 
 .table-wrap{
   overflow-x:auto;
@@ -370,12 +369,9 @@ td{
 
 th{
   background:#f1f3f5;
-  color:#343a40;
 }
 
-/* =========================================
-   EXPENSE
-========================================= */
+/* EXPENSE */
 
 .expense-summary{
   display:grid;
@@ -401,25 +397,23 @@ th{
   font-size:22px;
 }
 
-.summary-box.balance-box{
+.balance-box{
   background:#e6fcf5;
 }
 
-.summary-box.balance-box strong{
+.balance-box strong{
   color:#087f5b;
 }
 
-.summary-box.balance-box.negative{
+.balance-box.negative{
   background:#fff5f5;
 }
 
-.summary-box.balance-box.negative strong{
+.balance-box.negative strong{
   color:#e03131;
 }
 
-/* =========================================
-   LOCATION
-========================================= */
+/* LOCATION */
 
 .location-list{
   display:grid;
@@ -439,35 +433,98 @@ th{
   color:#087f5b;
 }
 
-/* =========================================
-   ADMIN
-========================================= */
+/* COMMENTS */
 
-.member-admin-list{
-  display:grid;
-  gap:10px;
+.comment-slider{
+  position:relative;
+  min-height:150px;
+  overflow:hidden;
 }
 
-.member-admin-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px;
+.comment-slide{
+  display:none;
+  animation:fadeComment .7s;
+}
+
+.comment-slide.active{
+  display:block;
+}
+
+.comment-box{
   background:#f8f9fa;
-  border-radius:10px;
+  border-left:5px solid #087f5b;
+  padding:22px;
+  border-radius:12px;
 }
 
-/* =========================================
-   OTHER
-========================================= */
+.comment-box .quote{
+  font-size:35px;
+  color:#087f5b;
+}
+
+.comment-text{
+  font-size:18px;
+  line-height:1.7;
+  margin:10px 0;
+}
+
+.comment-author{
+  color:#087f5b;
+  font-weight:bold;
+}
+
+.comment-controls{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+}
+
+@keyframes fadeComment{
+  from{
+    opacity:0;
+    transform:translateX(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+/* ADMIN APPLICATION */
+
+.application-list{
+  display:grid;
+  gap:12px;
+}
+
+.application-item{
+  background:#f8f9fa;
+  border-radius:12px;
+  padding:15px;
+  border:1px solid #e9ecef;
+}
+
+.application-item h3{
+  color:#087f5b;
+  margin-bottom:8px;
+}
+
+.application-row{
+  padding:5px 0;
+}
+
+.application-actions{
+  margin-top:12px;
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+/* OTHER */
 
 .hidden{
   display:none!important;
-}
-
-.login-box{
-  max-width:450px;
-  margin:30px auto;
 }
 
 .center{
@@ -505,32 +562,18 @@ th{
   font-size:16px;
 }
 
-.balance-calculation strong{
-  color:#087f5b;
-}
-
 footer{
   text-align:center;
   padding:25px;
   color:#777;
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media(max-width:800px){
 
   .banner-slider{
     height:240px;
-  }
-
-  .banner-text h2{
-    font-size:23px;
-  }
-
-  .banner-text p{
-    font-size:14px;
   }
 
   .stats{
@@ -557,9 +600,18 @@ footer{
     font-size:23px;
   }
 
+  .navbar{
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+  }
+
+  .navbar button{
+    white-space:nowrap;
+  }
+
   .banner-slider{
     height:200px;
-    border-radius:13px;
   }
 
   .banner-text{
@@ -571,12 +623,7 @@ footer{
     font-size:20px;
   }
 
-  .banner-text p{
-    font-size:12px;
-  }
-
   .stats{
-    grid-template-columns:1fr 1fr;
     gap:8px;
   }
 
@@ -586,10 +633,6 @@ footer{
 
   .stat strong{
     font-size:17px;
-  }
-
-  .balance-card strong{
-    font-size:19px;
   }
 
 }
@@ -604,19 +647,38 @@ footer{
   <h1>🌴 আমাদের Tour Fund</h1>
 
   <p>
-    ট্যুরের টাকা জমা, খরচ ও বর্তমান ব্যালেন্স
+    ট্যুরের টাকা জমা, খরচ ও সদস্যদের অংশগ্রহণ
   </p>
 
 </header>
 
 
-<!-- =========================================
-     AUTO TOUR BANNER
-========================================= -->
+<!-- MENU -->
 
-<div class="banner-slider" id="bannerSlider">
+<nav class="navbar">
 
-  <!-- 1 -->
+  <button onclick="goHome()">
+    🏠 হোম
+  </button>
+
+  <button onclick="showApplicationForm()">
+    📝 সদস্য হওয়ার আবেদন
+  </button>
+
+  <button onclick="showCommentForm()">
+    💬 মতামত দিন
+  </button>
+
+  <button onclick="scrollToComments()">
+    💭 সদস্যদের মতামত
+  </button>
+
+</nav>
+
+
+<!-- BANNER -->
+
+<div class="banner-slider">
 
   <div class="banner-slide active">
 
@@ -632,16 +694,12 @@ footer{
 
       <h2>🏖️ কক্সবাজার</h2>
 
-      <p>
-        সমুদ্রের ঢেউ আর অসাধারণ প্রাকৃতিক সৌন্দর্য
-      </p>
+      <p>সমুদ্রের ঢেউ আর অসাধারণ প্রাকৃতিক সৌন্দর্য</p>
 
     </div>
 
   </div>
 
-
-  <!-- 2 -->
 
   <div class="banner-slide">
 
@@ -656,16 +714,12 @@ footer{
 
       <h2>🏔️ সাজেক</h2>
 
-      <p>
-        পাহাড়, মেঘ আর সবুজের রাজ্য
-      </p>
+      <p>পাহাড়, মেঘ আর সবুজের রাজ্য</p>
 
     </div>
 
   </div>
 
-
-  <!-- 3 -->
 
   <div class="banner-slide">
 
@@ -680,16 +734,12 @@ footer{
 
       <h2>⛰️ বান্দরবান</h2>
 
-      <p>
-        পাহাড়ি প্রকৃতির অপরূপ সৌন্দর্য
-      </p>
+      <p>পাহাড়ি প্রকৃতির অপরূপ সৌন্দর্য</p>
 
     </div>
 
   </div>
 
-
-  <!-- 4 -->
 
   <div class="banner-slide">
 
@@ -704,16 +754,12 @@ footer{
 
       <h2>🏝️ সেন্ট মার্টিন</h2>
 
-      <p>
-        নীল সমুদ্র আর দ্বীপের সৌন্দর্য
-      </p>
+      <p>নীল সমুদ্র আর দ্বীপের সৌন্দর্য</p>
 
     </div>
 
   </div>
 
-
-  <!-- 5 -->
 
   <div class="banner-slide">
 
@@ -728,45 +774,14 @@ footer{
 
       <h2>🌅 কুয়াকাটা</h2>
 
-      <p>
-        একই জায়গা থেকে সূর্যোদয় ও সূর্যাস্ত
-      </p>
+      <p>সূর্যোদয় ও সূর্যাস্তের সৌন্দর্য</p>
 
     </div>
 
   </div>
 
 
-  <!-- 6 -->
-
-  <div class="banner-slide">
-
-    <img
-      src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80"
-      alt="বাংলাদেশের প্রকৃতি"
-    >
-
-    <div class="banner-overlay"></div>
-
-    <div class="banner-text">
-
-      <h2>🌿 আমাদের ভ্রমণ</h2>
-
-      <p>
-        একসাথে ঘুরবো, আনন্দ করবো
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- DOTS -->
-
-  <div
-    class="banner-dots"
-    id="bannerDots"
-  ></div>
+  <div class="banner-dots" id="bannerDots"></div>
 
 </div>
 
@@ -774,11 +789,190 @@ footer{
 <div class="container">
 
 
-<!-- ================= LOGIN ================= -->
+<!-- ================= APPLICATION ================= -->
+
+<div
+  id="applicationSection"
+  class="card hidden"
+>
+
+  <div class="section-title">
+
+    <h2>📝 নতুন সদস্য হওয়ার আবেদন</h2>
+
+    <button
+      class="btn-light"
+      onclick="hideApplicationForm()"
+    >
+      ✕ বন্ধ
+    </button>
+
+  </div>
+
+  <div id="applicationMessage"></div>
+
+  <div class="form-grid">
+
+    <div class="form-group">
+
+      <label>নাম *</label>
+
+      <input
+        type="text"
+        id="appName"
+        placeholder="আপনার নাম"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>মোবাইল নম্বর *</label>
+
+      <input
+        type="tel"
+        id="appPhone"
+        placeholder="01XXXXXXXXX"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>বয়স</label>
+
+      <input
+        type="number"
+        id="appAge"
+        min="1"
+        max="120"
+        placeholder="বয়স"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>পেশা</label>
+
+      <input
+        type="text"
+        id="appProfession"
+        placeholder="যেমন: ব্যবসায়ী"
+      >
+
+    </div>
+
+
+    <div class="form-group full">
+
+      <label>ঠিকানা</label>
+
+      <input
+        type="text"
+        id="appAddress"
+        placeholder="আপনার ঠিকানা"
+      >
+
+    </div>
+
+
+    <div class="form-group full">
+
+      <label>কেন Tour Fund-এ যোগ দিতে চান?</label>
+
+      <textarea
+        id="appMessage"
+        placeholder="আপনার কথা লিখুন..."
+      ></textarea>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <button
+    class="btn-primary"
+    onclick="submitApplication()"
+  >
+    📤 আবেদন জমা দিন
+  </button>
+
+</div>
+
+
+<!-- ================= COMMENT FORM ================= -->
+
+<div
+  id="commentFormSection"
+  class="card hidden"
+>
+
+  <div class="section-title">
+
+    <h2>💬 আপনার মতামত দিন</h2>
+
+    <button
+      class="btn-light"
+      onclick="hideCommentForm()"
+    >
+      ✕ বন্ধ
+    </button>
+
+  </div>
+
+  <div id="commentMessage"></div>
+
+  <div class="form-grid">
+
+    <div class="form-group">
+
+      <label>আপনার নাম *</label>
+
+      <input
+        type="text"
+        id="commentName"
+        placeholder="নাম"
+      >
+
+    </div>
+
+
+    <div class="form-group full">
+
+      <label>মন্তব্য *</label>
+
+      <textarea
+        id="commentText"
+        placeholder="আপনার মতামত লিখুন..."
+      ></textarea>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <button
+    class="btn-primary"
+    onclick="submitComment()"
+  >
+    💬 মন্তব্য প্রকাশ করুন
+  </button>
+
+</div>
+
+
+<!-- ================= ADMIN LOGIN ================= -->
 
 <div
   id="loginSection"
-  class="card login-box"
+  class="card"
+  style="max-width:450px;margin:20px auto"
 >
 
   <h2 class="center">
@@ -839,9 +1033,7 @@ footer{
 
     <div>
 
-      <strong>
-        👑 Admin Mode
-      </strong>
+      <strong>👑 Admin Mode</strong>
 
       <div
         id="adminEmail"
@@ -862,7 +1054,61 @@ footer{
 </div>
 
 
-<!-- ================= MAIN STATS ================= -->
+<!-- ================= ADMIN APPLICATIONS ================= -->
+
+<div
+  id="applicationAdminSection"
+  class="card hidden"
+>
+
+  <div class="section-title">
+
+    <h2>📨 সদস্য হওয়ার আবেদন</h2>
+
+    <button
+      class="btn-secondary"
+      onclick="loadApplications()"
+    >
+      🔄 Refresh
+    </button>
+
+  </div>
+
+  <div
+    id="applicationAdminList"
+    class="application-list"
+  >
+
+    <div class="loading">
+      আবেদন লোড হচ্ছে...
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= ADMIN COMMENT ================= -->
+
+<div
+  id="commentAdminSection"
+  class="card hidden"
+>
+
+  <div class="section-title">
+
+    <h2>🗑️ মন্তব্য পরিচালনা</h2>
+
+  </div>
+
+  <div
+    id="adminCommentList"
+  ></div>
+
+</div>
+
+
+<!-- ================= STATS ================= -->
 
 <div class="stats">
 
@@ -872,9 +1118,7 @@ footer{
 
     <h3>মোট জমা</h3>
 
-    <strong id="totalFund">
-      ৳0
-    </strong>
+    <strong id="totalFund">৳0</strong>
 
   </div>
 
@@ -885,9 +1129,7 @@ footer{
 
     <h3>মোট খরচ</h3>
 
-    <strong id="totalExpense">
-      ৳0
-    </strong>
+    <strong id="totalExpense">৳0</strong>
 
   </div>
 
@@ -901,9 +1143,7 @@ footer{
 
     <h3>বর্তমান ব্যালেন্স</h3>
 
-    <strong id="remainingFund">
-      ৳0
-    </strong>
+    <strong id="remainingFund">৳0</strong>
 
   </div>
 
@@ -914,9 +1154,7 @@ footer{
 
     <h3>মোট সপ্তাহ</h3>
 
-    <strong id="totalWeeks">
-      0
-    </strong>
+    <strong id="totalWeeks">0</strong>
 
   </div>
 
@@ -935,9 +1173,7 @@ footer{
     id="balanceCalculation"
     class="balance-calculation"
   >
-
     মোট জমা - মোট খরচ = বর্তমান ব্যালেন্স
-
   </div>
 
 </div>
@@ -951,9 +1187,7 @@ footer{
 
     <h2>📅 বর্তমান সপ্তাহ</h2>
 
-    <strong id="currentWeekFund">
-      ৳0
-    </strong>
+    <strong id="currentWeekFund">৳0</strong>
 
   </div>
 
@@ -973,9 +1207,7 @@ footer{
 
   <div class="section-title">
 
-    <h2>
-      👥 সদস্যদের হিসাব
-    </h2>
+    <h2>👥 সদস্যদের হিসাব</h2>
 
   </div>
 
@@ -1002,29 +1234,23 @@ footer{
 
   <div class="section-title">
 
-    <h2>
-      👤 নতুন লোক / সদস্য যোগ করুন
-    </h2>
+    <h2>👤 সদস্য পরিচালনা</h2>
 
   </div>
 
   <div id="memberMessage"></div>
 
-  <div class="form-grid">
+  <div class="form-group">
 
-    <div class="form-group">
+    <label>
+      নতুন সদস্যের নাম
+    </label>
 
-      <label>
-        নতুন সদস্যের নাম
-      </label>
-
-      <input
-        type="text"
-        id="newMemberName"
-        placeholder="যেমন: সাকিব"
-      >
-
-    </div>
+    <input
+      type="text"
+      id="newMemberName"
+      placeholder="যেমন: সাকিব"
+    >
 
   </div>
 
@@ -1039,13 +1265,9 @@ footer{
 
   <br><br>
 
-  <h3 style="margin-bottom:12px">
-    বর্তমান সদস্য
-  </h3>
-
   <div
     id="adminMemberList"
-    class="member-admin-list"
+    class="application-list"
   ></div>
 
 </div>
@@ -1060,9 +1282,7 @@ footer{
 
   <div class="section-title">
 
-    <h2>
-      ➕ পেমেন্ট যোগ করুন
-    </h2>
+    <h2>➕ পেমেন্ট যোগ করুন</h2>
 
   </div>
 
@@ -1101,9 +1321,7 @@ footer{
 
     <div class="form-group">
 
-      <label>
-        টাকার পরিমাণ
-      </label>
+      <label>টাকার পরিমাণ</label>
 
       <input
         type="number"
@@ -1146,9 +1364,7 @@ footer{
 
   <div class="section-title">
 
-    <h2>
-      🧾 পেমেন্ট হিসাব
-    </h2>
+    <h2>🧾 পেমেন্ট হিসাব</h2>
 
     <div class="actions">
 
@@ -1170,7 +1386,6 @@ footer{
 
   </div>
 
-
   <div class="table-wrap">
 
     <table>
@@ -1180,21 +1395,14 @@ footer{
         <tr>
 
           <th>সদস্য</th>
-
           <th>সপ্তাহ</th>
-
           <th>তারিখ</th>
-
           <th>পরিমাণ</th>
-
-          <th class="admin-column">
-            Action
-          </th>
+          <th>Action</th>
 
         </tr>
 
       </thead>
-
 
       <tbody id="paymentsTable">
 
@@ -1218,18 +1426,54 @@ footer{
 </div>
 
 
+<!-- ================= COMMENTS SLIDER ================= -->
+
+<div
+  id="commentsSection"
+  class="card"
+>
+
+  <div class="section-title">
+
+    <h2>💬 সদস্যদের মতামত</h2>
+
+    <button
+      class="btn-primary"
+      onclick="showCommentForm()"
+    >
+      ✍️ মতামত দিন
+    </button>
+
+  </div>
+
+  <div
+    id="commentSlider"
+    class="comment-slider"
+  >
+
+    <div class="loading">
+      মন্তব্য লোড হচ্ছে...
+    </div>
+
+  </div>
+
+  <div
+    id="commentControls"
+    class="comment-controls"
+  ></div>
+
+</div>
+
+
 <!-- ================= EXPENSE ================= -->
 
 <div class="card">
 
   <div class="section-title">
 
-    <h2>
-      🗺️ ট্যুরের খরচ
-    </h2>
+    <h2>🗺️ ট্যুরের খরচ</h2>
 
   </div>
-
 
   <div class="expense-summary">
 
@@ -1237,9 +1481,7 @@ footer{
 
       <h3>মোট জমা</h3>
 
-      <strong id="expenseFund">
-        ৳0
-      </strong>
+      <strong id="expenseFund">৳0</strong>
 
     </div>
 
@@ -1248,9 +1490,7 @@ footer{
 
       <h3>মোট খরচ</h3>
 
-      <strong id="expenseTotal">
-        ৳0
-      </strong>
+      <strong id="expenseTotal">৳0</strong>
 
     </div>
 
@@ -1260,13 +1500,9 @@ footer{
       class="summary-box balance-box"
     >
 
-      <h3>
-        খরচ বাদে বাকি
-      </h3>
+      <h3>খরচ বাদে বাকি</h3>
 
-      <strong id="expenseRemaining">
-        ৳0
-      </strong>
+      <strong id="expenseRemaining">৳0</strong>
 
     </div>
 
@@ -1276,24 +1512,16 @@ footer{
   <div class="balance-calculation">
 
     মোট জমা
-
-    <strong id="calcFund">
-      ৳0
-    </strong>
+    <strong id="calcFund">৳0</strong>
 
     −
 
     মোট খরচ
-
-    <strong id="calcExpense">
-      ৳0
-    </strong>
+    <strong id="calcExpense">৳0</strong>
 
     =
 
-    <strong id="calcBalance">
-      ৳0
-    </strong>
+    <strong id="calcBalance">৳0</strong>
 
   </div>
 
@@ -1304,17 +1532,10 @@ footer{
     📍 কোথায় কত খরচ হয়েছে
   </h3>
 
-
   <div
     id="locationSummary"
     class="location-list"
-  >
-
-    <div class="loading">
-      লোড হচ্ছে...
-    </div>
-
-  </div>
+  ></div>
 
 </div>
 
@@ -1328,9 +1549,7 @@ footer{
 
   <div class="section-title">
 
-    <h2>
-      ➕ ট্যুরের খরচ যোগ করুন
-    </h2>
+    <h2>➕ ট্যুরের খরচ যোগ করুন</h2>
 
   </div>
 
@@ -1341,14 +1560,11 @@ footer{
     id="expenseId"
   >
 
-
   <div class="form-grid">
 
     <div class="form-group">
 
-      <label>
-        📍 কোথায় ঘুরতে গিয়েছেন?
-      </label>
+      <label>📍 কোথায় খরচ হয়েছে?</label>
 
       <input
         type="text"
@@ -1361,35 +1577,16 @@ footer{
 
     <div class="form-group">
 
-      <label>
-        💳 খরচের ধরন
-      </label>
+      <label>💳 খরচের ধরন</label>
 
       <select id="expenseType">
 
-        <option value="হোটেল">
-          🏨 হোটেল
-        </option>
-
-        <option value="খাবার">
-          🍛 খাবার
-        </option>
-
-        <option value="গাড়ি">
-          🚗 গাড়ি
-        </option>
-
-        <option value="বাস/ট্রেন">
-          🚌 বাস/ট্রেন
-        </option>
-
-        <option value="বিনোদন">
-          🎡 বিনোদন
-        </option>
-
-        <option value="অন্যান্য">
-          📦 অন্যান্য
-        </option>
+        <option value="হোটেল">🏨 হোটেল</option>
+        <option value="খাবার">🍛 খাবার</option>
+        <option value="গাড়ি">🚗 গাড়ি</option>
+        <option value="বাস/ট্রেন">🚌 বাস/ট্রেন</option>
+        <option value="বিনোদন">🎡 বিনোদন</option>
+        <option value="অন্যান্য">📦 অন্যান্য</option>
 
       </select>
 
@@ -1410,9 +1607,7 @@ footer{
 
     <div class="form-group">
 
-      <label>
-        💰 খরচের পরিমাণ
-      </label>
+      <label>💰 খরচের পরিমাণ</label>
 
       <input
         type="number"
@@ -1426,9 +1621,7 @@ footer{
 
     <div class="form-group full">
 
-      <label>
-        📝 বিস্তারিত
-      </label>
+      <label>📝 বিস্তারিত</label>
 
       <textarea
         id="expenseDescription"
@@ -1438,7 +1631,6 @@ footer{
     </div>
 
   </div>
-
 
   <br>
 
@@ -1470,12 +1662,9 @@ footer{
 
   <div class="section-title">
 
-    <h2>
-      🧾 খরচের বিস্তারিত হিসাব
-    </h2>
+    <h2>🧾 খরচের বিস্তারিত হিসাব</h2>
 
   </div>
-
 
   <div class="table-wrap">
 
@@ -1486,23 +1675,15 @@ footer{
         <tr>
 
           <th>তারিখ</th>
-
           <th>স্থান</th>
-
           <th>ধরন</th>
-
           <th>বিস্তারিত</th>
-
           <th>পরিমাণ</th>
-
-          <th class="admin-column">
-            Action
-          </th>
+          <th>Action</th>
 
         </tr>
 
       </thead>
-
 
       <tbody id="expenseTable">
 
@@ -1553,169 +1734,26 @@ supabase.createClient(
 
 
 /* =========================================
-   ADMIN UID
+   ADMIN
 ========================================= */
 
 const ADMIN_UID =
 "a4d550bf-8a0e-48ad-8f2e-e00c77693049";
 
 
-/* =========================================
-   SETTINGS
-========================================= */
-
 const WEEKLY_AMOUNT = 300;
 
-
-/* =========================================
-   DATA
-========================================= */
 
 let members = [];
 let payments = [];
 let expenses = [];
+let applications = [];
+let comments = [];
+
 let currentUser = null;
 
-
-/* =========================================
-   BANNER SLIDER
-========================================= */
-
-let currentBanner = 0;
-
-let bannerTimer = null;
-
-
-function initBannerSlider(){
-
-  const slides =
-    document.querySelectorAll(
-      ".banner-slide"
-    );
-
-  const dotsContainer =
-    document.getElementById(
-      "bannerDots"
-    );
-
-
-  if(!slides.length) return;
-
-
-  dotsContainer.innerHTML = "";
-
-
-  slides.forEach(
-    function(slide,index){
-
-      const dot =
-        document.createElement("span");
-
-      dot.className =
-        "banner-dot";
-
-      if(index === 0){
-
-        dot.classList.add("active");
-
-      }
-
-
-      dot.onclick =
-        function(){
-
-          showBanner(index);
-
-          restartBannerTimer();
-
-        };
-
-
-      dotsContainer.appendChild(dot);
-
-    }
-  );
-
-
-  startBannerTimer();
-
-}
-
-
-function showBanner(index){
-
-  const slides =
-    document.querySelectorAll(
-      ".banner-slide"
-    );
-
-  const dots =
-    document.querySelectorAll(
-      ".banner-dot"
-    );
-
-
-  if(!slides.length) return;
-
-
-  currentBanner =
-    (index + slides.length) %
-    slides.length;
-
-
-  slides.forEach(
-    function(slide,i){
-
-      slide.classList.toggle(
-        "active",
-        i === currentBanner
-      );
-
-    }
-  );
-
-
-  dots.forEach(
-    function(dot,i){
-
-      dot.classList.toggle(
-        "active",
-        i === currentBanner
-      );
-
-    }
-  );
-
-}
-
-
-function startBannerTimer(){
-
-  clearInterval(
-    bannerTimer
-  );
-
-
-  bannerTimer =
-    setInterval(
-      function(){
-
-        showBanner(
-          currentBanner + 1
-        );
-
-      },
-      4000
-    );
-
-}
-
-
-function restartBannerTimer(){
-
-  startBannerTimer();
-
-}
+let currentComment = 0;
+let commentTimer = null;
 
 
 /* =========================================
@@ -1743,43 +1781,31 @@ function escapeHTML(value){
 }
 
 
-function formatDate(date){
-
-  if(!date) return "-";
-
-  try{
-
-    return new Date(date).toLocaleDateString(
-      "bn-BD",
-      {
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-      }
-    );
-
-  }catch(e){
-
-    return date;
-
-  }
-
-}
-
-
 function today(){
 
   const d = new Date();
 
-  const month =
-    String(d.getMonth()+1)
-      .padStart(2,"0");
+  return d.getFullYear() +
+    "-" +
+    String(d.getMonth()+1).padStart(2,"0") +
+    "-" +
+    String(d.getDate()).padStart(2,"0");
 
-  const day =
-    String(d.getDate())
-      .padStart(2,"0");
+}
 
-  return `${d.getFullYear()}-${month}-${day}`;
+
+function formatDate(date){
+
+  if(!date) return "-";
+
+  return new Date(date).toLocaleDateString(
+    "bn-BD",
+    {
+      year:"numeric",
+      month:"long",
+      day:"numeric"
+    }
+  );
 
 }
 
@@ -1795,92 +1821,225 @@ function isAdmin(){
 
 
 /* =========================================
-   INIT
+   NAVIGATION
 ========================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  async function(){
+function goHome(){
 
-    initBannerSlider();
-
-
-    document.getElementById(
-      "paymentDate"
-    ).value = today();
-
-
-    document.getElementById(
-      "expenseDate"
-    ).value = today();
-
-
-    await checkUser();
-
-    await loadAll();
-
-  }
-);
-
-
-/* =========================================
-   AUTH
-========================================= */
-
-async function checkUser(){
-
-  const {
-    data:{
-      session
-    }
-  } =
-    await supabaseClient.auth.getSession();
-
-
-  if(session){
-
-    currentUser = session.user;
-
-
-    if(isAdmin()){
-
-      showAdmin();
-
-    }
-
-  }
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-async function login(){
+function showApplicationForm(){
 
-  const email =
+  document.getElementById(
+    "applicationSection"
+  ).classList.remove("hidden");
+
+  document.getElementById(
+    "applicationSection"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+function hideApplicationForm(){
+
+  document.getElementById(
+    "applicationSection"
+  ).classList.add("hidden");
+
+}
+
+
+function showCommentForm(){
+
+  document.getElementById(
+    "commentFormSection"
+  ).classList.remove("hidden");
+
+  document.getElementById(
+    "commentFormSection"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+function hideCommentForm(){
+
+  document.getElementById(
+    "commentFormSection"
+  ).classList.add("hidden");
+
+}
+
+
+function scrollToComments(){
+
+  document.getElementById(
+    "commentsSection"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================
+   BANNER
+========================================= */
+
+let bannerIndex = 0;
+
+function initBanner(){
+
+  const slides =
+    document.querySelectorAll(
+      ".banner-slide"
+    );
+
+  const dots =
     document.getElementById(
-      "loginEmail"
+      "bannerDots"
+    );
+
+  slides.forEach(
+    function(slide,index){
+
+      const dot =
+        document.createElement("span");
+
+      dot.className =
+        "banner-dot";
+
+      if(index === 0)
+        dot.classList.add("active");
+
+      dot.onclick =
+        function(){
+
+          showBanner(index);
+
+        };
+
+      dots.appendChild(dot);
+
+    }
+  );
+
+
+  setInterval(
+    function(){
+
+      showBanner(
+        bannerIndex + 1
+      );
+
+    },
+    4000
+  );
+
+}
+
+
+function showBanner(index){
+
+  const slides =
+    document.querySelectorAll(
+      ".banner-slide"
+    );
+
+  const dots =
+    document.querySelectorAll(
+      ".banner-dot"
+    );
+
+  bannerIndex =
+    (index + slides.length) %
+    slides.length;
+
+  slides.forEach(
+    function(slide,i){
+
+      slide.classList.toggle(
+        "active",
+        i === bannerIndex
+      );
+
+    }
+  );
+
+  dots.forEach(
+    function(dot,i){
+
+      dot.classList.toggle(
+        "active",
+        i === bannerIndex
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   APPLICATION
+========================================= */
+
+async function submitApplication(){
+
+  const name =
+    document.getElementById(
+      "appName"
     ).value.trim();
 
-
-  const password =
+  const phone =
     document.getElementById(
-      "loginPassword"
-    ).value;
+      "appPhone"
+    ).value.trim();
 
+  const age =
+    Number(
+      document.getElementById(
+        "appAge"
+      ).value
+    ) || null;
+
+  const profession =
+    document.getElementById(
+      "appProfession"
+    ).value.trim();
+
+  const address =
+    document.getElementById(
+      "appAddress"
+    ).value.trim();
+
+  const messageText =
+    document.getElementById(
+      "appMessage"
+    ).value.trim();
 
   const message =
     document.getElementById(
-      "loginMessage"
+      "applicationMessage"
     );
 
 
-  message.innerHTML = "";
-
-
-  if(!email || !password){
+  if(!name || !phone){
 
     message.innerHTML =
       `<div class="error">
-        Email এবং Password দিন।
+        নাম এবং মোবাইল নম্বর অবশ্যই দিন।
       </div>`;
 
     return;
@@ -1888,22 +2047,26 @@ async function login(){
   }
 
 
-  const {
-    data,
-    error
-  } =
-    await supabaseClient.auth
-      .signInWithPassword({
-        email,
-        password
-      });
+  const { error } =
+    await supabaseClient
+      .from("member_applications")
+      .insert([
+        {
+          name,
+          phone,
+          age,
+          profession,
+          address,
+          message:messageText
+        }
+      ]);
 
 
   if(error){
 
     message.innerHTML =
       `<div class="error">
-        Login failed:
+        আবেদন জমা দেওয়া যায়নি:
         ${escapeHTML(error.message)}
       </div>`;
 
@@ -1912,19 +2075,52 @@ async function login(){
   }
 
 
-  currentUser = data.user;
+  message.innerHTML =
+    `<div class="success">
+      ✅ আপনার আবেদন সফলভাবে জমা হয়েছে।
+      Admin অনুমোদন করার পর আপনি সদস্য হবেন।
+    </div>`;
 
 
-  if(!isAdmin()){
+  document.getElementById("appName").value="";
+  document.getElementById("appPhone").value="";
+  document.getElementById("appAge").value="";
+  document.getElementById("appProfession").value="";
+  document.getElementById("appAddress").value="";
+  document.getElementById("appMessage").value="";
 
-    await supabaseClient.auth.signOut();
-
-    currentUser = null;
+}
 
 
-    message.innerHTML =
+/* =========================================
+   LOAD APPLICATIONS
+========================================= */
+
+async function loadApplications(){
+
+  if(!isAdmin()) return;
+
+
+  const {data,error} =
+    await supabaseClient
+      .from("member_applications")
+      .select("*")
+      .order("created_at",{
+        ascending:false
+      });
+
+
+  const container =
+    document.getElementById(
+      "applicationAdminList"
+    );
+
+
+  if(error){
+
+    container.innerHTML =
       `<div class="error">
-        এই account-এর Admin permission নেই।
+        ${escapeHTML(error.message)}
       </div>`;
 
     return;
@@ -1932,118 +2128,668 @@ async function login(){
   }
 
 
-  showAdmin();
+  applications = data || [];
 
-
-  message.innerHTML =
-    `<div class="success">
-      Login সফল হয়েছে।
-    </div>`;
+  renderApplications();
 
 }
 
 
-function showAdmin(){
+function renderApplications(){
 
-  document.getElementById(
-    "loginSection"
-  ).classList.add("hidden");
-
-
-  document.getElementById(
-    "adminBar"
-  ).classList.remove("hidden");
-
-
-  document.getElementById(
-    "memberAdminSection"
-  ).classList.remove("hidden");
-
-
-  document.getElementById(
-    "paymentAdminSection"
-  ).classList.remove("hidden");
-
-
-  document.getElementById(
-    "expenseAdminSection"
-  ).classList.remove("hidden");
-
-
-  if(currentUser){
-
+  const container =
     document.getElementById(
-      "adminEmail"
-    ).textContent =
-      currentUser.email || "";
+      "applicationAdminList"
+    );
+
+
+  if(!applications.length){
+
+    container.innerHTML =
+      `<div class="center">
+        এখনো কোনো আবেদন নেই।
+      </div>`;
+
+    return;
 
   }
 
 
-  renderPayments();
+  container.innerHTML =
+    applications.map(
+      function(app){
 
-  renderExpenses();
-
-  renderAdminMembers();
-
-}
-
-
-function hideAdmin(){
-
-  document.getElementById(
-    "loginSection"
-  ).classList.remove("hidden");
+        let statusClass =
+          app.status === "pending"
+          ? "pending"
+          : app.status === "approved"
+          ? "paid"
+          : "unpaid";
 
 
-  document.getElementById(
-    "adminBar"
-  ).classList.add("hidden");
+        let statusText =
+          app.status === "pending"
+          ? "Pending"
+          : app.status === "approved"
+          ? "Approved"
+          : "Rejected";
 
 
-  document.getElementById(
-    "memberAdminSection"
-  ).classList.add("hidden");
+        return `
 
+          <div class="application-item">
 
-  document.getElementById(
-    "paymentAdminSection"
-  ).classList.add("hidden");
+            <h3>
+              👤 ${escapeHTML(app.name)}
+            </h3>
 
+            <div class="application-row">
+              📱 <strong>মোবাইল:</strong>
+              ${escapeHTML(app.phone)}
+            </div>
 
-  document.getElementById(
-    "expenseAdminSection"
-  ).classList.add("hidden");
+            <div class="application-row">
+              🎂 <strong>বয়স:</strong>
+              ${app.age || "-"}
+            </div>
 
-}
+            <div class="application-row">
+              💼 <strong>পেশা:</strong>
+              ${escapeHTML(app.profession || "-")}
+            </div>
 
+            <div class="application-row">
+              🏠 <strong>ঠিকানা:</strong>
+              ${escapeHTML(app.address || "-")}
+            </div>
 
-async function logout(){
+            <div class="application-row">
+              📝 <strong>বার্তা:</strong>
+              ${escapeHTML(app.message || "-")}
+            </div>
 
-  await supabaseClient.auth.signOut();
+            <br>
 
-  currentUser = null;
+            <span class="badge ${statusClass}">
+              ${statusText}
+            </span>
 
-  hideAdmin();
+            ${
+              app.status === "pending"
 
-  await loadAll();
+              ?
+
+              `
+              <div class="application-actions">
+
+                <button
+                  class="btn-primary"
+                  onclick="approveApplication(${app.id})"
+                >
+                  ✅ অনুমোদন
+                </button>
+
+                <button
+                  class="btn-warning"
+                  onclick="rejectApplication(${app.id})"
+                >
+                  ❌ বাতিল
+                </button>
+
+              </div>
+              `
+
+              :
+
+              ""
+            }
+
+            <div style="margin-top:8px">
+
+              <button
+                class="btn-danger"
+                onclick="deleteApplication(${app.id})"
+              >
+                🗑️ মুছুন
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
 
 /* =========================================
-   LOAD ALL
+   APPROVE APPLICATION
 ========================================= */
 
-async function loadAll(){
+async function approveApplication(id){
 
-  await Promise.all([
-    loadMembers(),
-    loadPayments(),
-    loadExpenses()
-  ]);
+  if(!isAdmin()) return;
 
-  updateStats();
+
+  const app =
+    applications.find(
+      a => a.id === id
+    );
+
+
+  if(!app) return;
+
+
+  if(
+    !confirm(
+      `"${app.name}"-কে সদস্য হিসেবে যোগ করতে চান?`
+    )
+  ) return;
+
+
+  const exists =
+    members.some(
+      m =>
+        m.name.trim().toLowerCase() ===
+        app.name.trim().toLowerCase()
+    );
+
+
+  if(!exists){
+
+    const memberResult =
+      await supabaseClient
+        .from("members")
+        .insert([
+          {
+            name:app.name
+          }
+        ]);
+
+
+    if(memberResult.error){
+
+      alert(
+        "সদস্য যোগ করা যায়নি: " +
+        memberResult.error.message
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  const {error} =
+    await supabaseClient
+      .from("member_applications")
+      .update({
+        status:"approved"
+      })
+      .eq("id",id);
+
+
+  if(error){
+
+    alert(
+      "Application update failed: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  await loadMembers();
+  await loadApplications();
+
+}
+
+
+/* =========================================
+   REJECT
+========================================= */
+
+async function rejectApplication(id){
+
+  if(!isAdmin()) return;
+
+
+  const {error} =
+    await supabaseClient
+      .from("member_applications")
+      .update({
+        status:"rejected"
+      })
+      .eq("id",id);
+
+
+  if(error){
+
+    alert(error.message);
+    return;
+
+  }
+
+
+  await loadApplications();
+
+}
+
+
+/* =========================================
+   DELETE APPLICATION
+========================================= */
+
+async function deleteApplication(id){
+
+  if(!isAdmin()) return;
+
+
+  if(!confirm("এই আবেদনটি মুছে ফেলতে চান?"))
+    return;
+
+
+  const {error} =
+    await supabaseClient
+      .from("member_applications")
+      .delete()
+      .eq("id",id);
+
+
+  if(error){
+
+    alert(error.message);
+    return;
+
+  }
+
+
+  await loadApplications();
+
+}
+
+
+/* =========================================
+   COMMENTS
+========================================= */
+
+async function submitComment(){
+
+  const name =
+    document.getElementById(
+      "commentName"
+    ).value.trim();
+
+  const comment =
+    document.getElementById(
+      "commentText"
+    ).value.trim();
+
+  const message =
+    document.getElementById(
+      "commentMessage"
+    );
+
+
+  if(!name || !comment){
+
+    message.innerHTML =
+      `<div class="error">
+        নাম এবং মন্তব্য লিখুন।
+      </div>`;
+
+    return;
+
+  }
+
+
+  const {error} =
+    await supabaseClient
+      .from("comments")
+      .insert([
+        {
+          member_name:name,
+          comment:comment,
+          approved:true
+        }
+      ]);
+
+
+  if(error){
+
+    message.innerHTML =
+      `<div class="error">
+        মন্তব্য দেওয়া যায়নি:
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
+  message.innerHTML =
+    `<div class="success">
+      ✅ আপনার মন্তব্য সফলভাবে যোগ হয়েছে।
+    </div>`;
+
+
+  document.getElementById(
+    "commentName"
+  ).value="";
+
+  document.getElementById(
+    "commentText"
+  ).value="";
+
+
+  await loadComments();
+
+}
+
+
+async function loadComments(){
+
+  const {data,error} =
+    await supabaseClient
+      .from("comments")
+      .select("*")
+      .eq("approved",true)
+      .order("created_at",{
+        ascending:false
+      });
+
+
+  if(error){
+
+    document.getElementById(
+      "commentSlider"
+    ).innerHTML =
+      `<div class="error">
+        মন্তব্য লোড করা যায়নি।
+      </div>`;
+
+    return;
+
+  }
+
+
+  comments = data || [];
+
+  renderComments();
+
+}
+
+
+function renderComments(){
+
+  const slider =
+    document.getElementById(
+      "commentSlider"
+    );
+
+  const controls =
+    document.getElementById(
+      "commentControls"
+    );
+
+
+  clearInterval(commentTimer);
+
+
+  if(!comments.length){
+
+    slider.innerHTML =
+      `<div class="center">
+        এখনো কোনো মন্তব্য নেই।
+        <br><br>
+        প্রথম মন্তব্যটি আপনিই করুন।
+      </div>`;
+
+    controls.innerHTML="";
+
+    return;
+
+  }
+
+
+  currentComment = 0;
+
+
+  slider.innerHTML =
+    comments.map(
+      function(comment,index){
+
+        return `
+
+          <div
+            class="comment-slide ${
+              index === 0
+              ? "active"
+              : ""
+            }"
+          >
+
+            <div class="comment-box">
+
+              <div class="quote">
+                “
+              </div>
+
+              <div class="comment-text">
+                ${escapeHTML(comment.comment)}
+              </div>
+
+              <div class="comment-author">
+                — ${escapeHTML(comment.member_name)}
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
+
+  controls.innerHTML =
+    comments.map(
+      function(_,index){
+
+        return `
+          <button
+            class="btn-light"
+            onclick="showComment(${index})"
+          >
+            ${index+1}
+          </button>
+        `;
+
+      }
+    ).join("");
+
+
+  startCommentSlider();
+
+}
+
+
+function showComment(index){
+
+  const slides =
+    document.querySelectorAll(
+      ".comment-slide"
+    );
+
+
+  if(!slides.length) return;
+
+
+  currentComment =
+    (index + slides.length) %
+    slides.length;
+
+
+  slides.forEach(
+    function(slide,i){
+
+      slide.classList.toggle(
+        "active",
+        i === currentComment
+      );
+
+    }
+  );
+
+}
+
+
+function startCommentSlider(){
+
+  clearInterval(commentTimer);
+
+
+  if(comments.length <= 1)
+    return;
+
+
+  commentTimer =
+    setInterval(
+      function(){
+
+        showComment(
+          currentComment + 1
+        );
+
+      },
+      5000
+    );
+
+}
+
+
+/* =========================================
+   ADMIN COMMENTS
+========================================= */
+
+async function loadAdminComments(){
+
+  if(!isAdmin()) return;
+
+
+  const {data,error} =
+    await supabaseClient
+      .from("comments")
+      .select("*")
+      .order("created_at",{
+        ascending:false
+      });
+
+
+  const container =
+    document.getElementById(
+      "adminCommentList"
+    );
+
+
+  if(error){
+
+    container.innerHTML =
+      `<div class="error">
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
+  if(!data || !data.length){
+
+    container.innerHTML =
+      `<div class="center">
+        কোনো মন্তব্য নেই।
+      </div>`;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    data.map(
+      function(comment){
+
+        return `
+
+          <div
+            class="application-item"
+            style="margin-bottom:10px"
+          >
+
+            <strong>
+              👤 ${escapeHTML(
+                comment.member_name
+              )}
+            </strong>
+
+            <p style="margin:10px 0">
+              ${escapeHTML(
+                comment.comment
+              )}
+            </p>
+
+            <button
+              class="btn-danger"
+              onclick="deleteComment(${comment.id})"
+            >
+              🗑️ মুছে ফেলুন
+            </button>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+async function deleteComment(id){
+
+  if(!isAdmin()) return;
+
+
+  if(!confirm("এই মন্তব্য মুছে ফেলবেন?"))
+    return;
+
+
+  const {error} =
+    await supabaseClient
+      .from("comments")
+      .delete()
+      .eq("id",id);
+
+
+  if(error){
+
+    alert(error.message);
+    return;
+
+  }
+
+
+  await loadComments();
+  await loadAdminComments();
 
 }
 
@@ -2054,10 +2800,7 @@ async function loadAll(){
 
 async function loadMembers(){
 
-  const {
-    data,
-    error
-  } =
+  const {data,error} =
     await supabaseClient
       .from("members")
       .select("*")
@@ -2068,14 +2811,10 @@ async function loadMembers(){
 
   if(error){
 
-    console.error(error);
-
     document.getElementById(
       "membersContainer"
     ).innerHTML =
       `<div class="error">
-        সদস্যদের তথ্য লোড করা যায়নি।
-        <br><br>
         ${escapeHTML(error.message)}
       </div>`;
 
@@ -2087,9 +2826,7 @@ async function loadMembers(){
   members = data || [];
 
   renderMemberSelect();
-
   renderMembers();
-
   renderAdminMembers();
 
 }
@@ -2151,12 +2888,12 @@ function renderMembers(){
 
   const maxWeek =
     payments.length
-      ? Math.max(
-          ...payments.map(
-            p => Number(p.week || 0)
-          )
+    ? Math.max(
+        ...payments.map(
+          p => Number(p.week || 0)
         )
-      : 0;
+      )
+    : 0;
 
 
   container.innerHTML =
@@ -2210,42 +2947,24 @@ function renderMembers(){
             </h3>
 
             <div class="member-row">
-
               <span>মোট জমা</span>
-
-              <strong>
-                ${money(totalPaid)}
-              </strong>
-
+              <strong>${money(totalPaid)}</strong>
             </div>
 
             <div class="member-row">
-
-              <span>
-                জমা দেওয়া সপ্তাহ
-              </span>
-
+              <span>জমা দেওয়া সপ্তাহ</span>
               <strong>
                 ${weeksPaid.toLocaleString("bn-BD")}
               </strong>
-
             </div>
 
             <div class="member-row">
-
               <span>বাকি</span>
-
-              <strong>
-                ${money(due)}
-              </strong>
-
+              <strong>${money(due)}</strong>
             </div>
 
             <div class="member-row">
-
-              <span>
-                বর্তমান সপ্তাহ
-              </span>
+              <span>বর্তমান সপ্তাহ</span>
 
               ${
                 currentPayment
@@ -2306,15 +3025,9 @@ function renderAdminMembers(){
     members.map(
       function(member){
 
-        const safeName =
-          String(member.name)
-            .replace(/\\/g,"\\\\")
-            .replace(/'/g,"\\'");
-
-
         return `
 
-          <div class="member-admin-item">
+          <div class="application-item">
 
             <strong>
               👤 ${escapeHTML(member.name)}
@@ -2322,10 +3035,13 @@ function renderAdminMembers(){
 
             <button
               class="btn-danger"
-              onclick="deleteMember(${member.id}, '${safeName}')"
+              style="float:right"
+              onclick="deleteMember(${member.id})"
             >
               🗑️ মুছুন
             </button>
+
+            <div style="clear:both"></div>
 
           </div>
 
@@ -2339,15 +3055,7 @@ function renderAdminMembers(){
 
 async function addMember(){
 
-  if(!isAdmin()){
-
-    alert(
-      "শুধু Admin নতুন সদস্য যোগ করতে পারবেন।"
-    );
-
-    return;
-
-  }
+  if(!isAdmin()) return;
 
 
   const input =
@@ -2355,24 +3063,13 @@ async function addMember(){
       "newMemberName"
     );
 
-
   const name =
     input.value.trim();
 
 
-  const message =
-    document.getElementById(
-      "memberMessage"
-    );
-
-
   if(!name){
 
-    message.innerHTML =
-      `<div class="error">
-        সদস্যের নাম লিখুন।
-      </div>`;
-
+    alert("সদস্যের নাম লিখুন।");
     return;
 
   }
@@ -2380,84 +3077,58 @@ async function addMember(){
 
   const exists =
     members.some(
-      member =>
-        member.name.trim() === name
+      m =>
+        m.name.toLowerCase() ===
+        name.toLowerCase()
     );
 
 
   if(exists){
 
-    message.innerHTML =
-      `<div class="error">
-        এই নামে সদস্য ইতিমধ্যে আছে।
-      </div>`;
-
+    alert("এই সদস্য ইতিমধ্যে আছে।");
     return;
 
   }
 
 
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
       .from("members")
       .insert([
         {
-          name:name
+          name
         }
       ]);
 
 
   if(error){
 
-    console.error(error);
-
-    message.innerHTML =
-      `<div class="error">
-        সদস্য যোগ করা যায়নি:
-        ${escapeHTML(error.message)}
-      </div>`;
-
+    alert(error.message);
     return;
 
   }
 
 
-  input.value = "";
-
-
-  message.innerHTML =
-    `<div class="success">
-      ${escapeHTML(name)}
-      সফলভাবে যোগ হয়েছে।
-    </div>`;
-
+  input.value="";
 
   await loadMembers();
-
-  renderMembers();
 
 }
 
 
-async function deleteMember(id,name){
+async function deleteMember(id){
 
   if(!isAdmin()) return;
 
 
-  const confirmDelete =
-    confirm(
-      `"${name}" সদস্যকে মুছে ফেলতে চান?`
-    );
+  if(
+    !confirm(
+      "এই সদস্যকে মুছে ফেলতে চান?"
+    )
+  ) return;
 
 
-  if(!confirmDelete) return;
-
-
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
       .from("members")
       .delete()
@@ -2466,19 +3137,13 @@ async function deleteMember(id,name){
 
   if(error){
 
-    alert(
-      "সদস্য মুছতে সমস্যা হয়েছে: " +
-      error.message
-    );
-
+    alert(error.message);
     return;
 
   }
 
 
   await loadMembers();
-
-  updateStats();
 
 }
 
@@ -2489,10 +3154,7 @@ async function deleteMember(id,name){
 
 async function loadPayments(){
 
-  const {
-    data,
-    error
-  } =
+  const {data,error} =
     await supabaseClient
       .from("payments")
       .select("*")
@@ -2506,26 +3168,13 @@ async function loadPayments(){
 
   if(error){
 
-    console.error(error);
-
     document.getElementById(
       "paymentsTable"
     ).innerHTML =
       `<tr>
-
-        <td
-          colspan="5"
-          class="center"
-        >
-
-          Payment data load করতে সমস্যা হয়েছে।
-
-          <br><br>
-
+        <td colspan="5" class="center">
           ${escapeHTML(error.message)}
-
         </td>
-
       </tr>`;
 
     return;
@@ -2552,14 +3201,9 @@ function renderPayments(){
 
     tbody.innerHTML =
       `<tr>
-
-        <td
-          colspan="5"
-          class="center"
-        >
+        <td colspan="5" class="center">
           এখনো কোনো payment নেই।
         </td>
-
       </tr>`;
 
     return;
@@ -2576,11 +3220,9 @@ function renderPayments(){
           <tr>
 
             <td>
-
               <strong>
                 ${escapeHTML(payment.member)}
               </strong>
-
             </td>
 
             <td>
@@ -2592,14 +3234,12 @@ function renderPayments(){
             </td>
 
             <td>
-
               <strong>
                 ${money(payment.amount)}
               </strong>
-
             </td>
 
-            <td class="admin-column">
+            <td>
 
               ${
                 isAdmin()
@@ -2634,22 +3274,13 @@ function renderPayments(){
 
 async function addPayment(){
 
-  if(!isAdmin()){
-
-    alert(
-      "শুধু Admin payment যোগ করতে পারবেন।"
-    );
-
-    return;
-
-  }
+  if(!isAdmin()) return;
 
 
   const member =
     document.getElementById(
       "paymentMember"
     ).value;
-
 
   const week =
     Number(
@@ -2658,14 +3289,12 @@ async function addPayment(){
       ).value
     );
 
-
   const amount =
     Number(
       document.getElementById(
         "paymentAmount"
       ).value
     );
-
 
   const payment_date =
     document.getElementById(
@@ -2696,9 +3325,7 @@ async function addPayment(){
   }
 
 
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
       .from("payments")
       .insert([
@@ -2713,11 +3340,8 @@ async function addPayment(){
 
   if(error){
 
-    console.error(error);
-
     message.innerHTML =
       `<div class="error">
-        Payment যোগ করা যায়নি:
         ${escapeHTML(error.message)}
       </div>`;
 
@@ -2734,7 +3358,7 @@ async function addPayment(){
 
   document.getElementById(
     "paymentWeek"
-  ).value = "";
+  ).value="";
 
 
   await loadAll();
@@ -2747,16 +3371,11 @@ async function deletePayment(id){
   if(!isAdmin()) return;
 
 
-  if(
-    !confirm(
-      "এই payment delete করতে চান?"
-    )
-  ) return;
+  if(!confirm("এই payment delete করতে চান?"))
+    return;
 
 
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
       .from("payments")
       .delete()
@@ -2765,11 +3384,7 @@ async function deletePayment(id){
 
   if(error){
 
-    alert(
-      "Delete failed: " +
-      error.message
-    );
-
+    alert(error.message);
     return;
 
   }
@@ -2781,15 +3396,12 @@ async function deletePayment(id){
 
 
 /* =========================================
-   EXPENSES
+   EXPENSE
 ========================================= */
 
 async function loadExpenses(){
 
-  const {
-    data,
-    error
-  } =
+  const {data,error} =
     await supabaseClient
       .from("tour_expenses")
       .select("*")
@@ -2803,26 +3415,13 @@ async function loadExpenses(){
 
   if(error){
 
-    console.error(error);
-
     document.getElementById(
       "expenseTable"
     ).innerHTML =
       `<tr>
-
-        <td
-          colspan="6"
-          class="center"
-        >
-
-          Expense data load করতে সমস্যা হয়েছে।
-
-          <br><br>
-
+        <td colspan="6" class="center">
           ${escapeHTML(error.message)}
-
         </td>
-
       </tr>`;
 
     return;
@@ -2833,7 +3432,6 @@ async function loadExpenses(){
   expenses = data || [];
 
   renderExpenses();
-
   renderLocationSummary();
 
 }
@@ -2851,14 +3449,9 @@ function renderExpenses(){
 
     tbody.innerHTML =
       `<tr>
-
-        <td
-          colspan="6"
-          class="center"
-        >
-          এখনো কোনো ট্যুর খরচ নেই।
+        <td colspan="6" class="center">
+          এখনো কোনো খরচ নেই।
         </td>
-
       </tr>`;
 
     return;
@@ -2881,14 +3474,10 @@ function renderExpenses(){
             </td>
 
             <td>
-
-              <strong>
-                📍
-                ${escapeHTML(
-                  expense.location
-                )}
-              </strong>
-
+              📍
+              ${escapeHTML(
+                expense.location
+              )}
             </td>
 
             <td>
@@ -2904,14 +3493,12 @@ function renderExpenses(){
             </td>
 
             <td>
-
               <strong>
                 ${money(expense.amount)}
               </strong>
-
             </td>
 
-            <td class="admin-column">
+            <td>
 
               ${
                 isAdmin()
@@ -2963,21 +3550,6 @@ function renderLocationSummary(){
     );
 
 
-  if(!expenses.length){
-
-    container.innerHTML =
-      `<div
-        class="center"
-        style="color:#777"
-      >
-        এখনো কোনো খরচ নেই।
-      </div>`;
-
-    return;
-
-  }
-
-
   const locations = {};
 
 
@@ -2989,14 +3561,8 @@ function renderLocationSummary(){
         "অন্যান্য";
 
 
-      if(!locations[location]){
-
-        locations[location] = 0;
-
-      }
-
-
-      locations[location] +=
+      locations[location] =
+        (locations[location] || 0) +
         Number(expense.amount || 0);
 
     }
@@ -3006,8 +3572,20 @@ function renderLocationSummary(){
   const sorted =
     Object.entries(locations)
       .sort(
-        (a,b) => b[1] - a[1]
+        (a,b) => b[1]-a[1]
       );
+
+
+  if(!sorted.length){
+
+    container.innerHTML =
+      `<div class="center">
+        এখনো কোনো খরচ নেই।
+      </div>`;
+
+    return;
+
+  }
 
 
   container.innerHTML =
@@ -3019,10 +3597,7 @@ function renderLocationSummary(){
           <div class="location-item">
 
             <span>
-
-              📍
-              ${escapeHTML(location)}
-
+              📍 ${escapeHTML(location)}
             </span>
 
             <strong>
@@ -3039,21 +3614,9 @@ function renderLocationSummary(){
 }
 
 
-/* =========================================
-   SAVE EXPENSE
-========================================= */
-
 async function saveExpense(){
 
-  if(!isAdmin()){
-
-    alert(
-      "শুধু Admin expense যোগ করতে পারবেন।"
-    );
-
-    return;
-
-  }
+  if(!isAdmin()) return;
 
 
   const id =
@@ -3117,51 +3680,42 @@ async function saveExpense(){
 
 
   const payload = {
-
     location,
     expense_type,
     expense_date,
     amount,
     description
-
   };
 
 
-  let error;
+  let result;
 
 
   if(id){
 
-    const result =
+    result =
       await supabaseClient
         .from("tour_expenses")
         .update(payload)
         .eq("id",id);
 
-    error = result.error;
-
   }else{
 
-    const result =
+    result =
       await supabaseClient
         .from("tour_expenses")
-        .insert([
-          payload
-        ]);
-
-    error = result.error;
+        .insert([payload]);
 
   }
 
 
-  if(error){
-
-    console.error(error);
+  if(result.error){
 
     message.innerHTML =
       `<div class="error">
-        Save failed:
-        ${escapeHTML(error.message)}
+        ${escapeHTML(
+          result.error.message
+        )}
       </div>`;
 
     return;
@@ -3171,13 +3725,11 @@ async function saveExpense(){
 
   message.innerHTML =
     `<div class="success">
-
       ${
         id
-        ? "খরচ সফলভাবে আপডেট হয়েছে।"
-        : "খরচ সফলভাবে যোগ হয়েছে।"
+        ? "খরচ আপডেট হয়েছে।"
+        : "খরচ যোগ হয়েছে।"
       }
-
     </div>`;
 
 
@@ -3195,7 +3747,7 @@ function editExpense(id){
 
   const expense =
     expenses.find(
-      item => item.id === id
+      e => e.id === id
     );
 
 
@@ -3204,39 +3756,27 @@ function editExpense(id){
 
   document.getElementById(
     "expenseId"
-  ).value =
-    expense.id;
-
+  ).value=expense.id;
 
   document.getElementById(
     "expenseLocation"
-  ).value =
-    expense.location || "";
-
+  ).value=expense.location;
 
   document.getElementById(
     "expenseType"
-  ).value =
-    expense.expense_type ||
-    "অন্যান্য";
-
+  ).value=expense.expense_type;
 
   document.getElementById(
     "expenseDate"
-  ).value =
-    expense.expense_date || "";
-
+  ).value=expense.expense_date;
 
   document.getElementById(
     "expenseAmount"
-  ).value =
-    expense.amount || "";
-
+  ).value=expense.amount;
 
   document.getElementById(
     "expenseDescription"
-  ).value =
-    expense.description || "";
+  ).value=expense.description || "";
 
 
   document.getElementById(
@@ -3253,48 +3793,42 @@ function editExpense(id){
 }
 
 
-function cancelExpenseEdit(){
-
-  clearExpenseForm();
-
-}
-
-
 function clearExpenseForm(){
 
   document.getElementById(
     "expenseId"
-  ).value = "";
-
+  ).value="";
 
   document.getElementById(
     "expenseLocation"
-  ).value = "";
-
+  ).value="";
 
   document.getElementById(
     "expenseType"
-  ).value = "হোটেল";
-
+  ).value="হোটেল";
 
   document.getElementById(
     "expenseDate"
-  ).value = today();
-
+  ).value=today();
 
   document.getElementById(
     "expenseAmount"
-  ).value = "";
-
+  ).value="";
 
   document.getElementById(
     "expenseDescription"
-  ).value = "";
-
+  ).value="";
 
   document.getElementById(
     "cancelExpenseBtn"
   ).classList.add("hidden");
+
+}
+
+
+function cancelExpenseEdit(){
+
+  clearExpenseForm();
 
 }
 
@@ -3304,16 +3838,11 @@ async function deleteExpense(id){
   if(!isAdmin()) return;
 
 
-  if(
-    !confirm(
-      "এই খরচটি delete করতে চান?"
-    )
-  ) return;
+  if(!confirm("এই খরচ delete করতে চান?"))
+    return;
 
 
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
       .from("tour_expenses")
       .delete()
@@ -3322,11 +3851,7 @@ async function deleteExpense(id){
 
   if(error){
 
-    alert(
-      "Delete failed: " +
-      error.message
-    );
-
+    alert(error.message);
     return;
 
   }
@@ -3346,8 +3871,7 @@ function updateStats(){
   const totalFund =
     payments.reduce(
       (sum,p) =>
-        sum +
-        Number(p.amount || 0),
+        sum + Number(p.amount || 0),
       0
     );
 
@@ -3355,8 +3879,7 @@ function updateStats(){
   const totalExpense =
     expenses.reduce(
       (sum,e) =>
-        sum +
-        Number(e.amount || 0),
+        sum + Number(e.amount || 0),
       0
     );
 
@@ -3367,20 +3890,17 @@ function updateStats(){
 
   document.getElementById(
     "totalFund"
-  ).textContent =
-    money(totalFund);
+  ).textContent=money(totalFund);
 
 
   document.getElementById(
     "totalExpense"
-  ).textContent =
-    money(totalExpense);
+  ).textContent=money(totalExpense);
 
 
   document.getElementById(
     "remainingFund"
-  ).textContent =
-    money(remaining);
+  ).textContent=money(remaining);
 
 
   const balanceCard =
@@ -3389,32 +3909,20 @@ function updateStats(){
     );
 
 
-  if(remaining < 0){
-
-    balanceCard.classList.add(
-      "negative"
-    );
-
-  }else{
-
-    balanceCard.classList.remove(
-      "negative"
-    );
-
-  }
+  balanceCard.classList.toggle(
+    "negative",
+    remaining < 0
+  );
 
 
   const totalWeeks =
     payments.length
-      ? Math.max(
-          ...payments.map(
-            p =>
-              Number(
-                p.week || 0
-              )
-          )
+    ? Math.max(
+        ...payments.map(
+          p => Number(p.week || 0)
         )
-      : 0;
+      )
+    : 0;
 
 
   document.getElementById(
@@ -3429,7 +3937,7 @@ function updateStats(){
     totalWeeks || 1;
 
 
-  const currentWeekPayments =
+  const currentPayments =
     payments.filter(
       p =>
         Number(p.week) ===
@@ -3437,11 +3945,10 @@ function updateStats(){
     );
 
 
-  const currentWeekTotal =
-    currentWeekPayments.reduce(
+  const currentTotal =
+    currentPayments.reduce(
       (sum,p) =>
-        sum +
-        Number(p.amount || 0),
+        sum + Number(p.amount || 0),
       0
     );
 
@@ -3449,49 +3956,43 @@ function updateStats(){
   document.getElementById(
     "currentWeekFund"
   ).textContent =
-    money(currentWeekTotal);
+    money(currentTotal);
 
 
   document.getElementById(
     "currentWeekText"
   ).textContent =
-    `সপ্তাহ ${currentWeek} এ জমা হয়েছে ${money(currentWeekTotal)}।`;
+    `সপ্তাহ ${currentWeek} এ জমা হয়েছে ${money(currentTotal)}।`;
 
 
   document.getElementById(
     "expenseFund"
-  ).textContent =
-    money(totalFund);
+  ).textContent=money(totalFund);
 
 
   document.getElementById(
     "expenseTotal"
-  ).textContent =
-    money(totalExpense);
+  ).textContent=money(totalExpense);
 
 
   document.getElementById(
     "expenseRemaining"
-  ).textContent =
-    money(remaining);
+  ).textContent=money(remaining);
 
 
   document.getElementById(
     "calcFund"
-  ).textContent =
-    money(totalFund);
+  ).textContent=money(totalFund);
 
 
   document.getElementById(
     "calcExpense"
-  ).textContent =
-    money(totalExpense);
+  ).textContent=money(totalExpense);
 
 
   document.getElementById(
     "calcBalance"
-  ).textContent =
-    money(remaining);
+  ).textContent=money(remaining);
 
 
   document.getElementById(
@@ -3504,25 +4005,12 @@ function updateStats(){
      <strong>${money(remaining)}</strong>`;
 
 
-  const balanceBox =
-    document.getElementById(
-      "expenseBalanceBox"
-    );
-
-
-  if(remaining < 0){
-
-    balanceBox.classList.add(
-      "negative"
-    );
-
-  }else{
-
-    balanceBox.classList.remove(
-      "negative"
-    );
-
-  }
+  document.getElementById(
+    "expenseBalanceBox"
+  ).classList.toggle(
+    "negative",
+    remaining < 0
+  );
 
 
   renderMembers();
@@ -3536,13 +4024,11 @@ function updateStats(){
 
 function downloadCSV(){
 
-  let csv =
-    "\uFEFF";
+  let csv="\uFEFF";
 
 
   csv +=
     "PAYMENTS\n";
-
 
   csv +=
     "সদস্য,সপ্তাহ,তারিখ,পরিমাণ\n";
@@ -3563,7 +4049,6 @@ function downloadCSV(){
 
   csv +=
     "\nTOUR EXPENSES\n";
-
 
   csv +=
     "তারিখ,স্থান,ধরন,বিস্তারিত,পরিমাণ\n";
@@ -3586,8 +4071,7 @@ function downloadCSV(){
   const totalFund =
     payments.reduce(
       (sum,p) =>
-        sum +
-        Number(p.amount || 0),
+        sum + Number(p.amount || 0),
       0
     );
 
@@ -3595,8 +4079,7 @@ function downloadCSV(){
   const totalExpense =
     expenses.reduce(
       (sum,e) =>
-        sum +
-        Number(e.amount || 0),
+        sum + Number(e.amount || 0),
       0
     );
 
@@ -3604,23 +4087,18 @@ function downloadCSV(){
   csv +=
     "\nSUMMARY\n";
 
-
   csv +=
     "মোট জমা,মোট খরচ,বর্তমান ব্যালেন্স\n";
 
-
   csv +=
-    `${totalFund},` +
-    `${totalExpense},` +
-    `${totalFund-totalExpense}\n`;
+    `${totalFund},${totalExpense},${totalFund-totalExpense}\n`;
 
 
   const blob =
     new Blob(
       [csv],
       {
-        type:
-          "text/csv;charset=utf-8;"
+        type:"text/csv;charset=utf-8;"
       }
     );
 
@@ -3632,13 +4110,10 @@ function downloadCSV(){
   const a =
     document.createElement("a");
 
+  a.href=url;
 
-  a.href = url;
-
-
-  a.download =
+  a.download=
     "tour-fund-report.csv";
-
 
   document.body.appendChild(a);
 
@@ -3660,16 +4135,276 @@ function csvSafe(value){
 
 
 /* =========================================
+   AUTH
+========================================= */
+
+async function checkUser(){
+
+  const {data} =
+    await supabaseClient.auth.getSession();
+
+
+  currentUser =
+    data.session
+    ? data.session.user
+    : null;
+
+
+  if(isAdmin()){
+
+    showAdmin();
+
+  }
+
+}
+
+
+async function login(){
+
+  const email =
+    document.getElementById(
+      "loginEmail"
+    ).value.trim();
+
+  const password =
+    document.getElementById(
+      "loginPassword"
+    ).value;
+
+  const message =
+    document.getElementById(
+      "loginMessage"
+    );
+
+
+  message.innerHTML="";
+
+
+  if(!email || !password){
+
+    message.innerHTML =
+      `<div class="error">
+        Email এবং Password দিন।
+      </div>`;
+
+    return;
+
+  }
+
+
+  const {data,error} =
+    await supabaseClient.auth
+      .signInWithPassword({
+        email,
+        password
+      });
+
+
+  if(error){
+
+    message.innerHTML =
+      `<div class="error">
+        Login failed:
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+
+  }
+
+
+  currentUser=data.user;
+
+
+  if(!isAdmin()){
+
+    await supabaseClient.auth.signOut();
+
+    currentUser=null;
+
+
+    message.innerHTML =
+      `<div class="error">
+        এই account-এর Admin permission নেই।
+      </div>`;
+
+    return;
+
+  }
+
+
+  showAdmin();
+
+
+  message.innerHTML =
+    `<div class="success">
+      Login সফল হয়েছে।
+    </div>`;
+
+}
+
+
+function showAdmin(){
+
+  document.getElementById(
+    "loginSection"
+  ).classList.add("hidden");
+
+
+  document.getElementById(
+    "adminBar"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "applicationAdminSection"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "commentAdminSection"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "memberAdminSection"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "paymentAdminSection"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "expenseAdminSection"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "adminEmail"
+  ).textContent =
+    currentUser.email || "";
+
+
+  loadApplications();
+  loadAdminComments();
+
+  renderAdminMembers();
+  renderPayments();
+  renderExpenses();
+
+}
+
+
+function hideAdmin(){
+
+  document.getElementById(
+    "loginSection"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "adminBar"
+  ).classList.add("hidden");
+
+
+  document.getElementById(
+    "applicationAdminSection"
+  ).classList.add("hidden");
+
+
+  document.getElementById(
+    "commentAdminSection"
+  ).classList.add("hidden");
+
+
+  document.getElementById(
+    "memberAdminSection"
+  ).classList.add("hidden");
+
+
+  document.getElementById(
+    "paymentAdminSection"
+  ).classList.add("hidden");
+
+
+  document.getElementById(
+    "expenseAdminSection"
+  ).classList.add("hidden");
+
+}
+
+
+async function logout(){
+
+  await supabaseClient.auth.signOut();
+
+  currentUser=null;
+
+  hideAdmin();
+
+}
+
+
+/* =========================================
+   LOAD ALL
+========================================= */
+
+async function loadAll(){
+
+  await Promise.all([
+    loadMembers(),
+    loadPayments(),
+    loadExpenses(),
+    loadComments()
+  ]);
+
+  updateStats();
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  async function(){
+
+    initBanner();
+
+
+    document.getElementById(
+      "paymentDate"
+    ).value=today();
+
+
+    document.getElementById(
+      "expenseDate"
+    ).value=today();
+
+
+    await checkUser();
+
+    await loadAll();
+
+  }
+);
+
+
+/* =========================================
    AUTH STATE
 ========================================= */
 
 supabaseClient.auth.onAuthStateChange(
-  async function(event,session){
+  function(event,session){
 
     currentUser =
       session
-        ? session.user
-        : null;
+      ? session.user
+      : null;
 
 
     if(isAdmin()){
@@ -3684,9 +4419,7 @@ supabaseClient.auth.onAuthStateChange(
 
 
     renderPayments();
-
     renderExpenses();
-
     renderMembers();
 
   }
