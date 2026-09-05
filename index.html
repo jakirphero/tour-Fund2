@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>আমাদের Tour Fund</title>
 
-  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -20,14 +16,9 @@
     }
 
     body {
-      font-family:
-        "Noto Sans Bengali",
-        "Hind Siliguri",
-        Arial,
-        sans-serif;
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
       background: #f4f7fb;
       color: #1f2937;
-      line-height: 1.6;
     }
 
     .container {
@@ -39,50 +30,129 @@
     header {
       background: linear-gradient(135deg, #2563eb, #7c3aed);
       color: white;
-      padding: 30px 0;
+      padding: 28px 0;
       margin-bottom: 25px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
     }
 
     header h1 {
       text-align: center;
       font-size: 32px;
-      margin-bottom: 5px;
     }
 
     header p {
       text-align: center;
-      opacity: 0.9;
+      margin-top: 5px;
     }
+
+    /* Login */
+
+    .login-box {
+      width: 94%;
+      max-width: 420px;
+      background: white;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    /* Buttons */
+
+    .btn {
+      border: none;
+      padding: 11px 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    .btn-warning {
+      background: #f59e0b;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Status */
 
     .status {
-      margin: 15px auto;
-      max-width: 1200px;
-      padding: 12px 16px;
-      border-radius: 10px;
       display: none;
-      font-weight: 600;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      font-weight: bold;
     }
 
-    .status.success {
+    .success {
       display: block;
       background: #dcfce7;
       color: #166534;
     }
 
-    .status.error {
+    .error {
       display: block;
       background: #fee2e2;
       color: #991b1b;
     }
 
-    .status.loading {
+    .loading {
       display: block;
       background: #dbeafe;
       color: #1e40af;
     }
 
-    /* Statistics */
+    /* Top bar */
+
+    .topbar {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
+    }
+
+    .admin-info {
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    /* Stats */
 
     .stats {
       display: grid;
@@ -93,31 +163,32 @@
 
     .stat-card {
       background: white;
-      padding: 22px;
-      border-radius: 15px;
-      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+      padding: 20px;
+      border-radius: 14px;
       text-align: center;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
     }
 
     .stat-card h3 {
-      font-size: 15px;
       color: #6b7280;
+      font-size: 15px;
       margin-bottom: 8px;
     }
 
-    .stat-card .number {
-      font-size: 28px;
-      font-weight: bold;
+    .number {
       color: #2563eb;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    /* Sections */
+
+    .section-title {
+      margin: 25px 0 15px;
+      font-size: 22px;
     }
 
     /* Members */
-
-    .section-title {
-      font-size: 23px;
-      margin: 25px 0 15px;
-      color: #111827;
-    }
 
     .members {
       display: grid;
@@ -127,9 +198,9 @@
 
     .member-card {
       background: white;
-      border-radius: 15px;
       padding: 20px;
-      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+      border-radius: 14px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
     }
 
     .member-name {
@@ -156,8 +227,7 @@
     }
 
     .progress {
-      width: 100%;
-      height: 10px;
+      height: 9px;
       background: #e5e7eb;
       border-radius: 20px;
       overflow: hidden;
@@ -166,126 +236,73 @@
 
     .progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #2563eb, #7c3aed);
-      border-radius: 20px;
-      transition: width 0.3s;
+      background: linear-gradient(90deg,#2563eb,#7c3aed);
     }
 
     /* Form */
 
     .form-box {
       background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
-      margin-bottom: 25px;
+      padding: 23px;
+      border-radius: 14px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4,1fr);
       gap: 15px;
     }
 
     .input-group label {
       display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
+      font-weight: bold;
       font-size: 14px;
+      margin-bottom: 6px;
     }
 
-    input,
-    select {
+    .input-group input,
+    .input-group select {
       width: 100%;
       padding: 12px;
       border: 1px solid #d1d5db;
-      border-radius: 9px;
+      border-radius: 8px;
       font-size: 15px;
-      outline: none;
       background: white;
     }
 
-    input:focus,
-    select:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-
-    .btn {
-      border: none;
-      border-radius: 9px;
-      padding: 12px 18px;
-      font-size: 15px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      opacity: 0.92;
-    }
-
-    .btn-primary {
-      background: #2563eb;
-      color: white;
-    }
-
-    .btn-danger {
-      background: #dc2626;
-      color: white;
-    }
-
-    .btn-warning {
-      background: #f59e0b;
-      color: white;
-    }
-
-    .btn-secondary {
-      background: #6b7280;
-      color: white;
-    }
-
     .form-button {
-      margin-top: 22px;
+      margin-top: 18px;
     }
 
     /* Tables */
 
     .table-box {
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+      border-radius: 14px;
       overflow-x: auto;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
       margin-bottom: 30px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 750px;
+      min-width: 700px;
     }
 
     th,
     td {
-      padding: 13px 12px;
+      padding: 13px;
       border-bottom: 1px solid #e5e7eb;
       text-align: center;
-      font-size: 14px;
     }
 
     th {
       background: #f8fafc;
-      font-weight: bold;
-      color: #374151;
-    }
-
-    tr:hover td {
-      background: #f9fafb;
     }
 
     .badge {
-      display: inline-block;
       padding: 4px 9px;
       border-radius: 20px;
       font-size: 12px;
@@ -305,44 +322,43 @@
     .actions {
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .actions .btn {
-      padding: 7px 10px;
+      padding: 6px 9px;
       font-size: 12px;
     }
 
     .empty {
-      text-align: center;
       padding: 30px;
+      text-align: center;
       color: #6b7280;
     }
 
-    .footer-actions {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 40px;
-      gap: 10px;
+    .hidden {
+      display: none !important;
     }
 
     /* Mobile */
 
-    @media (max-width: 900px) {
+    @media(max-width:900px) {
+
       .stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
 
       .members {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
 
       .form-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
     }
 
-    @media (max-width: 600px) {
+    @media(max-width:600px) {
+
       header h1 {
         font-size: 26px;
       }
@@ -352,14 +368,6 @@
         gap: 10px;
       }
 
-      .stat-card {
-        padding: 15px 10px;
-      }
-
-      .stat-card .number {
-        font-size: 22px;
-      }
-
       .members {
         grid-template-columns: 1fr;
       }
@@ -368,19 +376,12 @@
         grid-template-columns: 1fr;
       }
 
-      .section-title {
-        font-size: 20px;
+      .topbar {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-      .form-box {
-        padding: 17px;
-      }
-
-      .footer-actions {
-        justify-content: stretch;
-      }
-
-      .footer-actions .btn {
+      .topbar button {
         width: 100%;
       }
     }
@@ -389,7 +390,8 @@
 
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
+
   <header>
     <div class="container">
       <h1>🌴 আমাদের Tour Fund 🌴</h1>
@@ -397,188 +399,364 @@
     </div>
   </header>
 
-  <!-- Status -->
-  <div class="container">
-    <div id="status" class="status"></div>
+
+  <!-- LOGIN -->
+
+  <div id="loginSection">
+
+    <div class="login-box">
+
+      <h2>🔐 Admin Login</h2>
+
+      <input
+        type="email"
+        id="loginEmail"
+        placeholder="Admin Email"
+      >
+
+      <input
+        type="password"
+        id="loginPassword"
+        placeholder="Password"
+      >
+
+      <button
+        class="btn btn-primary btn-full"
+        onclick="login()"
+        id="loginBtn"
+      >
+        Login
+      </button>
+
+      <div
+        id="loginStatus"
+        class="status"
+        style="margin-top:15px;"
+      ></div>
+
+    </div>
+
   </div>
 
-  <main class="container">
 
-    <!-- Statistics -->
-    <h2 class="section-title">📊 Fund Overview</h2>
+  <!-- MAIN APP -->
 
-    <div class="stats">
+  <div
+    id="appSection"
+    class="hidden"
+  >
 
-      <div class="stat-card">
-        <h3>মোট ফান্ড</h3>
-        <div class="number" id="totalFund">৳0</div>
-      </div>
+    <div class="container">
 
-      <div class="stat-card">
-        <h3>মোট সপ্তাহ</h3>
-        <div class="number" id="totalWeeks">0</div>
-      </div>
+      <!-- ADMIN BAR -->
 
-      <div class="stat-card">
-        <h3>এই সপ্তাহে</h3>
-        <div class="number" id="currentWeekFund">৳0</div>
-      </div>
+      <div class="topbar">
 
-      <div class="stat-card">
-        <h3>মোট বকেয়া</h3>
-        <div class="number" id="totalDue">৳0</div>
-      </div>
-
-    </div>
-
-    <!-- Members -->
-    <h2 class="section-title">👥 সদস্যদের অবস্থা</h2>
-
-    <div id="members" class="members"></div>
-
-    <!-- Add Payment -->
-    <h2 class="section-title">➕ নতুন পেমেন্ট যোগ করুন</h2>
-
-    <div class="form-box">
-
-      <form id="paymentForm">
-
-        <div class="form-grid">
-
-          <div class="input-group">
-            <label>সদস্য</label>
-
-            <select id="member" required>
-              <option value="">সদস্য নির্বাচন করুন</option>
-              <option value="জাকির">জাকির</option>
-              <option value="আরমান">আরমান</option>
-              <option value="তানিম">তানিম</option>
-              <option value="তাসিন">তাসিন</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label>সপ্তাহ নম্বর</label>
-
-            <input
-              type="number"
-              id="week"
-              min="1"
-              value="1"
-              required
-            />
-          </div>
-
-          <div class="input-group">
-            <label>তারিখ</label>
-
-            <input
-              type="date"
-              id="paymentDate"
-              required
-            />
-          </div>
-
-          <div class="input-group">
-            <label>টাকার পরিমাণ</label>
-
-            <input
-              type="number"
-              id="amount"
-              min="1"
-              value="300"
-              required
-            />
-          </div>
-
+        <div class="admin-info">
+          👤 Admin:
+          <span id="adminEmail"></span>
         </div>
 
-        <div class="form-button">
-          <button
-            type="submit"
-            class="btn btn-primary"
-            id="submitBtn"
+        <button
+          class="btn btn-danger"
+          onclick="logout()"
+        >
+          🚪 Logout
+        </button>
+
+      </div>
+
+
+      <!-- STATUS -->
+
+      <div
+        id="status"
+        class="status"
+      ></div>
+
+
+      <!-- STATS -->
+
+      <h2 class="section-title">
+        📊 Fund Overview
+      </h2>
+
+      <div class="stats">
+
+        <div class="stat-card">
+          <h3>মোট ফান্ড</h3>
+          <div
+            class="number"
+            id="totalFund"
           >
-            💰 জমা করুন
-          </button>
+            ৳0
+          </div>
         </div>
 
-      </form>
+        <div class="stat-card">
+          <h3>মোট সপ্তাহ</h3>
+          <div
+            class="number"
+            id="totalWeeks"
+          >
+            0
+          </div>
+        </div>
 
-    </div>
+        <div class="stat-card">
+          <h3>এই সপ্তাহে</h3>
+          <div
+            class="number"
+            id="currentWeekFund"
+          >
+            ৳0
+          </div>
+        </div>
 
-    <!-- Weekly Report -->
-    <h2 class="section-title">📅 সপ্তাহভিত্তিক রিপোর্ট</h2>
+        <div class="stat-card">
+          <h3>মোট বকেয়া</h3>
+          <div
+            class="number"
+            id="totalDue"
+          >
+            ৳0
+          </div>
+        </div>
 
-    <div class="table-box">
+      </div>
 
-      <table>
 
-        <thead>
-          <tr>
-            <th>সপ্তাহ</th>
-            <th>তারিখ</th>
-            <th>জাকির</th>
-            <th>আরমান</th>
-            <th>তানিম</th>
-            <th>তাসিন</th>
-            <th>মোট</th>
-          </tr>
-        </thead>
+      <!-- MEMBERS -->
 
-        <tbody id="weeklyTable"></tbody>
+      <h2 class="section-title">
+        👥 সদস্যদের অবস্থা
+      </h2>
 
-      </table>
+      <div
+        id="members"
+        class="members"
+      ></div>
 
-    </div>
 
-    <!-- History -->
-    <h2 class="section-title">📜 বিস্তারিত পেমেন্ট ইতিহাস</h2>
+      <!-- ADD PAYMENT -->
 
-    <div class="table-box">
+      <h2 class="section-title">
+        ➕ নতুন পেমেন্ট
+      </h2>
 
-      <table>
+      <div class="form-box">
 
-        <thead>
-          <tr>
-            <th>সপ্তাহ</th>
-            <th>সদস্য</th>
-            <th>তারিখ</th>
-            <th>পরিমাণ</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+        <form id="paymentForm">
 
-        <tbody id="historyTable"></tbody>
+          <div class="form-grid">
 
-      </table>
+            <div class="input-group">
 
-    </div>
+              <label>
+                সদস্য
+              </label>
 
-    <!-- Actions -->
-    <div class="footer-actions">
+              <select
+                id="member"
+                required
+              >
 
-      <button
-        class="btn btn-secondary"
-        onclick="loadPayments()"
+                <option value="">
+                  সদস্য নির্বাচন করুন
+                </option>
+
+                <option value="জাকির">
+                  জাকির
+                </option>
+
+                <option value="আরমান">
+                  আরমান
+                </option>
+
+                <option value="তানিম">
+                  তানিম
+                </option>
+
+                <option value="তাসিন">
+                  তাসিন
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                সপ্তাহ
+              </label>
+
+              <input
+                type="number"
+                id="week"
+                min="1"
+                value="1"
+                required
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                তারিখ
+              </label>
+
+              <input
+                type="date"
+                id="paymentDate"
+                required
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                টাকা
+              </label>
+
+              <input
+                type="number"
+                id="amount"
+                min="1"
+                value="300"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-button">
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="submitBtn"
+            >
+              💰 জমা করুন
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <!-- WEEKLY -->
+
+      <h2 class="section-title">
+        📅 সপ্তাহভিত্তিক রিপোর্ট
+      </h2>
+
+      <div class="table-box">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>সপ্তাহ</th>
+              <th>তারিখ</th>
+              <th>জাকির</th>
+              <th>আরমান</th>
+              <th>তানিম</th>
+              <th>তাসিন</th>
+              <th>মোট</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody
+            id="weeklyTable"
+          ></tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- HISTORY -->
+
+      <h2 class="section-title">
+        📜 পেমেন্ট ইতিহাস
+      </h2>
+
+      <div class="table-box">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>সপ্তাহ</th>
+              <th>সদস্য</th>
+              <th>তারিখ</th>
+              <th>পরিমাণ</th>
+              <th>Action</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody
+            id="historyTable"
+          ></tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+      <div
+        style="
+          display:flex;
+          gap:10px;
+          margin-bottom:40px;
+        "
       >
-        🔄 Refresh
-      </button>
 
-      <button
-        class="btn btn-danger"
-        onclick="resetData()"
-      >
-        🗑️ সব ডাটা মুছুন
-      </button>
+        <button
+          class="btn btn-secondary"
+          onclick="loadPayments()"
+        >
+          🔄 Refresh
+        </button>
+
+        <button
+          class="btn btn-danger"
+          onclick="resetData()"
+        >
+          🗑️ সব ডাটা মুছুন
+        </button>
+
+      </div>
 
     </div>
 
-  </main>
+  </div>
+
 
 <script>
+
 /* =====================================================
-   SUPABASE CONFIG
+   SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
@@ -595,7 +773,7 @@ const supabaseClient =
 
 
 /* =====================================================
-   APP CONFIG
+   CONFIG
 ===================================================== */
 
 const MEMBERS = [
@@ -611,58 +789,34 @@ let payments = [];
 
 
 /* =====================================================
-   DOM
-===================================================== */
-
-const statusBox =
-  document.getElementById("status");
-
-const paymentForm =
-  document.getElementById("paymentForm");
-
-const memberInput =
-  document.getElementById("member");
-
-const weekInput =
-  document.getElementById("week");
-
-const dateInput =
-  document.getElementById("paymentDate");
-
-const amountInput =
-  document.getElementById("amount");
-
-const submitBtn =
-  document.getElementById("submitBtn");
-
-
-/* =====================================================
-   TODAY DATE
+   DATE
 ===================================================== */
 
 function getToday() {
 
-  const now = new Date();
+  const date = new Date();
 
-  const year =
-    now.getFullYear();
+  const y =
+    date.getFullYear();
 
-  const month =
-    String(now.getMonth() + 1)
-      .padStart(2, "0");
+  const m =
+    String(date.getMonth() + 1)
+      .padStart(2,"0");
 
-  const day =
-    String(now.getDate())
-      .padStart(2, "0");
+  const d =
+    String(date.getDate())
+      .padStart(2,"0");
 
-  return `${year}-${month}-${day}`;
+  return `${y}-${m}-${d}`;
 }
 
-dateInput.value = getToday();
+document.getElementById(
+  "paymentDate"
+).value = getToday();
 
 
 /* =====================================================
-   STATUS MESSAGE
+   STATUS
 ===================================================== */
 
 function showStatus(
@@ -670,20 +824,230 @@ function showStatus(
   type = "success"
 ) {
 
-  statusBox.textContent = message;
+  const box =
+    document.getElementById("status");
 
-  statusBox.className =
-    `status ${type}`;
+  box.textContent = message;
 
-  if (type !== "loading") {
+  box.className =
+    "status " + type;
+
+  if(type !== "loading") {
 
     setTimeout(() => {
 
-      statusBox.className =
+      box.className =
         "status";
 
-    }, 4000);
+    },4000);
   }
+}
+
+
+function showLoginStatus(
+  message,
+  type = "error"
+) {
+
+  const box =
+    document.getElementById(
+      "loginStatus"
+    );
+
+  box.textContent = message;
+
+  box.className =
+    "status " + type;
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login() {
+
+  const email =
+    document.getElementById(
+      "loginEmail"
+    ).value.trim();
+
+  const password =
+    document.getElementById(
+      "loginPassword"
+    ).value;
+
+  if(!email || !password) {
+
+    showLoginStatus(
+      "Email এবং Password দিন।",
+      "error"
+    );
+
+    return;
+  }
+
+  const button =
+    document.getElementById(
+      "loginBtn"
+    );
+
+  button.disabled = true;
+
+  button.textContent =
+    "Login হচ্ছে...";
+
+  showLoginStatus(
+    "Login করা হচ্ছে...",
+    "loading"
+  );
+
+  try {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+      .signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if(error) {
+      throw error;
+    }
+
+    showLoginStatus(
+      "Login সফল হয়েছে।",
+      "success"
+    );
+
+    setTimeout(() => {
+
+      showApp(
+        data.user
+      );
+
+    },500);
+
+  } catch(error) {
+
+    console.error(error);
+
+    showLoginStatus(
+      "Login ব্যর্থ: " +
+      error.message,
+      "error"
+    );
+
+  } finally {
+
+    button.disabled = false;
+
+    button.textContent =
+      "Login";
+  }
+}
+
+
+/* =====================================================
+   SHOW APP
+===================================================== */
+
+function showApp(user) {
+
+  document
+    .getElementById(
+      "loginSection"
+    )
+    .classList.add("hidden");
+
+  document
+    .getElementById(
+      "appSection"
+    )
+    .classList.remove("hidden");
+
+  document.getElementById(
+    "adminEmail"
+  ).textContent =
+    user.email || "";
+
+  loadPayments();
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout() {
+
+  const {
+    error
+  } =
+    await supabaseClient.auth
+    .signOut();
+
+  if(error) {
+
+    alert(
+      "Logout করা যায়নি: " +
+      error.message
+    );
+
+    return;
+  }
+
+  payments = [];
+
+  document
+    .getElementById(
+      "appSection"
+    )
+    .classList.add("hidden");
+
+  document
+    .getElementById(
+      "loginSection"
+    )
+    .classList.remove("hidden");
+
+  document.getElementById(
+    "loginPassword"
+  ).value = "";
+
+  showLoginStatus(
+    "আপনি Logout করেছেন।",
+    "success"
+  );
+}
+
+
+/* =====================================================
+   CHECK SESSION
+===================================================== */
+
+async function checkSession() {
+
+  const {
+    data
+  } =
+    await supabaseClient.auth
+    .getSession();
+
+  const session =
+    data.session;
+
+  if(session && session.user) {
+
+    showApp(
+      session.user
+    );
+
+  }
+
 }
 
 
@@ -703,21 +1067,23 @@ async function loadPayments() {
     const {
       data,
       error
-    } = await supabaseClient
+    } =
+      await supabaseClient
       .from("payments")
       .select("*")
       .order("week", {
-        ascending: true
+        ascending:true
       })
       .order("payment_date", {
-        ascending: true
+        ascending:true
       });
 
-    if (error) {
+    if(error) {
       throw error;
     }
 
-    payments = data || [];
+    payments =
+      data || [];
 
     renderAll();
 
@@ -726,12 +1092,12 @@ async function loadPayments() {
       "success"
     );
 
-  } catch (error) {
+  } catch(error) {
 
     console.error(error);
 
     showStatus(
-      "ডাটা লোড করতে সমস্যা হয়েছে: " +
+      "ডাটা লোড করতে সমস্যা: " +
       error.message,
       "error"
     );
@@ -740,7 +1106,7 @@ async function loadPayments() {
 
 
 /* =====================================================
-   RENDER ALL
+   RENDER
 ===================================================== */
 
 function renderAll() {
@@ -756,24 +1122,22 @@ function renderAll() {
 
 
 /* =====================================================
-   TOTAL WEEKS
+   WEEKS
 ===================================================== */
 
 function getTotalWeeks() {
 
-  if (!payments.length) {
+  if(!payments.length) {
     return 0;
   }
 
   return Math.max(
-    ...payments.map(p => Number(p.week))
+    ...payments.map(
+      p => Number(p.week)
+    )
   );
 }
 
-
-/* =====================================================
-   CURRENT WEEK
-===================================================== */
 
 function getCurrentWeek() {
 
@@ -782,49 +1146,49 @@ function getCurrentWeek() {
 
 
 /* =====================================================
-   FORMAT MONEY
+   MONEY
 ===================================================== */
 
-function money(amount) {
+function money(value) {
 
   return "৳" +
-    Number(amount || 0)
-      .toLocaleString("bn-BD");
+    Number(value || 0)
+    .toLocaleString("bn-BD");
 }
 
 
 /* =====================================================
-   FORMAT DATE
+   DATE FORMAT
 ===================================================== */
 
-function formatDate(dateString) {
+function formatDate(value) {
 
-  if (!dateString) {
+  if(!value) {
     return "-";
   }
 
   const parts =
-    dateString.split("-");
+    value.split("-");
 
-  if (parts.length === 3) {
+  if(parts.length === 3) {
 
     return `${parts[2]}/${parts[1]}/${parts[0]}`;
   }
 
-  return dateString;
+  return value;
 }
 
 
 /* =====================================================
-   RENDER STATS
+   STATS
 ===================================================== */
 
 function renderStats() {
 
   const totalFund =
     payments.reduce(
-      (sum, payment) =>
-        sum + Number(payment.amount),
+      (sum,p) =>
+        sum + Number(p.amount),
       0
     );
 
@@ -837,22 +1201,24 @@ function renderStats() {
   const currentWeekFund =
     payments
       .filter(
-        p => Number(p.week) === currentWeek
+        p =>
+          Number(p.week) ===
+          currentWeek
       )
       .reduce(
-        (sum, p) =>
+        (sum,p) =>
           sum + Number(p.amount),
         0
       );
 
-  const expectedTotal =
+  const expected =
     totalWeeks *
     MEMBERS.length *
     WEEKLY_AMOUNT;
 
-  const totalDue =
+  const due =
     Math.max(
-      expectedTotal - totalFund,
+      expected - totalFund,
       0
     );
 
@@ -874,18 +1240,20 @@ function renderStats() {
   document.getElementById(
     "totalDue"
   ).textContent =
-    money(totalDue);
+    money(due);
 }
 
 
 /* =====================================================
-   RENDER MEMBERS
+   MEMBERS
 ===================================================== */
 
 function renderMembers() {
 
   const container =
-    document.getElementById("members");
+    document.getElementById(
+      "members"
+    );
 
   const currentWeek =
     getCurrentWeek();
@@ -896,12 +1264,13 @@ function renderMembers() {
 
     const memberPayments =
       payments.filter(
-        p => p.member === member
+        p =>
+          p.member === member
       );
 
     const total =
       memberPayments.reduce(
-        (sum, p) =>
+        (sum,p) =>
           sum + Number(p.amount),
         0
       );
@@ -911,7 +1280,9 @@ function renderMembers() {
 
     const due =
       Math.max(
-        currentWeek * WEEKLY_AMOUNT - total,
+        currentWeek *
+        WEEKLY_AMOUNT -
+        total,
         0
       );
 
@@ -923,21 +1294,19 @@ function renderMembers() {
       );
 
     const percentage =
-      currentWeek > 0
+      currentWeek
         ? Math.min(
-            (weeksPaid / currentWeek) *
+            (weeksPaid /
+              currentWeek) *
             100,
             100
           )
         : 0;
 
-    const currentStatus =
-      currentPayment
-        ? `<span class="paid">Paid ✓</span>`
-        : `<span class="unpaid">Unpaid ✕</span>`;
-
     const card =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
     card.className =
       "member-card";
@@ -950,12 +1319,16 @@ function renderMembers() {
 
       <div class="member-info">
         <span>মোট জমা</span>
-        <strong>${money(total)}</strong>
+        <strong>
+          ${money(total)}
+        </strong>
       </div>
 
       <div class="member-info">
         <span>জমা দিয়েছে</span>
-        <strong>${weeksPaid} সপ্তাহ</strong>
+        <strong>
+          ${weeksPaid} সপ্তাহ
+        </strong>
       </div>
 
       <div class="member-info">
@@ -967,25 +1340,36 @@ function renderMembers() {
 
       <div class="member-info">
         <span>এই সপ্তাহ</span>
-        ${currentStatus}
+
+        ${
+          currentPayment
+          ? '<span class="paid">Paid ✓</span>'
+          : '<span class="unpaid">Unpaid ✕</span>'
+        }
+
       </div>
 
       <div class="progress">
+
         <div
           class="progress-bar"
-          style="width:${percentage}%"
+          style="
+            width:${percentage}%
+          "
         ></div>
-      </div>
 
+      </div>
     `;
 
-    container.appendChild(card);
+    container.appendChild(
+      card
+    );
   });
 }
 
 
 /* =====================================================
-   RENDER WEEKLY TABLE
+   WEEKLY TABLE
 ===================================================== */
 
 function renderWeeklyTable() {
@@ -998,19 +1382,24 @@ function renderWeeklyTable() {
   tbody.innerHTML = "";
 
   const weeks =
-    [...new Set(
-      payments.map(
-        p => Number(p.week)
+    [
+      ...new Set(
+        payments.map(
+          p => Number(p.week)
+        )
       )
-    )].sort(
-      (a, b) => a - b
+    ].sort(
+      (a,b) => a-b
     );
 
-  if (!weeks.length) {
+  if(!weeks.length) {
 
     tbody.innerHTML = `
       <tr>
-        <td colspan="7" class="empty">
+        <td
+          colspan="7"
+          class="empty"
+        >
           এখনো কোনো পেমেন্ট নেই।
         </td>
       </tr>
@@ -1021,69 +1410,92 @@ function renderWeeklyTable() {
 
   weeks.forEach(week => {
 
-    const weekPayments =
+    const list =
       payments.filter(
-        p => Number(p.week) === week
+        p =>
+          Number(p.week) ===
+          week
       );
 
     const date =
-      weekPayments[0]?.payment_date ||
+      list[0]?.payment_date ||
       "-";
 
     const total =
-      weekPayments.reduce(
-        (sum, p) =>
+      list.reduce(
+        (sum,p) =>
           sum + Number(p.amount),
         0
       );
 
-    const getMemberStatus =
-      member => {
+    function status(member) {
 
-        const payment =
-          weekPayments.find(
-            p => p.member === member
-          );
+      const payment =
+        list.find(
+          p =>
+            p.member ===
+            member
+        );
 
-        if (payment) {
-
-          return `
-            <span class="badge badge-paid">
-              ${money(payment.amount)}
-            </span>
-          `;
-        }
+      if(payment) {
 
         return `
-          <span class="badge badge-unpaid">
-            বাকি
+          <span
+            class="badge badge-paid"
+          >
+            ${money(
+              payment.amount
+            )}
           </span>
         `;
-      };
+      }
+
+      return `
+        <span
+          class="badge badge-unpaid"
+        >
+          বাকি
+        </span>
+      `;
+    }
 
     const tr =
-      document.createElement("tr");
+      document.createElement(
+        "tr"
+      );
 
     tr.innerHTML = `
 
       <td>
-        <strong>সপ্তাহ ${week}</strong>
+        <strong>
+          সপ্তাহ ${week}
+        </strong>
       </td>
 
       <td>
         ${formatDate(date)}
       </td>
 
-      <td>${getMemberStatus("জাকির")}</td>
-
-      <td>${getMemberStatus("আরমান")}</td>
-
-      <td>${getMemberStatus("তানিম")}</td>
-
-      <td>${getMemberStatus("তাসিন")}</td>
+      <td>
+        ${status("জাকির")}
+      </td>
 
       <td>
-        <strong>${money(total)}</strong>
+        ${status("আরমান")}
+      </td>
+
+      <td>
+        ${status("তানিম")}
+      </td>
+
+      <td>
+        ${status("তাসিন")}
+      </td>
+
+      <td>
+        <strong>
+          ${money(total)}
+        </strong>
       </td>
 
     `;
@@ -1094,7 +1506,7 @@ function renderWeeklyTable() {
 
 
 /* =====================================================
-   RENDER HISTORY
+   HISTORY
 ===================================================== */
 
 function renderHistory() {
@@ -1106,11 +1518,11 @@ function renderHistory() {
 
   tbody.innerHTML = "";
 
-  const sortedPayments =
+  const list =
     [...payments].sort(
-      (a, b) => {
+      (a,b) => {
 
-        if (
+        if(
           Number(a.week) !==
           Number(b.week)
         ) {
@@ -1124,17 +1536,22 @@ function renderHistory() {
         return String(
           b.payment_date
         ).localeCompare(
-          String(a.payment_date)
+          String(
+            a.payment_date
+          )
         );
       }
     );
 
-  if (!sortedPayments.length) {
+  if(!list.length) {
 
     tbody.innerHTML = `
       <tr>
-        <td colspan="5" class="empty">
-          কোনো পেমেন্ট পাওয়া যায়নি।
+        <td
+          colspan="5"
+          class="empty"
+        >
+          কোনো পেমেন্ট নেই।
         </td>
       </tr>
     `;
@@ -1142,10 +1559,12 @@ function renderHistory() {
     return;
   }
 
-  sortedPayments.forEach(payment => {
+  list.forEach(payment => {
 
     const tr =
-      document.createElement("tr");
+      document.createElement(
+        "tr"
+      );
 
     tr.innerHTML = `
 
@@ -1167,7 +1586,9 @@ function renderHistory() {
 
       <td>
         <strong>
-          ${money(payment.amount)}
+          ${money(
+            payment.amount
+          )}
         </strong>
       </td>
 
@@ -1177,14 +1598,22 @@ function renderHistory() {
 
           <button
             class="btn btn-warning"
-            onclick="editPayment(${payment.id})"
+            onclick="
+              editPayment(
+                ${payment.id}
+              )
+            "
           >
             ✏️ Edit
           </button>
 
           <button
             class="btn btn-danger"
-            onclick="deletePayment(${payment.id})"
+            onclick="
+              deletePayment(
+                ${payment.id}
+              )
+            "
           >
             🗑️ Delete
           </button>
@@ -1192,7 +1621,6 @@ function renderHistory() {
         </div>
 
       </td>
-
     `;
 
     tbody.appendChild(tr);
@@ -1204,198 +1632,184 @@ function renderHistory() {
    ADD PAYMENT
 ===================================================== */
 
-paymentForm.addEventListener(
-  "submit",
-  async function(event) {
+document
+  .getElementById(
+    "paymentForm"
+  )
+  .addEventListener(
+    "submit",
+    async function(event) {
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const member =
-      memberInput.value;
+      const member =
+        document.getElementById(
+          "member"
+        ).value;
 
-    const week =
-      Number(weekInput.value);
+      const week =
+        Number(
+          document.getElementById(
+            "week"
+          ).value
+        );
 
-    const paymentDate =
-      dateInput.value;
+      const paymentDate =
+        document.getElementById(
+          "paymentDate"
+        ).value;
 
-    const amount =
-      Number(amountInput.value);
+      const amount =
+        Number(
+          document.getElementById(
+            "amount"
+          ).value
+        );
 
-    if (!member) {
-
-      showStatus(
-        "সদস্য নির্বাচন করুন।",
-        "error"
-      );
-
-      return;
-    }
-
-    if (!week || week < 1) {
-
-      showStatus(
-        "সঠিক সপ্তাহ নম্বর দিন।",
-        "error"
-      );
-
-      return;
-    }
-
-    if (!paymentDate) {
-
-      showStatus(
-        "তারিখ নির্বাচন করুন।",
-        "error"
-      );
-
-      return;
-    }
-
-    if (!amount || amount <= 0) {
-
-      showStatus(
-        "সঠিক টাকার পরিমাণ দিন।",
-        "error"
-      );
-
-      return;
-    }
-
-    /* Duplicate check */
-
-    const duplicate =
-      payments.find(
-        p =>
-          p.member === member &&
-          Number(p.week) === week
-      );
-
-    if (duplicate) {
-
-      showStatus(
-        `${member} ইতিমধ্যে সপ্তাহ ${week}-এর টাকা জমা দিয়েছে।`,
-        "error"
-      );
-
-      return;
-    }
-
-    submitBtn.disabled = true;
-
-    submitBtn.textContent =
-      "জমা হচ্ছে...";
-
-    try {
-
-      const {
-        data,
-        error
-      } = await supabaseClient
-        .from("payments")
-        .insert([
-          {
-            member: member,
-            week: week,
-            payment_date: paymentDate,
-            amount: amount
-          }
-        ])
-        .select();
-
-      if (error) {
-        throw error;
-      }
-
-      showStatus(
-        "পেমেন্ট সফলভাবে জমা হয়েছে।",
-        "success"
-      );
-
-      paymentForm.reset();
-
-      dateInput.value =
-        getToday();
-
-      amountInput.value =
-        WEEKLY_AMOUNT;
-
-      weekInput.value =
-        week;
-
-      await loadPayments();
-
-    } catch (error) {
-
-      console.error(error);
-
-      if (
-        error.code ===
-        "23505"
-      ) {
+      if(!member) {
 
         showStatus(
-          "এই সদস্যের এই সপ্তাহের পেমেন্ট আগে থেকেই আছে।",
+          "সদস্য নির্বাচন করুন।",
           "error"
         );
 
-      } else {
+        return;
+      }
+
+      const duplicate =
+        payments.find(
+          p =>
+            p.member === member &&
+            Number(p.week) === week
+        );
+
+      if(duplicate) {
+
+        showStatus(
+          `${member} সপ্তাহ ${week} ইতিমধ্যে টাকা দিয়েছে।`,
+          "error"
+        );
+
+        return;
+      }
+
+      const button =
+        document.getElementById(
+          "submitBtn"
+        );
+
+      button.disabled = true;
+
+      button.textContent =
+        "জমা হচ্ছে...";
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
+          .from("payments")
+          .insert([{
+
+            member:
+              member,
+
+            week:
+              week,
+
+            payment_date:
+              paymentDate,
+
+            amount:
+              amount
+
+          }]);
+
+        if(error) {
+          throw error;
+        }
+
+        showStatus(
+          "পেমেন্ট সফলভাবে জমা হয়েছে।",
+          "success"
+        );
+
+        document
+          .getElementById(
+            "paymentForm"
+          )
+          .reset();
+
+        document.getElementById(
+          "paymentDate"
+        ).value =
+          getToday();
+
+        document.getElementById(
+          "amount"
+        ).value =
+          WEEKLY_AMOUNT;
+
+        document.getElementById(
+          "week"
+        ).value =
+          week;
+
+        await loadPayments();
+
+      } catch(error) {
+
+        console.error(error);
 
         showStatus(
           "পেমেন্ট যোগ করা যায়নি: " +
           error.message,
           "error"
         );
+
+      } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+          "💰 জমা করুন";
       }
-
-    } finally {
-
-      submitBtn.disabled = false;
-
-      submitBtn.textContent =
-        "💰 জমা করুন";
     }
-  }
-);
+  );
 
 
 /* =====================================================
-   EDIT PAYMENT
+   EDIT
 ===================================================== */
 
 async function editPayment(id) {
 
   const payment =
     payments.find(
-      p => Number(p.id) === Number(id)
+      p =>
+        Number(p.id) ===
+        Number(id)
     );
 
-  if (!payment) {
-
-    showStatus(
-      "পেমেন্ট পাওয়া যায়নি।",
-      "error"
-    );
-
+  if(!payment) {
     return;
   }
 
-  const newAmount =
+  const value =
     prompt(
-      `${payment.member} - সপ্তাহ ${payment.week}\nনতুন টাকার পরিমাণ দিন:`,
+      `${payment.member} - সপ্তাহ ${payment.week}\nনতুন টাকার পরিমাণ:`,
       payment.amount
     );
 
-  if (
-    newAmount === null
-  ) {
+  if(value === null) {
     return;
   }
 
   const amount =
-    Number(newAmount);
+    Number(value);
 
-  if (!amount || amount <= 0) {
+  if(!amount || amount <= 0) {
 
     alert(
       "সঠিক টাকার পরিমাণ দিন।"
@@ -1408,27 +1822,26 @@ async function editPayment(id) {
 
     const {
       error
-    } = await supabaseClient
+    } =
+      await supabaseClient
       .from("payments")
       .update({
         amount: amount
       })
-      .eq("id", id);
+      .eq("id",id);
 
-    if (error) {
+    if(error) {
       throw error;
     }
 
     showStatus(
-      "পেমেন্ট সফলভাবে আপডেট হয়েছে।",
+      "পেমেন্ট আপডেট হয়েছে।",
       "success"
     );
 
     await loadPayments();
 
-  } catch (error) {
-
-    console.error(error);
+  } catch(error) {
 
     showStatus(
       "আপডেট করা যায়নি: " +
@@ -1440,26 +1853,28 @@ async function editPayment(id) {
 
 
 /* =====================================================
-   DELETE PAYMENT
+   DELETE
 ===================================================== */
 
 async function deletePayment(id) {
 
   const payment =
     payments.find(
-      p => Number(p.id) === Number(id)
+      p =>
+        Number(p.id) ===
+        Number(id)
     );
 
-  if (!payment) {
+  if(!payment) {
     return;
   }
 
-  const confirmed =
+  const confirmDelete =
     confirm(
-      `${payment.member} - সপ্তাহ ${payment.week}\n\nএই পেমেন্টটি মুছে ফেলতে চান?`
+      `${payment.member} - সপ্তাহ ${payment.week}\n\nএই পেমেন্টটি মুছে ফেলবেন?`
     );
 
-  if (!confirmed) {
+  if(!confirmDelete) {
     return;
   }
 
@@ -1467,12 +1882,13 @@ async function deletePayment(id) {
 
     const {
       error
-    } = await supabaseClient
+    } =
+      await supabaseClient
       .from("payments")
       .delete()
-      .eq("id", id);
+      .eq("id",id);
 
-    if (error) {
+    if(error) {
       throw error;
     }
 
@@ -1483,9 +1899,7 @@ async function deletePayment(id) {
 
     await loadPayments();
 
-  } catch (error) {
-
-    console.error(error);
+  } catch(error) {
 
     showStatus(
       "ডিলিট করা যায়নি: " +
@@ -1497,26 +1911,26 @@ async function deletePayment(id) {
 
 
 /* =====================================================
-   RESET ALL DATA
+   RESET
 ===================================================== */
 
 async function resetData() {
 
-  const confirmed =
+  const first =
     confirm(
-      "⚠️ সতর্কতা!\n\nসব পেমেন্ট ডাটা স্থায়ীভাবে মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
+      "⚠️ সব পেমেন্ট ডাটা মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
     );
 
-  if (!confirmed) {
+  if(!first) {
     return;
   }
 
-  const confirmedAgain =
+  const second =
     confirm(
-      "শেষবারের মতো নিশ্চিত করুন।\n\nসব ডাটা মুছে ফেলবো?"
+      "শেষবার নিশ্চিত করুন।\n\nসব ডাটা মুছে ফেলবো?"
     );
 
-  if (!confirmedAgain) {
+  if(!second) {
     return;
   }
 
@@ -1529,12 +1943,13 @@ async function resetData() {
 
     const {
       error
-    } = await supabaseClient
+    } =
+      await supabaseClient
       .from("payments")
       .delete()
-      .neq("id", 0);
+      .neq("id",0);
 
-    if (error) {
+    if(error) {
       throw error;
     }
 
@@ -1545,9 +1960,7 @@ async function resetData() {
 
     await loadPayments();
 
-  } catch (error) {
-
-    console.error(error);
+  } catch(error) {
 
     showStatus(
       "ডাটা মুছে ফেলা যায়নি: " +
@@ -1559,10 +1972,10 @@ async function resetData() {
 
 
 /* =====================================================
-   START APP
+   START
 ===================================================== */
 
-loadPayments();
+checkSession();
 
 </script>
 
